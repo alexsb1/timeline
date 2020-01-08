@@ -1,0 +1,12 @@
+name: Timeline
+title: Timeline
+username:
+account: alexsb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1633649
+bundleId: 2712032
+url: https://alexsb.shinyapps.io/Timeline/
+when: 1578408380.22834
+asMultiple: FALSE
+asStatic: FALSE

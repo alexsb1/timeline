@@ -1,0 +1,23 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1578476845779.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1451301684",
+    "id" : "7D2CAA40",
+    "lastKnownWriteTime" : 1578408637,
+    "last_content_update" : 1578408637,
+    "path" : "C:/Users/cjsb1c17/OneDrive/Documents/Timeline/shiny/app.R",
+    "project_path" : "app.R",
+    "properties" : {
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}
