@@ -57,12 +57,79 @@ timelineEnd <- timelineEnd %>% as.data.frame(.)
 names(timelineEnd) <- "timelineEnd"
 monarchs <- cbind(monarchs, timelineEnd)
 
+
+houseColours <- NULL
+houseNames <- unique(monarchs$house)
+for (i in monarchs$house){
+  ifelse(grepl(houseNames[1], i), houseColours <- append(houseColours, paste("blue")), 
+         ifelse(
+           grepl(houseNames[2], i), houseColours <- append(houseColours, paste("red")), 
+           ifelse(
+             grepl(houseNames[3], i), houseColours <- append(houseColours, paste("green")), 
+             ifelse(
+               grepl(houseNames[4], i), houseColours <- append(houseColours, paste("aqua")), 
+               ifelse(
+                 grepl(houseNames[5], i), houseColours <- append(houseColours, paste("purple")), 
+                  ifelse(
+                    grepl(houseNames[6], i), houseColours <- append(houseColours, paste("hotpink")), 
+                    ifelse(
+                      grepl(houseNames[7], i), houseColours <- append(houseColours, paste("yellow")), 
+                      ifelse(
+                        grepl(houseNames[8], i), houseColours <- append(houseColours, paste("orange")), 
+                        ifelse(
+                          grepl(houseNames[9], i), houseColours <- append(houseColours, paste("brown")), 
+                          ifelse(
+                            grepl(houseNames[10], i), houseColours <- append(houseColours, paste("teal")), 
+                            ifelse(
+                              grepl(houseNames[11], i), houseColours <- append(houseColours, paste("beige")), 
+                              ifelse(
+                                grepl(houseNames[12], i), houseColours <- append(houseColours, paste("white")), 
+                                ifelse(
+                                  grepl(houseNames[13], i), houseColours <- append(houseColours, paste("firebrick1")), 
+                                  ifelse(
+                                    grepl(houseNames[14], i), houseColours <- append(houseColours, paste("lawngreen")), 
+                                    ifelse(
+                                      grepl(houseNames[15], i), houseColours <- append(houseColours, paste("violet")), 
+                                      ifelse(
+                                        print("Unknown house. Cannot assign a colour.")
+                                      )
+                                    )
+                                  )
+                                )
+                              )
+                            )
+                          )
+                        )
+                      )
+                    )
+                  )
+               )
+             )
+           )
+         )
+  )
+  
+}
+
+houseColours <- houseColours %>% as.data.frame(.)
+names(houseColours) <- "houseColours"
+monarchs <- cbind(monarchs, houseColours)
+
+
+
+
 df <- data.frame(
   id = 1:nrow(monarchs),
   content = monarchs$monarchTitle,
   start = monarchs$timelineStart,
-  end = monarchs$timelineEnd
+  end = monarchs$timelineEnd,
+  group = monarchs$house,
+  subgroup = monarchs$house,
+  title = paste(monarchs$monarchTitle, monarchs$eventDescription),
+  style = paste0("background-color:", monarchs$houseColours),
 )
+
+
 
 timevis(df)
 
