@@ -1,0 +1,121 @@
+Supereon,Eon,Era,Period,Epoch,Age,Start_million_years_ago,End_million_years_ago,back_colour,text_colour,Major events
+,Phanerozoic,Cenozoic,Quaternary,Holocene,Meghalayan,0.0042,0,fef6f3,black,"4.2 kiloyear event, Little Ice Age, increasing industrial CO2."
+,Phanerozoic,Cenozoic,Quaternary,Holocene,Northgrippian,0.0082,0.0042,fef6f3,black,"8.2 kiloyear event, Holocene climatic optimum. Bronze Age."
+,Phanerozoic,Cenozoic,Quaternary,Holocene,Greenlandian,0.0117,0.0082,fef6f3,black,Current interglacial begins. Sea level flooding of Doggerland and Sundaland. Sahara desert forms. Neolithic agriculture.
+,Phanerozoic,Cenozoic,Quaternary,Pleistocene,Late ('Tarantian'),0.126,0.0117,fef3e1,black,"Eemian interglacial, Last glacial period, ending with Younger Dryas. Toba eruption. Megafauna extinction."
+,Phanerozoic,Cenozoic,Quaternary,Pleistocene,"Middle ('Ionian', 'Chibanian')",0.781,0.126,fef3d7,black,High amplitude 100 ka glacial cycles. Rise of Homo sapiens.
+,Phanerozoic,Cenozoic,Quaternary,Pleistocene,Calabrian,1.8,0.781,fff1d0,black,Further cooling of the climate. Spread of Homo erectus.
+,Phanerozoic,Cenozoic,Quaternary,Pleistocene,Gelasian,2.58,1.8,ffefbb,black,Start of Quaternary glaciations. Rise of the Pleistocene megafauna and Homo habilis.
+,Phanerozoic,Cenozoic,Neogene,Pliocene,Piacenzian,3.6,2.58,fffad2,black,Greenland ice sheet develops. Australopithecus common in East Africa.
+,Phanerozoic,Cenozoic,Neogene,Pliocene,Zanclean,5.333,3.6,fffac8,black,Zanclean flooding of the Mediterranean Basin. Cooling climate. Ardipithecus in Africa.
+,Phanerozoic,Cenozoic,Neogene,Miocene,Messinian,7.246,5.333,fff38f,black,"Messinian Event with hypersaline lakes in empty Mediterranean Basin. Moderate Icehouse climate, punctuated by ice ages and re-establishment of East Antarctic Ice Sheet; Gradual separation of human and chimpanzee ancestors. Sahelanthropus tchadensis in Africa."
+,Phanerozoic,Cenozoic,Neogene,Miocene,Tortonian,11.63,7.246,fff490,black,
+,Phanerozoic,Cenozoic,Neogene,Miocene,Serravallian,13.82,11.63,fef380,black,Warmer during middle Miocene climate optimum. Extinctions in middle Miocene disruption.
+,Phanerozoic,Cenozoic,Neogene,Miocene,Langhian,15.97,13.82,fef164,black,
+,Phanerozoic,Cenozoic,Neogene,Miocene,Burdigalian,20.44,15.97,fff256,black,"Orogeny in Northern Hemisphere. Start of Kaikoura Orogeny forming Southern Alps in New Zealand. Widespread forests slowly draw in massive amounts of CO2, gradually lowering the level of atmospheric CO2 from 650 ppmv down to around 100 ppmv during the Miocene. Modern mammal and bird families become recognizable. Horses and mastodons diverse. Grasses become ubiquitous. Ancestor of apes, including humans."
+,Phanerozoic,Cenozoic,Neogene,Miocene,Aquitanian,23.03,20.44,fff03f,black,
+,Phanerozoic,Cenozoic,Paleogene,Oligocene,Chattian,28.1,23.03,ffe9c2,black,"Grande Coupure extinction. Start of widespread Antarctic glaciation. Rapid evolution and diversification of fauna, especially mammals. Major evolution and dispersal of modern types of flowering plants"
+,Phanerozoic,Cenozoic,Paleogene,Oligocene,Rupelian,33.9,28.1,fedfb3,black,
+,Phanerozoic,Cenozoic,Paleogene,Eocene,Priabonian,37.8,33.9,fcd7ba,black,"Moderate, cooling climate. Archaic mammals (e.g. Creodonts, ""Condylarths"", Uintatheres, etc.) flourish and continue to develop during the epoch. Appearance of several ""modern"" mammal families. Primitive whales diversify. Reglaciation of Antarctica and formation of its ice cap; End of Laramide and Sevier Orogenies of the Rocky Mountains in North America. Orogeny of the Alps in Europe begins. Hellenic Orogeny begins in Greece and Aegean Sea."
+,Phanerozoic,Cenozoic,Paleogene,Eocene,Bartonian,41.2,37.8,fcceac,black,
+,Phanerozoic,Cenozoic,Paleogene,Eocene,Lutetian,47.8,41.2,f9c39d,black,
+,Phanerozoic,Cenozoic,Paleogene,Eocene,Ypresian,56,47.8,f7ba8e,black,"Two transient events of global warming (PETM and ETM-2) and warming climate until the Eocene Climatic Optimum. The Azolla event decreased CO2 levels from 3500 ppm to 650 ppm, setting the stage for a long period of cooling. Indian Subcontinent collides with Asia and starts Himalayan Orogeny."
+,Phanerozoic,Cenozoic,Paleogene,Paleocene,Thanetian,59.2,56,fccc8c,black,Starts with Chicxulub impact and the K-Pg extinction event. Climate tropical. Modern plants appear; Mammals diversify into a number of lineages following the extinction of the non-avian dinosaurs. First large mammals (up to bear or small hippo size). Alpine orogeny in Europe and Asia begins.
+,Phanerozoic,Cenozoic,Paleogene,Paleocene,Selandian,61.6,59.2,fbcb83,black,
+,Phanerozoic,Cenozoic,Paleogene,Paleocene,Danian,66,61.6,fbc27f,black,
+,Phanerozoic,Mesozoic,Cretaceous,Late,Maastrichtian,72.1,66,f5f1a7,black,"Flowering plants proliferate, along with new types of insects. More modern teleost fish begin to appear. Ammonoidea, belemnites, rudist bivalves, echinoids and sponges all common. Many new types of dinosaurs (e.g. Tyrannosaurs, Titanosaurs, Hadrosaurs, and Ceratopsids) evolve on land, as do Eusuchia (modern crocodilians); and mosasaurs and modern sharks appear in the sea. Birds toothed and toothless coexist with pterosaurs. Monotremes, marsupials and placental mammals appear. Break up of Gondwana. Beginning of Laramide and Sevier Orogenies of the Rocky Mountains. atmospheric CO2 close to present-day levels."
+,Phanerozoic,Mesozoic,Cretaceous,Late,Campanian,83.6,72.1,efec9b,black,
+,Phanerozoic,Mesozoic,Cretaceous,Late,Santonian,86.3,83.6,e5e88f,black,
+,Phanerozoic,Mesozoic,Cretaceous,Late,Coniacian,89.8,86.3,dce383,black,
+,Phanerozoic,Mesozoic,Cretaceous,Late,Turonian,93.9,89.8,d1dc76,black,
+,Phanerozoic,Mesozoic,Cretaceous,Late,Cenomanian,100.5,93.9,c6d86c,black,
+,Phanerozoic,Mesozoic,Cretaceous,Early,Albian,113,100.5,d9e8b1,black,
+,Phanerozoic,Mesozoic,Cretaceous,Early,Aptian,125,113,cfe1a7,black,
+,Phanerozoic,Mesozoic,Cretaceous,Early,Barremian,129.4,125,c2da9c,black,
+,Phanerozoic,Mesozoic,Cretaceous,Early,Hauterivian,132.9,129.4,b7d690,black,
+,Phanerozoic,Mesozoic,Cretaceous,Early,Valanginian,139.8,132.9,abd083,black,
+,Phanerozoic,Mesozoic,Cretaceous,Early,Berriasian,145,139.8,9ec979,black,
+,Phanerozoic,Mesozoic,Jurassic,Late,Tithonian,152.1,145,e0f2fc,black,"Gymnosperms (especially conifers, Bennettitales and cycads) and ferns common. Many types of dinosaurs, such as sauropods, carnosaurs, and stegosaurs. Mammals common but small. First birds and lizards. Ichthyosaurs and plesiosaurs diverse. Bivalves, Ammonites and belemnites abundant. Sea urchins very common, along with crinoids, starfish, sponges, and terebratulid and rhynchonellid brachiopods. Breakup of Pangaea into Gondwana and Laurasia. Nevadan orogeny in North America. Rangitata and Cimmerian orogenies taper off. Atmospheric CO2 levels 3–4 times the present day levels (1200–1500 ppmv, compared to today's 400 ppmv)."
+,Phanerozoic,Mesozoic,Jurassic,Late,Kimmeridgian,157.3,152.1,d4eefd,black,
+,Phanerozoic,Mesozoic,Jurassic,Late,Oxfordian,163.5,157.3,cbe7fc,black,
+,Phanerozoic,Mesozoic,Jurassic,Middle,Callovian,166.1,163.5,cae6f2,black,
+,Phanerozoic,Mesozoic,Jurassic,Middle,Bathonian,168.3,166.1,bce3f2,black,
+,Phanerozoic,Mesozoic,Jurassic,Middle,Bajocian,170.3,168.3,afdef0,black,
+,Phanerozoic,Mesozoic,Jurassic,Middle,Aalenian,174.1,170.3,a2d8f0,black,
+,Phanerozoic,Mesozoic,Jurassic,Early,Toarcian,182.7,174.1,a3d1f3,black,
+,Phanerozoic,Mesozoic,Jurassic,Early,Pliensbachian,190.8,182.7,86c9f3,black,
+,Phanerozoic,Mesozoic,Jurassic,Early,Sinemurian,199.3,190.8,5ebeee,black,
+,Phanerozoic,Mesozoic,Jurassic,Early,Hettangian,201.3,199.3,22b5e9,black,
+,Phanerozoic,Mesozoic,Triassic,Late,Rhaetian,208.5,201.3,e5cbe4,black,"Archosaurs dominant on land as dinosaurs and in the air as pterosaurs. Ichthyosaurs and nothosaurs dominate large marine fauna. Cynodonts become smaller and more mammal-like, while first mammals and crocodilia appear. Dicroidiumflora common on land. Many large aquatic temnospondyl amphibians. Ceratitic ammonoids extremely common. Modern corals and teleost fish appear, as do many modern insect clades. Andean Orogeny in South America. Cimmerian Orogeny in Asia. Rangitata Orogeny begins in New Zealand. Hunter-Bowen Orogeny in Northern Australia, Queensland and New South Wales ends, (c. 260–225 Ma)"
+,Phanerozoic,Mesozoic,Triassic,Late,Norian,227,208.5,dbc1de,black,
+,Phanerozoic,Mesozoic,Triassic,Late,Carnian,237,227,d1b3d5,black,
+,Phanerozoic,Mesozoic,Triassic,Middle,Ladinian,242,237,d0a0c8,black,
+,Phanerozoic,Mesozoic,Triassic,Middle,Anisian,247.2,242,c793c3,black,
+,Phanerozoic,Mesozoic,Triassic,Early,Olenekian,251.2,247.2,bb71ac,black,
+,Phanerozoic,Mesozoic,Triassic,Early,Induan,251.902,251.2,bb71ac,black,
+,Phanerozoic,Paleozoic,Permian,Lopingian,Changhsingian,254.14,251.902,f8d0c8,black,"Landmasses unite into supercontinent Pangaea, creating the Appalachians. End of Permo-Carboniferous glaciation. Synapsids including (pelycosaurs and therapsids) become plentiful, while parareptiles and temnospondyl amphibians remain common. In the mid-Permian, coal-age flora are replaced by cone-bearing gymnosperms (the first true seed plants) and by the first true mosses. Beetles and flies evolve. Marine life flourishes in warm shallow reefs; productid and spiriferid brachiopods, bivalves, forams, and ammonoids all abundant. Permian-Triassic extinction event occurs 251 Ma: 95% of life on Earth becomes extinct, including all trilobites, graptolites, and blastoids. Ouachita and Innuitian orogenies in North America. Uralian orogeny in Europe/Asia tapers off. Altaid orogeny in Asia. Hunter-Bowen Orogeny on Australian continent begins (c. 260–225 Ma), forming the MacDonnell Ranges."
+,Phanerozoic,Paleozoic,Permian,Lopingian,Wuchiapingian,259.1,254.14,fac4b8,black,
+,Phanerozoic,Paleozoic,Permian,Guadalupian,Capitanian,265.1,259.1,f6af9b,black,
+,Phanerozoic,Paleozoic,Permian,Guadalupian,Wordian,268.8,265.1,f4a692,black,
+,Phanerozoic,Paleozoic,Permian,Guadalupian,Roadian,272.95,268.8,f49984,black,
+,Phanerozoic,Paleozoic,Permian,Cisuralian,Kungurian,283.5,272.95,e49f90,black,
+,Phanerozoic,Paleozoic,Permian,Cisuralian,Artinskian,290.1,283.5,e39684,black,
+,Phanerozoic,Paleozoic,Permian,Cisuralian,Sakmarian,295,290.1,e18a76,black,
+,Phanerozoic,Paleozoic,Permian,Cisuralian,Asselian,298.9,295,e07f6c,black,
+,Phanerozoic,Paleozoic,Carboniferous,Pennsylvanian,Gzhelian,303.7,298.9,d6dcda,black,"Winged insects radiate suddenly; some (esp. Protodonata and Palaeodictyoptera) are quite large. Amphibians common and diverse. First reptiles and coal forests (scale trees, ferns, club trees, giant horsetails, Cordaites, etc.). Highest-ever atmospheric oxygen levels. Goniatites, brachiopods, bryozoa, bivalves, and corals plentiful in the seas and oceans. Testate forams proliferate. Uralian orogeny in Europe and Asia. Variscan orogeny occurs towards middle and late Mississippian Periods."
+,Phanerozoic,Paleozoic,Carboniferous,Pennsylvanian,Kasimovian,307,303.7,cad8d9,black,
+,Phanerozoic,Paleozoic,Carboniferous,Pennsylvanian,Moscovian,315.2,307,bed3ce,black,
+,Phanerozoic,Paleozoic,Carboniferous,Pennsylvanian,Bashkirian,323.2,315.2,a6c9cd,black,
+,Phanerozoic,Paleozoic,Carboniferous,Mississippian,Serpukhovian,330.9,323.2,cdc888,black,"Large primitive trees, first land vertebrates, and amphibious sea-scorpions live amid coal-forming coastal swamps. Lobe-finned rhizodonts are dominant big fresh-water predators. In the oceans, early sharks are common and quite diverse; echinoderms (especially crinoids and blastoids) abundant. Corals, bryozoa, goniatites and brachiopods (Productida, Spiriferida, etc.) very common, but trilobites and nautiloids decline. Glaciation in East Gondwana. Tuhua Orogeny in New Zealand tapers off."
+,Phanerozoic,Paleozoic,Carboniferous,Mississippian,Viséan,346.7,330.9,b7c089,black,
+,Phanerozoic,Paleozoic,Carboniferous,Mississippian,Tournaisian,358.9,346.7,9db989,black,
+,Phanerozoic,Paleozoic,Devonian,Late,Famennian,372.2,358.9,f4f0d5,black,"First clubmosses, horsetails and ferns appear, as do the first seed-bearing plants (progymnosperms), first trees (the progymnosperm Archaeopteris), and first (wingless) insects. Strophomenid and atrypid brachiopods, rugose and tabulate corals, and crinoids are all abundant in the oceans. Goniatite ammonoids are plentiful, while squid-like coleoids arise. Trilobites and armoured agnaths decline, while jawed fishes (placoderms, lobe-finned and ray-finned fish, and early sharks) rule the seas. First tetrapods still aquatic. ""Old Red Continent"" of Euramerica. Beginning of Acadian Orogeny for Anti-Atlas Mountains of North Africa, and Appalachian Mountains of North America, also the Antler, Variscan, and Tuhua Orogeny in New Zealand."
+,Phanerozoic,Paleozoic,Devonian,Late,Frasnian,382.7,372.2,f4edc3,black,
+,Phanerozoic,Paleozoic,Devonian,Middle,Givetian,387.7,382.7,f5e2a0,black,
+,Phanerozoic,Paleozoic,Devonian,Middle,Eifelian,393.3,387.7,f5da93,black,
+,Phanerozoic,Paleozoic,Devonian,Early,Emsian,407.6,393.3,ebd695,black,
+,Phanerozoic,Paleozoic,Devonian,Early,Pragian,410.8,407.6,ebcd87,black,
+,Phanerozoic,Paleozoic,Devonian,Early,Lochkovian,419.2,410.8,eac378,black,
+,Phanerozoic,Paleozoic,Silurian,Pridoli,,423,419.2,ebf5ec,black,"First vascular plants (the rhyniophytes and their relatives), first millipedes and arthropleurids on land. First jawed fishes, as well as many armoured jawless fish, populate the seas. Sea-scorpions reach large size. Tabulate and rugose corals, brachiopods (Pentamerida, Rhynchonellida, etc.), and crinoids all abundant. Trilobites and mollusks diverse; graptolites not as varied. Beginning of Caledonian Orogeny for hills in England, Ireland, Wales, Scotland, and the Scandinavian Mountains. Also continued into Devonian period as the Acadian Orogeny, above. Taconic Orogeny tapers off. Lachlan Orogeny on Australian continent tapers off."
+,Phanerozoic,Paleozoic,Silurian,Ludlow,Ludfordian,425.6,423,e2f1ec,black,
+,Phanerozoic,Paleozoic,Silurian,Ludlow,Gorstian,427.4,425.6,d7ebec,black,
+,Phanerozoic,Paleozoic,Silurian,Wenlock,Homerian,430.5,427.4,d6ebe2,black,
+,Phanerozoic,Paleozoic,Silurian,Wenlock,Sheinwoodian,433.4,430.5,cce7d8,black,
+,Phanerozoic,Paleozoic,Silurian,Llandovery,Telychian,438.5,433.4,cae8e0,black,
+,Phanerozoic,Paleozoic,Silurian,Llandovery,Aeronian,440.8,438.5,c1e1d6,black,
+,Phanerozoic,Paleozoic,Silurian,Llandovery,Rhuddanian,443.8,440.8,b5d9cd,black,
+,Phanerozoic,Paleozoic,Ordovician,Late,Hirnantian,445.2,443.8,b6d9c3,black,"Invertebrates diversify into many new types (e.g., long straight-shelled cephalopods). Early corals, articulate brachiopods (Orthida, Strophomenida, etc.), bivalves, nautiloids, trilobites, ostracods, bryozoa, many types of echinoderms (crinoids, cystoids, starfish, etc.), branched graptolites, and other taxa all common. Conodonts (early planktonic vertebrates) appear. First green plants and fungi on land. Ice age at end of period."
+,Phanerozoic,Paleozoic,Ordovician,Late,Katian,453,445.2,a6d5c3,black,
+,Phanerozoic,Paleozoic,Ordovician,Late,Sandbian,458.4,453,9bceaf,black,
+,Phanerozoic,Paleozoic,Ordovician,Middle,Darriwilian,467.3,458.4,79c6b6,black,
+,Phanerozoic,Paleozoic,Ordovician,Middle,Dapingian,470,467.3,67c0ae,black,
+,Phanerozoic,Paleozoic,Ordovician,Early,Floian,477.7,470,0eb1a0,black,
+,Phanerozoic,Paleozoic,Ordovician,Early,Tremadocian,485.4,477.7,0dac98,black,
+,Phanerozoic,Paleozoic,Cambrian,Furongian,Stage 10,489.5,485.4,edf2db,black,"Major diversification of life in the Cambrian Explosion. Numerous fossils; most modern animal phyla appear. First chordates appear, along with a number of extinct, problematic phyla. Reef-building Archaeocyatha abundant; then vanish. Trilobites, priapulid worms, sponges, inarticulate brachiopods (unhinged lampshells), and numerous other animals. Anomalocarids are giant predators, while many Ediacaran fauna die out. Prokaryotes, protists (e.g., forams), fungi and algae continue to present day. Gondwana emerges. Petermann Orogeny on the Australian continent tapers off (550–535 Ma). Ross Orogeny in Antarctica. Adelaide Geosyncline (Delamerian Orogeny), majority of orogenic activity from 514–500 Ma. Lachlan Orogeny on Australian continent, c. 540–440 Ma. Atmospheric CO2 content roughly 15 times present-day (Holocene) levels (6000 ppmv compared to today's 400 ppmv)"
+,Phanerozoic,Paleozoic,Cambrian,Furongian,Jiangshanian,494,489.5,e4efd1,black,
+,Phanerozoic,Paleozoic,Cambrian,Furongian,Paibian,497,494,d8e8c4,black,
+,Phanerozoic,Paleozoic,Cambrian,Miaolingian,Guzhangian,500.5,497,cddbb8,black,
+,Phanerozoic,Paleozoic,Cambrian,Miaolingian,Drumian,504.5,500.5,c1d6af,black,
+,Phanerozoic,Paleozoic,Cambrian,Miaolingian,Wuliuan,509,504.5,c1d6af,black,
+,Phanerozoic,Paleozoic,Cambrian,Series 2,Stage 4,514,509,c0ceaa,black,
+,Phanerozoic,Paleozoic,Cambrian,Series 3,Stage 3,521,514,b5ca9f,black,
+,Phanerozoic,Paleozoic,Cambrian,Terreneuvian,Stage 2,529,521,b6c29e,black,
+,Phanerozoic,Paleozoic,Cambrian,Terreneuvian,Fortunian,541,529,a9be93,black,
+Precambrian,Proterozoic,Neoproterozoic,Ediacaran,,,635,541,fddd88,black,"Good fossils of the first multi-celled animals. Ediacaran biota flourish worldwide in seas. Simple trace fossils of possible worm-like Trichophycus, etc. First sponges and trilobitomorphs. Enigmatic forms include many soft-jellied creatures shaped like bags, disks, or quilts (like Dickinsonia). Taconic Orogeny in North America. Aravalli Range orogeny in Indian Subcontinent. Beginning of Petermann Orogeny on Australian continent. Beardmore Orogeny in Antarctica, 633–620 Ma."
+Precambrian,Proterozoic,Neoproterozoic,Cryogenian,,,720,635,fed27b,black,"Possible ""Snowball Earth"" period. Fossils still rare. Rodinia landmass begins to break up. Late Ruker / Nimrod Orogeny in Antarctica tapers off."
+Precambrian,Proterozoic,Neoproterozoic,Tonian,,,1000,720,fbc86c,black,"Rodinia supercontinent persists. Sveconorwegian orogeny ends. Trace fossils of simple multi-celled eukaryotes. First radiation of dinoflagellate-like acritarchs. Grenville Orogeny tapers off in North America. Pan-African orogeny in Africa. Lake Ruker / Nimrod Orogeny in Antarctica, 1,000 ± 150 Ma. Edmundian Orogeny (c. 920 – 850 Ma), Gascoyne Complex, Western Australia. Adelaide Geosyncline laid down on Australian continent, beginning of Adelaide Geosyncline (Delamerian Orogeny) in Australia."
+Precambrian,Proterozoic,Mesoproterozoic,Stenian,,,1200,1000,fedfb3,black,"Narrow highly metamorphic belts due to orogeny as Rodinia forms. Sveconorwegian orogeny starts. Late Ruker / Nimrod Orogeny in Antarctica possibly begins. Musgrave Orogeny (c. 1,080 Ma), Musgrave Block, Central Australia."
+Precambrian,Proterozoic,Mesoproterozoic,Ectasian,,,1400,1200,fbd5a6,black,Platform covers continue to expand. Green algae colonies in the seas. Grenville Orogeny in North America.
+Precambrian,Proterozoic,Mesoproterozoic,Calymmian,,,1600,1400,fdcb98,black,"Platform covers expand. Barramundi Orogeny, McArthur Basin, Northern Australia, and Isan Orogeny, c.1,600 Ma, Mount Isa Block, Queensland"
+Precambrian,Proterozoic,Paleoproterozoic,Statherian,,,1800,1600,f192b2,black,"First complex single-celled life: protists with nuclei. Columbia is the primordial supercontinent. Kimban Orogeny in Australian continent ends. Yapungku Orogeny on Yilgarn craton, in Western Australia. Mangaroon Orogeny, 1,680–1,620 Ma, on the Gascoyne Complex in Western Australia. Kararan Orogeny (1,650 Ma), Gawler Craton, South Australia."
+Precambrian,Proterozoic,Paleoproterozoic,Orosirian,,,2050,1800,f186a4,black,"The atmosphere becomes oxygenic. Vredefort and Sudbury Basin asteroid impacts. Much orogeny. Penokean and Trans-Hudsonian Orogenies in North America. Early Ruker Orogeny in Antarctica, 2,000–1,700 Ma. Glenburgh Orogeny, Glenburgh Terrane, Australian continent c. 2,005–1,920 Ma. Kimban Orogeny, Gawler craton in Australian continent begins."
+Precambrian,Proterozoic,Paleoproterozoic,Rhyacian,,,2300,2050,ee7898,black,Bushveld Igneous Complex forms. Huronian glaciation.
+Precambrian,Proterozoic,Paleoproterozoic,Siderian,,,2500,2300,ee6d8b,black,"Oxygen catastrophe: banded iron formations forms. Sleaford Orogeny on Australian continent, Gawler Craton 2,440–2,420 Ma."
+Precambrian,Archean,Neoarchean,,,,2800,2500,f8bdd1,black,"Stabilization of most modern cratons; possible mantle overturn event. Insell Orogeny, 2,650 ± 150 Ma. Abitibi greenstone belt in present-day Ontario and Quebec begins to form, stabilizes by 2,600 Ma."
+Precambrian,Archean,Mesoarchean,,,,3200,2800,f0a0bd,black,"First stromatolites (probably colonial cyanobacteria). Oldest macrofossils. Humboldt Orogeny in Antarctica. Blake River Megacaldera Complex begins to form in present-day Ontario and Quebec, ends by roughly 2,696 Ma."
+Precambrian,Archean,Paleoarchean,,,,3600,3200,ef88b5,black,First known oxygen-producing bacteria. Oldest definitive microfossils. Oldest cratons on Earth (such as the Canadian Shield and the Pilbara Craton) may have formed during this period. Rayner Orogeny in Antarctica.
+Precambrian,Archean,Eoarchean,,,,4000,3600,e1308a,black,"Simple single-celled life (probably bacteria and archaea). Oldest probable microfossils. The first life forms and self-replicating RNA molecules evolve around 4,000 Ma, after the Late Heavy Bombardment ends on Earth. Napier Orogeny in Antarctica, 4,000 ± 200 Ma."
+Precambrian,Hadean,Early Imbrian (Neohadean) (unofficial),,,,4130,4000,b80d7f,black,"Indirect photosynthetic evidence (e.g., kerogen) of primordial life. This era overlaps the beginning of the Late Heavy Bombardment of the Inner Solar System, produced possibly by the planetary migration of Neptune into the Kuiper belt as a result of orbital resonances between Jupiter and Saturn. Oldest known rock (4,031 to 3,580 Ma)."
+Precambrian,Hadean,Nectarian (Mesohadean) (unofficial),,,,4280,4130,b80d7f,black,"Possible first appearance of plate tectonics. This unit gets its name from the lunar geologic timescale when the Nectaris Basin and other greater lunar basins form by big impact events. Earliest evidence for life based on unusually high amounts of light isotopes of carbon, a common sign of life."
+Precambrian,Hadean,Basin Groups (Paleohadean) (unofficial)],,,,4533,4280,b80d7f,black,"End of the Early Bombardment Phase. Oldest known mineral (Zircon, 4,404 ± 8 Ma). Asteroids and comets bring water to Earth."
+Precambrian,Hadean,Cryptic (Eohadean) (unofficial),,,,4600,4533,b80d7f,black,"Formation of Moon (4,533 to 4,527 Ma), probably from giant impact, since the end of this era. Formation of Earth (4,570 to 4,567.17 Ma), Early Bombardment Phase begins. Formation of Sun (4,680 to 4,630 Ma) ."

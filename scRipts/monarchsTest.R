@@ -126,7 +126,7 @@ df <- data.frame(
   group = monarchs$house,
   subgroup = monarchs$house,
   title = paste(monarchs$monarchTitle, monarchs$eventDescription),
-  style = paste0("background-color:", monarchs$houseColours),
+  style = paste0("background-color:", monarchs$houseColours)
 )
 
 
