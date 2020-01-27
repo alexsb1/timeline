@@ -19,7 +19,7 @@ library(timevis)
 
 #---- data import ----
 
-monarchs <- read.csv(file="data/monarchs.csv", header = TRUE)
+monarchs <- read.csv(file="data/raw/monarchs.csv", header = TRUE)
 
 # end of data import
 
@@ -136,3 +136,27 @@ timevis(df)
 
 
 #end of timeline code
+
+# Trial of code using ggplot2
+
+minlimit <- min(monarchs$reignStartYear)
+maxlimit <- max(monarchs$reignEndYear)
+
+minlimit <- 1042 #manual override
+maxlimit <- 1154 #manual override
+
+colourList <- monarchs$houseColours
+
+
+ggplot(data = monarchs) +
+  geom_segment(aes(x=reignStartYear, xend=reignEndYear, y=0, yend=0), colour = monarchs$houseColours, size=10, linetype = 1, show.legend = FALSE)+
+  scale_fill_manual(values = colourList)+
+  scale_y_continuous(limits = 0:1)+
+  scale_x_continuous(
+    limits = c(minlimit, maxlimit), #This line not necessary. Adjust order for direction of time running.
+    breaks = c(monarchs$reignStartYear,monarchs$reignEndYear)
+  )+
+  xlab("Year")+
+  theme_bw() + theme(panel.grid.minor = element_blank(), panel.grid.major =   element_blank(), axis.title.y=element_blank(),axis.text.y=element_blank(),  axis.ticks.y=element_blank()) +
+  theme(legend.position="none") +
+  geom_text(aes(label=monarchs$monarchTitle, x = monarchs$reignStartYear, y = 0.6, angle=90), colour = "black")
