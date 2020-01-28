@@ -22,10 +22,12 @@ tempAnom <- read.csv("data/raw/temp_anomaly_800000_ybp.csv")
 #----End of data import
 
 #---- Clean code
-# Note that the column years before present has negative numbers (this is a tautology).
+# 
 
 
 #---- temperature code
 
 ggplot(data = tempAnom)+
-  geom_line(aes(x = ))
+  geom_line(aes(x = years_before_present, y = temp_anomaly_C))+
+  scale_x_reverse()
+  
