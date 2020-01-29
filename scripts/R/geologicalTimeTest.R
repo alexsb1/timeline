@@ -27,6 +27,7 @@ geoTimeScale$End_years_ago <- geoTimeScale$End_million_years_ago * 1000000
 geoTimeScale$Start_elapsed_time <- geoTimeScale$Start_elapsed_time_million_years * 1000000
 geoTimeScale$End_elapsed_time <- geoTimeScale$End_elapsed_time_million_years * 1000000
 
+write.csv(geoTimeScale, file = "data/processed/geological_time_scale.csv")
 
 #---- timeline code ----
 

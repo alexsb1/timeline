@@ -27,6 +27,7 @@ monarchs <- read.csv(file="data/raw/monarchs.csv", header = TRUE)
 # This is for R, for shiny see https://daattali.com/shiny/timevis-demo/
 
 # make functions to standardise timeline plotting dates in format YYYY-M-D. There are no buffering zeros.
+# Look at Lubridate to cover these functions.
 
 timelineDates <- function(df) {
   for (i in 1:nrow(df))

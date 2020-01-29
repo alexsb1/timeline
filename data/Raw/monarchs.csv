@@ -1,68 +1,68 @@
-monarchTitle,eventDescription,reignStartYear,reignStartMonth,reignStartDay,reignEndYear,reignEndMonth,reignEndDay,country,house,birthYear,birthMonth,birthDay,deathYear,deathMonth,deathDay,reference,era,yearsBeforePresent
-Alfred the Great,,886,1,1,899,10,26,England,Wessex,,,,899,10,26,https://en.wikipedia.org/wiki/Alfred_the_Great,AD,
-Edward the Elder,,899,10,26,924,7,17,England,Wessex,874,,,924,7,17,https://en.wikipedia.org/wiki/Edward_the_Elder,AD,
-Ælfweard,,924,7,17,924,8,2,England,Wessex,901,,,924,8,2,https://en.wikipedia.org/wiki/%C3%86lfweard_of_Wessex,AD,
-Æthelstan,,924,8,2,939,10,27,England,Wessex,894,,,939,10,27,https://en.wikipedia.org/wiki/%C3%86thelstan,AD,
-Edmund I,,939,10,27,946,5,26,England,Wessex,921,,,946,5,26,https://en.wikipedia.org/wiki/Edmund_I,AD,
-Eadred,,946,5,26,955,11,23,England,Wessex,923,,,955,11,23,https://en.wikipedia.org/wiki/Eadred,AD,
-Eadwig,,955,11,23,959,10,1,England,Wessex,940,,,959,10,1,https://en.wikipedia.org/wiki/Eadwig,AD,
-Edgar the Peaceful,,959,10,1,975,7,8,England,Wessex,943,,,975,7,8,https://en.wikipedia.org/wiki/Edgar_the_Peaceful,AD,
-Edward the Martyr,,975,7,8,978,3,18,England,Wessex,962,,,978,3,18,https://en.wikipedia.org/wiki/Edward_the_Martyr,AD,
-Æthelred,"Æthelred the Unready, 1st reign",978,3,18,1013,,,England,Wessex,968,,,1016,4,23,https://en.wikipedia.org/wiki/%C3%86thelred_the_Unready,AD,
-Sweyn,Sweyn Forkbeard,1013,12,25,1014,2,3,England,Denmark,960,,,1014,2,3,https://en.wikipedia.org/wiki/Sweyn_Forkbeard,AD,
-Æthelred,"Æthelred the Unready, 2nd reign",1014,2,3,1016,4,23,England,Wessex,968,,,1016,4,23,https://en.wikipedia.org/wiki/%C3%86thelred_the_Unready,AD,
-Edmund Ironside,,1016,4,23,1016,11,30,England,Wessex,990,,,1016,11,30,https://en.wikipedia.org/wiki/Edmund_Ironside,AD,
-Canute,Cnut the Great,1016,10,18,1035,11,12,England except Wessex,Denmark,995,,,1035,11,12,https://en.wikipedia.org/wiki/Cnut_the_Great,AD,
-Harold Harefoot,,1035,11,12,1040,3,17,England except Wessex,Denmark,1016,,,1040,3,17,https://en.wikipedia.org/wiki/Harold_Harefoot,AD,
-Harthacnut,,1040,3,17,1042,6,8,England except Wessex,Denmark,1018,,,1042,6,8,https://en.wikipedia.org/wiki/Harthacnut,AD,
-Edward the Confessor,,1042,6,8,1066,1,5,England,Wessex,1003,,,1066,1,5,https://en.wikipedia.org/wiki/Edward_the_Confessor,AD,
-Harold Godwinson,,1066,1,6,1066,10,14,England,Godwinson,1022,,,1066,10,14,https://en.wikipedia.org/wiki/Harold_Godwinson,AD,
-Edgar Ætheling,Title disputed. The Normans controlled the country and Edgar never ruled. He submitted to King William the Conqueror.,1066,10,15,1066,12,17,England,Wessex,1051,,,1126,,,https://en.wikipedia.org/wiki/Edgar_%C3%86theling,AD,
-William I,William the Conqueror,1066,12,25,1087,9,9,England,Normandy,1028,,,1087,9,9,https://en.wikipedia.org/wiki/William_the_Conqueror,AD,
-William II,William Rufus,1087,9,26,1100,8,2,England,Normandy,1056,,,1100,9,2,https://en.wikipedia.org/wiki/William_II_of_England,AD,
-Henry I,Henry Beauclerc,1100,8,5,1135,12,1,England,Normandy,1068,9,,1135,12,1,https://en.wikipedia.org/wiki/Henry_I_of_England,AD,
-Stephen,Stephen of Blois. Stephen invaded England in a coup d'etat.,1135,12,22,1154,10,25,England,Blois,1096,,,1154,10,25,"https://en.wikipedia.org/wiki/Stephen,_King_of_England",AD,
-Matilda,Title disputed. Empress Matilda.,1141,4,7,1141,11,1,England,Blois,1102,2,7,1167,9,10,https://en.wikipedia.org/wiki/Empress_Matilda,AD,
-Henry II,Henry Curtmantle,1154,12,19,1189,7,6,England,Anjou,1133,3,5,1189,7,6,https://en.wikipedia.org/wiki/Henry_II_of_England,AD,
-Richard I,Richard the Lionheart,1189,9,3,1199,4,6,England,Anjou,1157,9,8,1199,4,6,https://en.wikipedia.org/wiki/Richard_I_of_England,AD,
-John,John Lackland,1199,5,27,1216,10,19,England,Anjou,1166,12,24,1216,10,19,"https://en.wikipedia.org/wiki/John,_King_of_England",AD,
-Henry III,Henry of Winchester,1216,10,28,1272,11,16,England,Plantagenet,1207,10,1,1272,11,16,https://en.wikipedia.org/wiki/Henry_III_of_England,AD,
-Edward I,Edward Longshanks,1272,11,20,1307,7,7,England,Plantagenet,1239,6,17,1307,7,7,https://en.wikipedia.org/wiki/Edward_I_of_England,AD,
-Edward II,Edward of Caernarfon,1307,7,8,1327,1,20,England,Plantagenet,1284,4,25,1327,9,21,https://en.wikipedia.org/wiki/Edward_II_of_England,AD,
-Edward III,,1327,1,25,1377,6,21,England,Plantagenet,1312,11,13,1377,6,21,https://en.wikipedia.org/wiki/Edward_III_of_England,AD,
-Richard II,,1377,6,22,1399,8,29,England,Plantagenet,1367,1,6,1400,2,4,https://en.wikipedia.org/wiki/Richard_II_of_England,AD,
-Henry IV,Henry of Bolingbroke,1399,9,30,1413,3,20,England,Lancaster,1367,4,15,1413,3,20,https://en.wikipedia.org/wiki/Henry_IV_of_England,AD,
-Henry V,,1413,3,21,1422,8,31,England,Lancaster,1386,9,16,1422,8,31,https://en.wikipedia.org/wiki/Henry_V_of_England,AD,
-Henry VI,1st reign,1422,8,1,1461,3,4,England,Lancaster,1421,12,6,1471,5,21,https://en.wikipedia.org/wiki/Henry_VI_of_England,AD,
-Edward IV,1st reign,1461,3,4,1470,10,3,England,York,1442,4,28,1483,4,9,https://en.wikipedia.org/wiki/Edward_IV_of_England,AD,
-Henry VI,2nd reign,1470,10,3,1471,4,11,England,Lancaster,1421,12,6,1471,5,21,https://en.wikipedia.org/wiki/Henry_VI_of_England,AD,
-Edward IV,2nd reign,1471,4,11,1483,4,9,England,York,1442,4,28,1483,4,9,https://en.wikipedia.org/wiki/Edward_IV_of_England,AD,
-Edward V,Never crowned.,1483,4,9,1483,6,25,England,York,1470,11,2,1483,,,https://en.wikipedia.org/wiki/Edward_V_of_England,AD,
-Richard III,,1483,6,26,1485,8,22,England,York,1452,10,2,1485,8,22,https://en.wikipedia.org/wiki/Richard_III_of_England,AD,
-Henry VII,,1485,8,22,1509,4,21,England,Tudor,1457,1,28,1509,4,21,https://en.wikipedia.org/wiki/Henry_VII_of_England,AD,
-Henry VIII,,1509,4,22,1547,1,28,England,Tudor,1491,6,28,1547,1,28,https://en.wikipedia.org/wiki/Henry_VIII_of_England,AD,
-Edward VI,,1547,1,28,1553,7,6,England,Tudor,1537,10,12,1553,7,6,https://en.wikipedia.org/wiki/Edward_VI_of_England,AD,
-Jane,Title disputed,1553,7,10,1553,7,19,England,Tudor,1537,10,,1554,2,12,https://en.wikipedia.org/wiki/Lady_Jane_Grey,AD,
-Mary I,Bloody Mary,1553,7,19,1558,11,17,England,Tudor,1516,2,18,1558,11,17,https://en.wikipedia.org/wiki/Mary_I_of_England,AD,
-Elizabeth I,,1558,11,17,1603,3,24,England,Tudor,1533,9,7,1603,3,24,https://en.wikipedia.org/wiki/Elizabeth_I_of_England,AD,
-James I,,1603,3,24,1625,3,27,England and Scotland,Stuart,1566,6,19,1625,2,27,https://en.wikipedia.org/wiki/James_VI_and_I,AD,
-Charles I,,1625,3,27,1649,1,30,England and Scotland,Stuart,1600,11,19,1649,1,30,https://en.wikipedia.org/wiki/Charles_I_of_England,AD,
-Oliver Cromwell,Lord Protector,1653,12,16,1658,9,3,England and Scotland,Interregnum,1599,4,25,1658,9,3,https://en.wikipedia.org/wiki/Oliver_Cromwell,AD,
-Richard Cromwell,Lord Protector. Tumbledown Dick.,1658,9,3,1659,5,7,England and Scotland,Interregnum,1626,10,4,1712,7,12,https://en.wikipedia.org/wiki/Richard_Cromwell,AD,
-Charles II,,1660,5,29,1685,2,6,England and Scotland,Stuart,1630,5,29,1685,2,6,https://en.wikipedia.org/wiki/Charles_II_of_England,AD,
-James II,,1685,2,6,1688,12,23,England and Scotland,Stuart,1633,10,14,1701,9,16,https://en.wikipedia.org/wiki/James_II_of_England,AD,
-Mary II,,1689,2,13,1694,12,28,England and Scotland,Stuart,1662,4,30,1694,12,28,https://en.wikipedia.org/wiki/Mary_II_of_England,AD,
-William III,William of Orange,1689,2,13,1702,3,8,England and Scotland,Stuart,1650,11,4,1702,3,8,https://en.wikipedia.org/wiki/William_III_of_England,AD,
-Anne,United the kingdoms of England and Scotland in the Act of Union 1707.,1702,3,8,1707,5,1,England and Scotland,Stuart,1665,2,6,1714,8,1,"https://en.wikipedia.org/wiki/Anne,_Queen_of_Great_Britain",AD,
-Anne,United the kingdoms of England and Scotland in the Act of Union 1707.,1707,5,1,1714,8,1,Great Britain,Stuart,1665,2,6,1714,8,1,"https://en.wikipedia.org/wiki/Anne,_Queen_of_Great_Britain",AD,
-George I,George Louis,1714,8,1,1727,6,11,Great Britain,Hanover,1660,5,28,1727,6,11,https://en.wikipedia.org/wiki/George_I_of_Great_Britain,AD,
-George II,George Augustus,1727,6,11,1760,10,25,Great Britain,Hanover,1683,10,30,1760,10,25,https://en.wikipedia.org/wiki/George_II_of_Great_Britain,AD,
-George III,George William Frederick,1760,10,25,1820,1,29,Great Britain,Hanover,1738,6,4,1820,1,29,https://en.wikipedia.org/wiki/George_III_of_the_United_Kingdom,AD,
-George IV,George Augustus Frederick,1820,1,29,1830,6,26,Great Britain,Hanover,1762,8,12,1830,6,26,https://en.wikipedia.org/wiki/George_IV_of_the_United_Kingdom,AD,
-William IV,William Henry,1830,6,26,1837,6,20,Great Britain,Hanover,1765,8,21,1837,6,20,https://en.wikipedia.org/wiki/William_IV_of_the_United_Kingdom,AD,
-Victoria,Alexandrina Victoria,1837,6,20,1901,1,22,Great Britain,Hanover,1819,5,24,1901,1,22,https://en.wikipedia.org/wiki/Queen_Victoria,AD,
-Edward VII,Albert Edward,1901,1,22,1910,5,6,Great Britain,Saxe-Coburg-Gotha,1814,11,9,1910,5,6,https://en.wikipedia.org/wiki/Edward_VII,AD,
-George V,George Frederick Ernest Albert,1910,5,6,1936,1,20,Great Britain,Saxe-Coburg-Gotha,1856,6,3,1936,1,20,https://en.wikipedia.org/wiki/George_V,AD,
-Edward VIII,Edward Albert Christian George Andrew Patrick David,1936,1,20,1936,12,11,Great Britain,Windsor,1894,6,23,1972,5,28,https://en.wikipedia.org/wiki/Edward_VIII,AD,
-George VI,Albert Frederick Arthur George,1936,12,11,1952,2,6,Great Britain,Windsor,1895,12,14,1952,2,6,https://en.wikipedia.org/wiki/George_VI,AD,
-Elizabeth II,Elizabeth Alexandra Mary,1952,2,6,2020,1,8,Great Britain,Windsor,1926,4,21,2020,1,9,https://en.wikipedia.org/wiki/Elizabeth_II,AD,
+,monarchTitle,eventDescription,reignStartYear,reignStartMonth,reignStartDay,reignEndYear,reignEndMonth,reignEndDay,country,house,birthYear,birthMonth,birthDay,deathYear,deathMonth,deathDay,reference,era,houseColours
+1,Alfred the Great,,886,1,1,899,10,26,England,Wessex,NA,NA,NA,899,10,26,https://en.wikipedia.org/wiki/Alfred_the_Great,AD,blue
+2,Edward the Elder,,899,10,26,924,7,17,England,Wessex,874,NA,NA,924,7,17,https://en.wikipedia.org/wiki/Edward_the_Elder,AD,blue
+3,Ælfweard,,924,7,17,924,8,2,England,Wessex,901,NA,NA,924,8,2,https://en.wikipedia.org/wiki/%C3%86lfweard_of_Wessex,AD,blue
+4,Æthelstan,,924,8,2,939,10,27,England,Wessex,894,NA,NA,939,10,27,https://en.wikipedia.org/wiki/%C3%86thelstan,AD,blue
+5,Edmund I,,939,10,27,946,5,26,England,Wessex,921,NA,NA,946,5,26,https://en.wikipedia.org/wiki/Edmund_I,AD,blue
+6,Eadred,,946,5,26,955,11,23,England,Wessex,923,NA,NA,955,11,23,https://en.wikipedia.org/wiki/Eadred,AD,blue
+7,Eadwig,,955,11,23,959,10,1,England,Wessex,940,NA,NA,959,10,1,https://en.wikipedia.org/wiki/Eadwig,AD,blue
+8,Edgar the Peaceful,,959,10,1,975,7,8,England,Wessex,943,NA,NA,975,7,8,https://en.wikipedia.org/wiki/Edgar_the_Peaceful,AD,blue
+9,Edward the Martyr,,975,7,8,978,3,18,England,Wessex,962,NA,NA,978,3,18,https://en.wikipedia.org/wiki/Edward_the_Martyr,AD,blue
+10,Æthelred,"Æthelred the Unready, 1st reign",978,3,18,1013,12,24,England,Wessex,968,NA,NA,1016,4,23,https://en.wikipedia.org/wiki/%C3%86thelred_the_Unready,AD,blue
+11,Sweyn,Sweyn Forkbeard,1013,12,25,1014,2,2,England,Denmark,960,NA,NA,1014,2,3,https://en.wikipedia.org/wiki/Sweyn_Forkbeard,AD,red
+12,Æthelred,"Æthelred the Unready, 2nd reign",1014,2,3,1016,4,23,England,Wessex,968,NA,NA,1016,4,23,https://en.wikipedia.org/wiki/%C3%86thelred_the_Unready,AD,blue
+13,Edmund Ironside,,1016,4,23,1016,11,30,England,Wessex,990,NA,NA,1016,11,30,https://en.wikipedia.org/wiki/Edmund_Ironside,AD,blue
+14,Canute,Cnut the Great,1016,10,18,1035,11,12,England except Wessex,Denmark,995,NA,NA,1035,11,12,https://en.wikipedia.org/wiki/Cnut_the_Great,AD,red
+15,Harold Harefoot,,1035,11,12,1040,3,17,England except Wessex,Denmark,1016,NA,NA,1040,3,17,https://en.wikipedia.org/wiki/Harold_Harefoot,AD,red
+16,Harthacnut,,1040,3,17,1042,6,8,England except Wessex,Denmark,1018,NA,NA,1042,6,8,https://en.wikipedia.org/wiki/Harthacnut,AD,red
+17,Edward the Confessor,,1042,6,8,1066,1,5,England,Wessex,1003,NA,NA,1066,1,5,https://en.wikipedia.org/wiki/Edward_the_Confessor,AD,blue
+18,Harold Godwinson,,1066,1,6,1066,10,14,England,Godwinson,1022,NA,NA,1066,10,14,https://en.wikipedia.org/wiki/Harold_Godwinson,AD,magenta
+19,Edgar Ætheling,Title disputed. The Normans controlled the country and Edgar never ruled. He submitted to King William the Conqueror.,1066,10,15,1066,12,17,England,Wessex,1051,NA,NA,1126,NA,NA,https://en.wikipedia.org/wiki/Edgar_%C3%86theling,AD,blue
+20,William I,William the Conqueror,1066,12,25,1087,9,9,England,Normandy,1028,NA,NA,1087,9,9,https://en.wikipedia.org/wiki/William_the_Conqueror,AD,aquamarine
+21,William II,William Rufus,1087,9,26,1100,8,2,England,Normandy,1056,NA,NA,1100,9,2,https://en.wikipedia.org/wiki/William_II_of_England,AD,aquamarine
+22,Henry I,Henry Beauclerc,1100,8,5,1135,12,1,England,Normandy,1068,9,NA,1135,12,1,https://en.wikipedia.org/wiki/Henry_I_of_England,AD,aquamarine
+23,Stephen,Stephen of Blois. Stephen invaded England in a coup d'etat.,1135,12,22,1154,10,25,England,Blois,1096,NA,NA,1154,10,25,"https://en.wikipedia.org/wiki/Stephen,_King_of_England",AD,purple
+24,Matilda,Title disputed. Empress Matilda.,1141,4,7,1141,11,1,England,Blois,1102,2,7,1167,9,10,https://en.wikipedia.org/wiki/Empress_Matilda,AD,purple
+25,Henry II,Henry Curtmantle,1154,12,19,1189,7,6,England,Anjou,1133,3,5,1189,7,6,https://en.wikipedia.org/wiki/Henry_II_of_England,AD,hotpink
+26,Richard I,Richard the Lionheart,1189,9,3,1199,4,6,England,Anjou,1157,9,8,1199,4,6,https://en.wikipedia.org/wiki/Richard_I_of_England,AD,hotpink
+27,John,John Lackland,1199,5,27,1216,10,19,England,Anjou,1166,12,24,1216,10,19,"https://en.wikipedia.org/wiki/John,_King_of_England",AD,hotpink
+28,Henry III,Henry of Winchester,1216,10,28,1272,11,16,England,Plantagenet,1207,10,1,1272,11,16,https://en.wikipedia.org/wiki/Henry_III_of_England,AD,yellow
+29,Edward I,Edward Longshanks,1272,11,20,1307,7,7,England,Plantagenet,1239,6,17,1307,7,7,https://en.wikipedia.org/wiki/Edward_I_of_England,AD,yellow
+30,Edward II,Edward of Caernarfon,1307,7,8,1327,1,20,England,Plantagenet,1284,4,25,1327,9,21,https://en.wikipedia.org/wiki/Edward_II_of_England,AD,yellow
+31,Edward III,,1327,1,25,1377,6,21,England,Plantagenet,1312,11,13,1377,6,21,https://en.wikipedia.org/wiki/Edward_III_of_England,AD,yellow
+32,Richard II,,1377,6,22,1399,8,29,England,Plantagenet,1367,1,6,1400,2,4,https://en.wikipedia.org/wiki/Richard_II_of_England,AD,yellow
+33,Henry IV,Henry of Bolingbroke,1399,9,30,1413,3,20,England,Lancaster,1367,4,15,1413,3,20,https://en.wikipedia.org/wiki/Henry_IV_of_England,AD,orange
+34,Henry V,,1413,3,21,1422,8,31,England,Lancaster,1386,9,16,1422,8,31,https://en.wikipedia.org/wiki/Henry_V_of_England,AD,orange
+35,Henry VI,1st reign,1422,8,1,1461,3,4,England,Lancaster,1421,12,6,1471,5,21,https://en.wikipedia.org/wiki/Henry_VI_of_England,AD,orange
+36,Edward IV,1st reign,1461,3,4,1470,10,3,England,York,1442,4,28,1483,4,9,https://en.wikipedia.org/wiki/Edward_IV_of_England,AD,brown
+37,Henry VI,2nd reign,1470,10,3,1471,4,11,England,Lancaster,1421,12,6,1471,5,21,https://en.wikipedia.org/wiki/Henry_VI_of_England,AD,orange
+38,Edward IV,2nd reign,1471,4,11,1483,4,9,England,York,1442,4,28,1483,4,9,https://en.wikipedia.org/wiki/Edward_IV_of_England,AD,brown
+39,Edward V,Never crowned.,1483,4,9,1483,6,25,England,York,1470,11,2,1483,NA,NA,https://en.wikipedia.org/wiki/Edward_V_of_England,AD,brown
+40,Richard III,,1483,6,26,1485,8,22,England,York,1452,10,2,1485,8,22,https://en.wikipedia.org/wiki/Richard_III_of_England,AD,brown
+41,Henry VII,,1485,8,22,1509,4,21,England,Tudor,1457,1,28,1509,4,21,https://en.wikipedia.org/wiki/Henry_VII_of_England,AD,black
+42,Henry VIII,,1509,4,22,1547,1,28,England,Tudor,1491,6,28,1547,1,28,https://en.wikipedia.org/wiki/Henry_VIII_of_England,AD,black
+43,Edward VI,,1547,1,28,1553,7,6,England,Tudor,1537,10,12,1553,7,6,https://en.wikipedia.org/wiki/Edward_VI_of_England,AD,black
+44,Jane,Title disputed,1553,7,10,1553,7,19,England,Tudor,1537,10,NA,1554,2,12,https://en.wikipedia.org/wiki/Lady_Jane_Grey,AD,black
+45,Mary I,Bloody Mary,1553,7,19,1558,11,17,England,Tudor,1516,2,18,1558,11,17,https://en.wikipedia.org/wiki/Mary_I_of_England,AD,black
+46,Elizabeth I,,1558,11,17,1603,3,24,England,Tudor,1533,9,7,1603,3,24,https://en.wikipedia.org/wiki/Elizabeth_I_of_England,AD,black
+47,James I,,1603,3,24,1625,3,27,England and Scotland,Stuart,1566,6,19,1625,2,27,https://en.wikipedia.org/wiki/James_VI_and_I,AD,beige
+48,Charles I,,1625,3,27,1649,1,30,England and Scotland,Stuart,1600,11,19,1649,1,30,https://en.wikipedia.org/wiki/Charles_I_of_England,AD,beige
+49,Oliver Cromwell,Lord Protector,1653,12,16,1658,9,3,England and Scotland,Interregnum,1599,4,25,1658,9,3,https://en.wikipedia.org/wiki/Oliver_Cromwell,AD,white
+50,Richard Cromwell,Lord Protector. Tumbledown Dick.,1658,9,3,1659,5,7,England and Scotland,Interregnum,1626,10,4,1712,7,12,https://en.wikipedia.org/wiki/Richard_Cromwell,AD,white
+51,Charles II,,1660,5,29,1685,2,6,England and Scotland,Stuart,1630,5,29,1685,2,6,https://en.wikipedia.org/wiki/Charles_II_of_England,AD,beige
+52,James II,,1685,2,6,1688,12,23,England and Scotland,Stuart,1633,10,14,1701,9,16,https://en.wikipedia.org/wiki/James_II_of_England,AD,beige
+53,Mary II,,1689,2,13,1694,12,28,England and Scotland,Stuart,1662,4,30,1694,12,28,https://en.wikipedia.org/wiki/Mary_II_of_England,AD,beige
+54,William III,William of Orange,1689,2,13,1702,3,8,England and Scotland,Stuart,1650,11,4,1702,3,8,https://en.wikipedia.org/wiki/William_III_of_England,AD,beige
+55,Anne,United the kingdoms of England and Scotland in the Act of Union 1707.,1702,3,8,1707,5,1,England and Scotland,Stuart,1665,2,6,1714,8,1,"https://en.wikipedia.org/wiki/Anne,_Queen_of_Great_Britain",AD,beige
+56,Anne,United the kingdoms of England and Scotland in the Act of Union 1707.,1707,5,1,1714,8,1,Great Britain,Stuart,1665,2,6,1714,8,1,"https://en.wikipedia.org/wiki/Anne,_Queen_of_Great_Britain",AD,beige
+57,George I,George Louis,1714,8,1,1727,6,11,Great Britain,Hanover,1660,5,28,1727,6,11,https://en.wikipedia.org/wiki/George_I_of_Great_Britain,AD,firebrick1
+58,George II,George Augustus,1727,6,11,1760,10,25,Great Britain,Hanover,1683,10,30,1760,10,25,https://en.wikipedia.org/wiki/George_II_of_Great_Britain,AD,firebrick1
+59,George III,George William Frederick,1760,10,25,1820,1,29,Great Britain,Hanover,1738,6,4,1820,1,29,https://en.wikipedia.org/wiki/George_III_of_the_United_Kingdom,AD,firebrick1
+60,George IV,George Augustus Frederick,1820,1,29,1830,6,26,Great Britain,Hanover,1762,8,12,1830,6,26,https://en.wikipedia.org/wiki/George_IV_of_the_United_Kingdom,AD,firebrick1
+61,William IV,William Henry,1830,6,26,1837,6,20,Great Britain,Hanover,1765,8,21,1837,6,20,https://en.wikipedia.org/wiki/William_IV_of_the_United_Kingdom,AD,firebrick1
+62,Victoria,Alexandrina Victoria,1837,6,20,1901,1,22,Great Britain,Hanover,1819,5,24,1901,1,22,https://en.wikipedia.org/wiki/Queen_Victoria,AD,firebrick1
+63,Edward VII,Albert Edward,1901,1,22,1910,5,6,Great Britain,Saxe-Coburg-Gotha,1814,11,9,1910,5,6,https://en.wikipedia.org/wiki/Edward_VII,AD,lawngreen
+64,George V,George Frederick Ernest Albert,1910,5,6,1936,1,20,Great Britain,Saxe-Coburg-Gotha,1856,6,3,1936,1,20,https://en.wikipedia.org/wiki/George_V,AD,lawngreen
+65,Edward VIII,Edward Albert Christian George Andrew Patrick David,1936,1,20,1936,12,11,Great Britain,Windsor,1894,6,23,1972,5,28,https://en.wikipedia.org/wiki/Edward_VIII,AD,violet
+66,George VI,Albert Frederick Arthur George,1936,12,11,1952,2,6,Great Britain,Windsor,1895,12,14,1952,2,6,https://en.wikipedia.org/wiki/George_VI,AD,violet
+67,Elizabeth II,Elizabeth Alexandra Mary,1952,2,6,2020,1,8,Great Britain,Windsor,1926,4,21,2020,1,29,https://en.wikipedia.org/wiki/Elizabeth_II,AD,violet

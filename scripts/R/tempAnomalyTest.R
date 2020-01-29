@@ -18,6 +18,7 @@ library(tidyverse)
 
 #---- data import ----
 tempAnom <- read.csv("data/raw/temp_anomaly_800000_ybp.csv")
+tempData <- read.csv("data/raw/temperatureData.csv") #This is an empty file 29 Jan 2020.
 
 #----End of data import
 
