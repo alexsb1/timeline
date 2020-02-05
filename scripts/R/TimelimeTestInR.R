@@ -20,9 +20,9 @@ library(lubridate)
 
 
 #---- data import ----
-geoTimeScale <- read.csv(file="data/raw/geological_time_scale.csv", header = TRUE)
+geoTimeScale <- read.csv(file="data/processed/geological_time_scale.csv", header = TRUE)
 phanerozoicCO2 <- read.csv(file="data/raw/phanerozoicCO2.csv", header = TRUE)
-CO2_ppm_800000 <- read.csv(file="data/raw/CO2_ppm_800000_ybp", header = TRUE)
+CO2_ppm_800000 <- read.csv(file="data/raw/CO2_ppm_800000_ybp.csv", header = TRUE)
 tempAnom <- read.csv(file="data/raw/temp_anomaly_800000_ybp.csv", header = TRUE)
 historicEvents <- read.csv(file="data/raw/historicEvents.csv", header = TRUE)
 monarchs <- read.csv(file="data/raw/monarchs.csv", header = TRUE)
@@ -117,15 +117,121 @@ xAxisMax <- yearCEtoYBP(thisYear,"CE") #convert into continious value for x axis
 
 #----ggplot prerequisits -----
 
-# Make a simple blank timeline to control the x-axis and separation of layers.
+# Make a simple blank timeline to control the x-axis and separation of layers. Is this necessary?
 # Visualise each data set by adding a geom layer
 
-# Is this necessary?
+
+# Makes a new dataframe containing only the eons
+eonList <- select(geoTimeScale, Eon, Start_million_years_ago, End_million_years_ago, Start_years_ago, End_years_ago, Start_elapsed_time, End_elapsed_time, back_colour)
+uniqueEonList <- unique(eonList$Eon)
+eonPlot <- NULL #This empties this variable and makes it ready for the following for loop to append to.
+
+for(i in uniqueEonList){
+  x <- eonList[which(eonList$Eon == i),]
+  eonPlot$Eon <- append(eonPlot$Eon, i)
+  eonPlot$Start_million_years_ago <- append(eonPlot$Start_million_years_ago, max(x$Start_million_years_ago))
+  eonPlot$End_million_years_ago <- append(eonPlot$End_million_years_ago, min(x$End_million_years_ago))
+  eonPlot$Start_years_ago <- append(eonPlot$Start_years_ago, max(x$Start_years_ago))
+  eonPlot$End_years_ago <- append(eonPlot$End_years_ago, min(x$End_years_ago))
+  eonPlot$Start_elapsed_time <- append(eonPlot$Start_elapsed_time, min(x$Start_elapsed_time))
+  eonPlot$End_elapsed_time <- append(eonPlot$End_elapsed_time, max(x$End_elapsed_time))
+  eonPlot$back_colour <- append(eonPlot$back_colour,
+                                paste0("#",
+                                       eonList[which(eonList$Start_million_years_ago == max(x$Start_million_years_ago)),8])
+  )
+}
+
+eonPlot <- as.data.frame(eonPlot)
+print(eonPlot)
+
+
+# Makes a new dataframe containing only the eras
+eraList <- select(geoTimeScale, Era, Start_million_years_ago, End_million_years_ago, Start_years_ago, End_years_ago, Start_elapsed_time, End_elapsed_time, back_colour)
+uniqueEraList <- unique(eraList$Era)
+eraPlot <- NULL #This empties this variable and makes it ready for the following for loop to append to.
+
+for(j in uniqueEraList){
+  x <- eraList[which(eraList$Era == j),]
+  eraPlot$Era <- append(eraPlot$Era, j)
+  eraPlot$End_million_years_ago <- append(eraPlot$End_million_years_ago, min(x$End_million_years_ago))
+  eraPlot$Start_million_years_ago <- append(eraPlot$Start_million_years_ago, max(x$Start_million_years_ago))
+  eraPlot$Start_years_ago <- append(eraPlot$Start_years_ago, max(x$Start_years_ago))
+  eraPlot$End_years_ago <- append(eraPlot$End_years_ago, min(x$End_years_ago))
+  eraPlot$Start_elapsed_time <- append(eraPlot$Start_elapsed_time, min(x$Start_elapsed_time))
+  eraPlot$End_elapsed_time <- append(eraPlot$End_elapsed_time, max(x$End_elapsed_time))
+  eraPlot$back_colour <- append(eraPlot$back_colour,
+                                paste0("#",
+                                       eraList[which(eraList$Start_million_years_ago == max(x$Start_million_years_ago)),8])
+  )
+}
+
+eraPlot <- as.data.frame(eraPlot)
+print(eraPlot)
+
+
+# Makes a new dataframe containing only the period
+periodList <- select(geoTimeScale, Period, Start_million_years_ago, End_million_years_ago, Start_years_ago, End_years_ago, Start_elapsed_time, End_elapsed_time, back_colour)
+uniquePeriodList <- unique(periodList$Period)
+periodPlot <- NULL #This empties this variable and makes it ready for the following for loop to append to.
+
+for(k in uniquePeriodList){
+  x <- periodList[which(periodList$Period == k),]
+  periodPlot$Era <- append(periodPlot$Era, k)
+  periodPlot$End_million_years_ago <- append(periodPlot$End_million_years_ago, min(x$End_million_years_ago))
+  periodPlot$Start_million_years_ago <- append(periodPlot$Start_million_years_ago, max(x$Start_million_years_ago))
+  periodPlot$Start_years_ago <- append(periodPlot$Start_years_ago, max(x$Start_years_ago))
+  periodPlot$End_years_ago <- append(periodPlot$End_years_ago, min(x$End_years_ago))
+  periodPlot$Start_elapsed_time <- append(periodPlot$Start_elapsed_time, min(x$Start_elapsed_time))
+  periodPlot$End_elapsed_time <- append(periodPlot$End_elapsed_time, max(x$End_elapsed_time))
+  periodPlot$back_colour <- append(periodPlot$back_colour,
+                                   paste0("#",
+                                          periodList[which(periodList$Start_million_years_ago == max(x$Start_million_years_ago)),8])
+  )
+}
+
+periodPlot <- as.data.frame(periodPlot)
+print(periodPlot)
+
+
+
+
+# Makes a new dataframe containing only the period
+epochList <- select(geoTimeScale, Epoch, Start_million_years_ago, End_million_years_ago, Start_years_ago, End_years_ago, Start_elapsed_time, End_elapsed_time, back_colour)
+uniqueEpochList <- unique(epochList$Epoch)
+epochPlot <- NULL #This empties this variable and makes it ready for the following for loop to append to.
+
+for(l in uniqueEpochList){
+  x <- epochList[which(epochList$Epoch == l),]
+  epochPlot$Era <- append(epochPlot$Era, l)
+  epochPlot$End_million_years_ago <- append(epochPlot$End_million_years_ago, min(x$End_million_years_ago))
+  epochPlot$Start_million_years_ago <- append(epochPlot$Start_million_years_ago, max(x$Start_million_years_ago))
+  epochPlot$Start_years_ago <- append(epochPlot$Start_years_ago, max(x$Start_years_ago))
+  epochPlot$End_years_ago <- append(epochPlot$End_years_ago, min(x$End_years_ago))
+  epochPlot$Start_elapsed_time <- append(epochPlot$Start_elapsed_time, min(x$Start_elapsed_time))
+  epochPlot$End_elapsed_time <- append(epochPlot$End_elapsed_time, max(x$End_elapsed_time))
+  epochPlot$back_colour <- append(epochPlot$back_colour,
+                                  paste0("#",
+                                         epochList[which(epochList$Start_million_years_ago == max(x$Start_million_years_ago)),8])
+  )
+}
+
+epochPlot <- as.data.frame(epochPlot)
+print(epochPlot)
+
+
+# End of making dataframes containing eron, era, epoch and age time periods.
+
+# Prerequisits for ggplot
+# start constructing a ggplot to visualise timeperiods as a timeline
+
+colourList <- paste0("#", geoTimeScale$back_colour)
 
 #End f ggplot prerequisists
 
 #----ggplot timeline----
 # This plot is wrong as it contains a mix of years before present and elapsed time.
+
+#TOdo: replace Start_years_ago with timeElapsed
 
 
 ggplot() +
