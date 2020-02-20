@@ -43,7 +43,7 @@ yearCEtoElapsedTime <- 4600000000 #this is the number of years between years in 
 
 #---- Functions to convert to/from BCE/CE to years before present.
 
-yearCEtoYBP <- function(yearCE, CE){ #the CE specifies if the year date is common era (CE/AD) or before common era (BCE/BC). Note that YearCE is used as an input for both CR and BCE years.
+yearCEtoYearsElapsed <- function(yearCE, CE){ #the CE specifies if the year date is common era (CE/AD) or before common era (BCE/BC). Note that YearCE is used as an input for both CR and BCE years.
   ifelse(CE == "BCE",
     elapsedYear <- yearCEtoElapsedTime - thisYear - yearCE, #subtracts the number of years to account for being before common era (BCE/BC).
     ifelse(CE == "CE",
@@ -58,19 +58,19 @@ yearCEtoYBP <- function(yearCE, CE){ #the CE specifies if the year date is commo
 
 
 
-YBPtoYearCE <- function(YBP){
+yearsElapsedToYearCE <- function(yearsElapsed){
   yearCE <- NULL
-  if(YBP <= yearCEtoYBP(0,"CE")) #If YBP is before (less than) 0 CE/AD then print CE era, else print BCE.
+  if(yearsElapsed <= yearCEtoYearsElapsed(0,"CE")) #If yearsElapsed is before (less than) 0 CE/AD then print CE era, else print BCE.
      (
        yearCE <- data.frame(
-         year = yearCEtoElapsedTime - thisYear - YBP,
+         year = yearCEtoElapsedTime - thisYear - yearsElapsed,
          era = "BCE"
        )
-       ) #If YBP is less than 0 CE then print BCE
+       ) #If yearsElapsed is less than 0 CE then print BCE
      else
        (
          yearCE <- data.frame(
-           year = abs(yearCEtoElapsedTime - thisYear - YBP),
+           year = abs(yearCEtoElapsedTime - thisYear - yearsElapsed),
            era = "CE"
          )
        )
@@ -80,7 +80,7 @@ YBPtoYearCE <- function(YBP){
 
 
 # function to convert between years ago to years elapsed since the earth formation
-yearsAgoToEapsedyears <- function(yearsAgo){
+yearsAgoToEapsedYears <- function(yearsAgo){
   elapsedYears <- yearCEtoElapsedTime - yearsAgo
   return(elapsedYears)
 }
@@ -98,7 +98,7 @@ yearsAgoToEapsedyears <- function(yearsAgo){
 #---- Adjust x-axis ----
 
 xAxisMin <- 0 # 0 is the formation of the earth. In years.
-xAxisMax <- yearCEtoYBP(thisYear,"CE") #convert into continious value for x axis time elapsed.
+xAxisMax <- yearCEtoYearsElapsed(thisYear,"CE") #convert into continious value for x axis time elapsed.
 
 #End of adjusting x-axis
 
@@ -109,11 +109,6 @@ xAxisMax <- yearCEtoYBP(thisYear,"CE") #convert into continious value for x axis
 
 
 
-
-
-
-
-#end of tidying data ----
 
 #----ggplot prerequisits -----
 
@@ -221,6 +216,69 @@ print(epochPlot)
 
 # End of making dataframes containing eron, era, epoch and age time periods.
 
+# Phanerozoic CO2
+# convert Age_Ma to millions of years ago, then use yearsAgoToElapsedYears function ready for plotting
+
+phanerozoicCO2$yearsAgo <- phanerozoicCO2$Age_Ma * 1000000
+phanerozoicCO2$yearsElapsed <- yearsAgoToEapsedYears(phanerozoicCO2$yearsAgo)
+
+# End of phanerozoic CO2 processing
+
+# CO2_ppm_800000
+# convert from years_before present to yearsElapsed
+CO2_ppm_800000$yearsElapsed <- yearsAgoToEapsedYears(CO2_ppm_800000$years_before_present)
+# end of CO2_ppm_800000
+
+# tempAnom
+tempAnom$yearsElapsed <- yearsAgoToEapsedYears(tempAnom$years_before_present)
+# end of tempAnom
+
+
+# monarchs
+# Adds a leading zero for lubridate to work
+# Todo is to add support for elapsedYears that will be used for plotting on the timeline.
+# Adjust variables in this section to make unique for monarchs.
+
+start_ymd <- NULL
+
+for(i in 1:nrow(monarchs)){
+  if(nchar(monarchs$reignStartYear[i]) == 3){
+    start_ymd <- append(start_ymd, paste0("0", monarchs$reignStartYear[i], "-", monarchs$reignStartMonth[i], "-", monarchs$reignStartDay[i]))
+  }
+  else{
+    start_ymd <- append(start_ymd, paste0(monarchs$reignStartYear[i], "-", monarchs$reignStartMonth[i], "-", monarchs$reignStartDay[i]))
+  }
+}
+
+monarchs$start_ymd <- as.data.frame(start_ymd)
+
+#Repeat for end years.
+end_ymd <- NULL
+
+for(i in 1:nrow(monarchs)){
+  if(nchar(monarchs$reignEndYear[i]) == 3){
+    end_ymd <- append(end_ymd, paste0("0", monarchs$reignEndYear[i], "-", monarchs$reignEndMonth[i], "-", monarchs$reignEndDay[i]))
+  }
+  else{
+    end_ymd <- append(end_ymd, paste0(monarchs$reignEndYear[i], "-", monarchs$reignEndMonth[i], "-", monarchs$reignEndDay[i]))
+  }
+}
+
+monarchs$end_ymd <- as.data.frame(end_ymd) 
+
+#End of leading zero dates.
+
+
+
+#----End of tidy data
+
+
+
+
+
+
+
+
 # Prerequisits for ggplot
 # start constructing a ggplot to visualise timeperiods as a timeline
 
@@ -235,22 +293,30 @@ colourList <- paste0("#", geoTimeScale$back_colour)
 
 
 ggplot() +
-  geom_segment(data = geoTimeScale, aes(x=Start_years_ago, xend=End_years_ago, y=4, yend=4), colour = colourList, size=10, linetype = 1)+
-  scale_fill_manual(values = colourList)+
-  geom_segment(data = eonPlot, aes(x=Start_years_ago, xend=End_years_ago, y=0, yend=0), colour = eonPlot$back_colour, size=10, linetype = 1)+
-  geom_segment(data = eraPlot, aes(x=Start_years_ago, xend=End_years_ago, y=1, yend=1), colour = eraPlot$back_colour, size=10, linetype = 1)+
-  geom_segment(data = periodPlot, aes(x=Start_years_ago, xend=End_years_ago, y=2, yend=2), colour = periodPlot$back_colour, size=10, linetype = 1)+
-  geom_segment(data = epochPlot, aes(x=Start_years_ago, xend=End_years_ago, y=3, yend=3), colour = epochPlot$back_colour, size=10, linetype = 1)+
-  #  scale_y_continuous(limits = 0:4)+ #This causes an error with geological timeline blocks. Also, this won't help when plotting CO2 against time.
-  scale_x_reverse( #This makes the plot run time forwards.
-    limits = c(maxlimit * 1000000, minlimit * 1000000), #This introduces min and max time period limits.
-    breaks = trunc(c(geoTimeScale$End_years_ago, geoTimeScale$Start_years_ago))
+  scale_fill_manual(values = colourList) +
+  geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=400, yend=400, size=10), colour = colourList)+
+  geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=0, yend=0, size=10), colour = eonPlot$back_colour)+
+  geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=100, yend=100, size=10), colour = eraPlot$back_colour)+
+  geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=200, yend=200, size=10), colour = periodPlot$back_colour)+
+  geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=300, yend=300, size=10), colour = epochPlot$back_colour)+
+  
+  geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
+  
+  geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "black")+
+  
+  geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C), colour = "green")+
+  
+  
+  
+  scale_x_continuous(
+    limits = c(xAxisMin, xAxisMax),
+    breaks = yearsElapsedToYearCE(c(xAxisMin, xAxisMax))
   )+
-  geom_line(data = phanerozoicCO2, aes(x = years_elapsed, y = pCO2_probability_maximum), colour = "red")+
-  xlab("Years ago")+
-  theme_bw() + theme(panel.grid.minor = element_blank(), panel.grid.major =   element_blank(), axis.title.y=element_blank(),axis.text.y=element_blank(),  axis.ticks.y=element_blank())+
-  theme(legend.position="none")+
-  geom_text(aes(label=geoTimeScale$Age, x = (geoTimeScale$End_years_ago + (geoTimeScale$Start_years_ago - geoTimeScale$End_years_ago)/2), y = 0.6, angle=90), colour = geoTimeScale$text_colour)
+
+  xlab("Years elapsed") +
+#  theme_bw() + theme(panel.grid.minor = element_blank(), panel.grid.major =   element_blank(), axis.title.y=element_blank(),axis.text.y=element_blank(),  axis.ticks.y=element_blank())+
+  theme(legend.position="none")#+
+#  geom_text(aes(label=geoTimeScale$Age, x = (geoTimeScale$End_years_ago + (geoTimeScale$Start_years_ago - geoTimeScale$End_years_ago)/2), y = 0.6, angle=90), colour = geoTimeScale$text_colour)
 
 
 
@@ -260,3 +326,22 @@ ggplot() +
 
 #End of ggplot timeline----
 
+
+
+
+# Notes for later
+
+# This plot in years ago, rather than elapsed time
+#  geom_segment(data = eonPlot, aes(x=Start_years_ago, xend=End_years_ago, y=0, yend=0), colour = eonPlot$back_colour, size=10, linetype = 1)
+#  scale_y_continuous(limits = 0:4)+ #This causes an error with geological timeline blocks. Also, this won't help when plotting CO2 against time.
+#  scale_x_reverse( #This makes the plot run time forwards. #Not necessary if using time elapsed from earth formation.
+#    limits = c(maxlimit * 1000000, minlimit * 1000000), #This introduces min and max time period limits.
+#    breaks = trunc(c(geoTimeScale$End_years_ago, geoTimeScale$Start_years_ago))
+#  ) #+
+
+# breaks = trunc(c(geoTimeScale$End_elapsed_time, geoTimeScale$Start_elapsed_time))
+
+# scale_x_continuous( #This makes the plot run time forwards. #Not necessary if using time elapsed from earth formation.
+#  limits = c(xAxisMin, xAxisMax)#, #This introduces min and max time period limits.
+  #breaks = 
+#)+
