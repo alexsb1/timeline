@@ -98,7 +98,8 @@ yearsAgoToEapsedYears <- function(yearsAgo){
 #---- Adjust x-axis ----
 
 xAxisMin <- 0 # 0 is the formation of the earth. In years.
-xAxisMax <- yearCEtoYearsElapsed(thisYear,"CE") #convert into continious value for x axis time elapsed.
+
+xAxisMax <- today() %>% ymd(.) %>% decimal_date(.) %>% yearCEtoYearsElapsed(.,"CE") #convert into continious value for x axis time elapsed.
 
 #End of adjusting x-axis
 
@@ -239,34 +240,42 @@ tempAnom$yearsElapsed <- yearsAgoToEapsedYears(tempAnom$years_before_present)
 # Todo is to add support for elapsedYears that will be used for plotting on the timeline.
 # Adjust variables in this section to make unique for monarchs.
 
-start_ymd <- NULL
+monarch_start_ymd <- NULL
 
 for(i in 1:nrow(monarchs)){
   if(nchar(monarchs$reignStartYear[i]) == 3){
-    start_ymd <- append(start_ymd, paste0("0", monarchs$reignStartYear[i], "-", monarchs$reignStartMonth[i], "-", monarchs$reignStartDay[i]))
+    monarch_start_ymd <- append(monarch_start_ymd, paste0("0", monarchs$reignStartYear[i], "-", monarchs$reignStartMonth[i], "-", monarchs$reignStartDay[i]))
   }
   else{
-    start_ymd <- append(start_ymd, paste0(monarchs$reignStartYear[i], "-", monarchs$reignStartMonth[i], "-", monarchs$reignStartDay[i]))
+    monarch_start_ymd <- append(monarch_start_ymd, paste0(monarchs$reignStartYear[i], "-", monarchs$reignStartMonth[i], "-", monarchs$reignStartDay[i]))
   }
 }
 
-monarchs$start_ymd <- as.data.frame(start_ymd)
+monarchs$start_ymd <- monarch_start_ymd %>% ymd(.) %>% decimal_date(.) #saves as year decimal
 
 #Repeat for end years.
-end_ymd <- NULL
+monarch_end_ymd <- NULL
 
 for(i in 1:nrow(monarchs)){
   if(nchar(monarchs$reignEndYear[i]) == 3){
-    end_ymd <- append(end_ymd, paste0("0", monarchs$reignEndYear[i], "-", monarchs$reignEndMonth[i], "-", monarchs$reignEndDay[i]))
+    monarch_end_ymd <- append(monarch_end_ymd, paste0("0", monarchs$reignEndYear[i], "-", monarchs$reignEndMonth[i], "-", monarchs$reignEndDay[i]))
   }
   else{
-    end_ymd <- append(end_ymd, paste0(monarchs$reignEndYear[i], "-", monarchs$reignEndMonth[i], "-", monarchs$reignEndDay[i]))
+    monarch_end_ymd <- append(monarch_end_ymd, paste0(monarchs$reignEndYear[i], "-", monarchs$reignEndMonth[i], "-", monarchs$reignEndDay[i]))
   }
 }
 
-monarchs$end_ymd <- as.data.frame(end_ymd) 
+monarchs$end_ymd <- monarch_end_ymd %>% ymd(.) %>% decimal_date(.) #saves as year decimal
+
 
 #End of leading zero dates.
+
+# convert date to yearsElapsed. Expect decimal values due to months.
+
+monarchs$startElapsedYears <- yearCEtoYearsElapsed(monarchs$start_ymd,"CE")
+monarchs$endElapsedYears <- yearCEtoYearsElapsed(monarchs$end_ymd,"CE")
+
+
 
 
 
@@ -300,17 +309,20 @@ ggplot() +
   geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=200, yend=200, size=10), colour = periodPlot$back_colour)+
   geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=300, yend=300, size=10), colour = epochPlot$back_colour)+
   
+  
+  
   geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
   
   geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "black")+
   
   geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C), colour = "green")+
   
+  geom_segment(data = monarchs, aes(x=startElapsedYears, xend=endElapsedYears, y=500, yend=500, size=10), colour = monarchs$houseColours)+
   
   
   scale_x_continuous(
-    limits = c(xAxisMin, xAxisMax),
-    breaks = yearsElapsedToYearCE(c(xAxisMin, xAxisMax))
+    limits = c(xAxisMin, xAxisMax)#,
+#    breaks = yearsElapsedToYearCE(c(xAxisMin, xAxisMax))
   )+
 
   xlab("Years elapsed") +
