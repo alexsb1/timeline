@@ -26,6 +26,10 @@ CO2_ppm_800000 <- read.csv(file="data/raw/CO2_ppm_800000_ybp.csv", header = TRUE
 tempAnom <- read.csv(file="data/raw/temp_anomaly_800000_ybp.csv", header = TRUE)
 historicEvents <- read.csv(file="data/raw/historicEvents.csv", header = TRUE)
 monarchs <- read.csv(file="data/raw/monarchs.csv", header = TRUE)
+meteorites <- read.csv(file="data/raw/meteorites.csv", header = TRUE)
+prehistory <- read.csv(file="data/raw/prehistory.csv", header = TRUE)
+historicTimePeriods <- read.csv(file="data/raw/historicTimePeriods.csv", header = TRUE)
+
 
 # end of data import
 
@@ -275,6 +279,27 @@ monarchs$end_ymd <- monarch_end_ymd %>% ymd(.) %>% decimal_date(.) #saves as yea
 monarchs$startElapsedYears <- yearCEtoYearsElapsed(monarchs$start_ymd,"CE")
 monarchs$endElapsedYears <- yearCEtoYearsElapsed(monarchs$end_ymd,"CE")
 
+# End of monarchs
+
+# meteorites
+# Calculates and adds a column for years elapsed since earth formation that will be used to plot on the timeline.
+
+
+meteorites$yearsElapsed <- (meteorites$Age_Ma * 1000000) %>% yearsAgoToEapsedYears(.)
+
+# end of meteorites
+
+# prehistory
+# Calculate yearsElapsed from Mya and save to a new column
+
+prehistory$startYearsElapsed <- (prehistory$start_kya * 1000) %>% yearsAgoToEapsedYears(.)
+prehistory$endYearsElapsed <- (prehistory$end_kya * 1000) %>% yearsAgoToEapsedYears(.)
+
+# end of prehistory
+
+
+
+
 
 
 
@@ -296,28 +321,46 @@ colourList <- paste0("#", geoTimeScale$back_colour)
 #End f ggplot prerequisists
 
 #----ggplot timeline----
-# This plot is wrong as it contains a mix of years before present and elapsed time.
+# Note that meteorites contains one NA observation, so will always cause a warning message when generating the ggplot timeline.
 
-#TOdo: replace Start_years_ago with timeElapsed
+geoTimeTextcolour <- "black"
 
 
 ggplot() +
   scale_fill_manual(values = colourList) +
-  geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=400, yend=400, size=10), colour = colourList)+
-  geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=0, yend=0, size=10), colour = eonPlot$back_colour)+
-  geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=100, yend=100, size=10), colour = eraPlot$back_colour)+
-  geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=200, yend=200, size=10), colour = periodPlot$back_colour)+
-  geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=300, yend=300, size=10), colour = epochPlot$back_colour)+
   
+  geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-100, yend=-100, size=10), colour = colourList)+
+  geom_text(aes(x = xAxisMin, y = -100, label = "Stage"), colour = geoTimeTextcolour)+
   
+  geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-500, yend=-500, size=10), colour = eonPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -500, label = "Eon"), colour = geoTimeTextcolour)+
+  
+  geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-400, yend=-400, size=10), colour = eraPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -400, label = "Era"), colour = geoTimeTextcolour)+
+  
+  geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-300, yend=-300, size=10), colour = periodPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -300, label = "Period"), colour = geoTimeTextcolour)+
+  
+  geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-200, yend=-200, size=10), colour = epochPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -200, label = "Epoch"), colour = geoTimeTextcolour)+
   
   geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
+  geom_text(aes(x = xAxisMin, y = 700, label = "Phanerozoic CO2 ppm"), colour = geoTimeTextcolour) +
   
   geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "black")+
+  geom_text(aes(x = xAxisMin, y = 400, label = "Quaternary CO2"), colour = geoTimeTextcolour) +
   
   geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C), colour = "green")+
+  geom_text(aes(x = xAxisMin, y = 0, label = "Temperature anomaly"), colour = geoTimeTextcolour) +
   
   geom_segment(data = monarchs, aes(x=startElapsedYears, xend=endElapsedYears, y=500, yend=500, size=10), colour = monarchs$houseColours)+
+  geom_text(aes(x = xAxisMin, y = 500, label = "Ruling English monarch"), colour = geoTimeTextcolour) +
+  
+  geom_jitter(data = meteorites, aes(x = yearsElapsed, y = 1000), colour = "hotpink")+
+  geom_text(aes(x = xAxisMin, y = 1000, label = "Meteorite impacts"), colour = geoTimeTextcolour) +
+  
+  geom_segment(data = prehistory, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-600, yend=-600, size=10, colour = prehistory$Age))+
+  geom_text(aes(x = xAxisMin, y = -600, label = "Prehistory"), colour = geoTimeTextcolour)+
   
   
   scale_x_continuous(
@@ -342,6 +385,11 @@ ggplot() +
 
 
 # Notes for later
+
+
+# interesting colour picker
+# colour = colors()[1:nrow(prehistory)]
+
 
 # This plot in years ago, rather than elapsed time
 #  geom_segment(data = eonPlot, aes(x=Start_years_ago, xend=End_years_ago, y=0, yend=0), colour = eonPlot$back_colour, size=10, linetype = 1)
