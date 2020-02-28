@@ -6,6 +6,15 @@
 #
 # Imports external data and prepares dataframes to plot.
 
+#---- Citations 
+#LR04 stack
+
+# Lisiecki, L. E., and M. E. Raymo (2005), A Pliocene-Pleistocene stack of 57 globally distributed benthic d18O records, Paleoceanography,20, PA1003, doi:10.1029/2004PA001071.
+
+# Additional citations and references are given in individual data files.
+
+
+# End of citations
 
 
 # ----- set libraries ----
@@ -18,9 +27,8 @@ library(lubridate)
 
 
 
-
 #---- data import ----
-geoTimeScale <- read.csv(file="data/processed/geological_time_scale.csv", header = TRUE)
+geoTimeScale <- read.csv(file="data/raw/geological_time_scale.csv", header = TRUE)
 phanerozoicCO2 <- read.csv(file="data/raw/phanerozoicCO2.csv", header = TRUE)
 CO2_ppm_800000 <- read.csv(file="data/raw/CO2_ppm_800000_ybp.csv", header = TRUE)
 tempAnom <- read.csv(file="data/raw/temp_anomaly_800000_ybp.csv", header = TRUE)
@@ -29,7 +37,8 @@ monarchs <- read.csv(file="data/raw/monarchs.csv", header = TRUE)
 meteorites <- read.csv(file="data/raw/meteorites.csv", header = TRUE)
 prehistory <- read.csv(file="data/raw/prehistory.csv", header = TRUE)
 historicTimePeriods <- read.csv(file="data/raw/historicTimePeriods.csv", header = TRUE)
-
+LR04 <- read.csv(file="data/raw/LR04_benthic_stack.csv", header = TRUE)
+volcanoes <- read.csv(file="data/raw/volcanoes.csv", header = TRUE)
 
 # end of data import
 
@@ -121,6 +130,13 @@ xAxisMax <- today() %>% ymd(.) %>% decimal_date(.) %>% yearCEtoYearsElapsed(.,"C
 # Visualise each data set by adding a geom layer
 
 
+#add extra columns to make a continious timeline of years ago and years elapsed from earth formation (t=0).
+geoTimeScale$Start_years_ago <- geoTimeScale$Start_million_years_ago * 1000000
+geoTimeScale$End_years_ago <- geoTimeScale$End_million_years_ago * 1000000
+geoTimeScale$Start_elapsed_time <- geoTimeScale$Start_elapsed_time_million_years * 1000000
+geoTimeScale$End_elapsed_time <- geoTimeScale$End_elapsed_time_million_years * 1000000
+
+
 # Makes a new dataframe containing only the eons
 eonList <- select(geoTimeScale, Eon, Start_million_years_ago, End_million_years_ago, Start_years_ago, End_years_ago, Start_elapsed_time, End_elapsed_time, back_colour)
 uniqueEonList <- unique(eonList$Eon)
@@ -176,7 +192,7 @@ periodPlot <- NULL #This empties this variable and makes it ready for the follow
 
 for(k in uniquePeriodList){
   x <- periodList[which(periodList$Period == k),]
-  periodPlot$Era <- append(periodPlot$Era, k)
+  periodPlot$Period <- append(periodPlot$Period, k)
   periodPlot$End_million_years_ago <- append(periodPlot$End_million_years_ago, min(x$End_million_years_ago))
   periodPlot$Start_million_years_ago <- append(periodPlot$Start_million_years_ago, max(x$Start_million_years_ago))
   periodPlot$Start_years_ago <- append(periodPlot$Start_years_ago, max(x$Start_years_ago))
@@ -202,7 +218,7 @@ epochPlot <- NULL #This empties this variable and makes it ready for the followi
 
 for(l in uniqueEpochList){
   x <- epochList[which(epochList$Epoch == l),]
-  epochPlot$Era <- append(epochPlot$Era, l)
+  epochPlot$Epoch <- append(epochPlot$Epoch, l)
   epochPlot$End_million_years_ago <- append(epochPlot$End_million_years_ago, min(x$End_million_years_ago))
   epochPlot$Start_million_years_ago <- append(epochPlot$Start_million_years_ago, max(x$Start_million_years_ago))
   epochPlot$Start_years_ago <- append(epochPlot$Start_years_ago, max(x$Start_years_ago))
@@ -297,9 +313,21 @@ prehistory$endYearsElapsed <- (prehistory$end_kya * 1000) %>% yearsAgoToEapsedYe
 
 # end of prehistory
 
+# LR04 benthic stack
+
+LR04$yearsAgo <- LR04$Time_ka * 1000 # for some unknown reason, this doesn't work using tidyverse %>% functions.
+LR04$yearsElapsed <- yearsAgoToEapsedYears(LR04$yearsAgo)
 
 
+# End of LR04 benthic stack
 
+# Volcanoes
+
+# convert from Mya to years elapsed
+volcanoes$yearsAgo <- volcanoes$Age_Mya * 1000000
+volcanoes$yearsElapsed <- yearsAgoToEapsedYears(volcanoes$yearsAgo)
+
+# end of volcanoes
 
 
 
@@ -326,46 +354,62 @@ colourList <- paste0("#", geoTimeScale$back_colour)
 geoTimeTextcolour <- "black"
 
 
+xAxisBreaks <- as.data.frame(xAxisBreaks)
+
 ggplot() +
   scale_fill_manual(values = colourList) +
   
   geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-100, yend=-100, size=10), colour = colourList)+
   geom_text(aes(x = xAxisMin, y = -100, label = "Stage"), colour = geoTimeTextcolour)+
+  geom_text(data = geoTimeScale, aes(label=Age, x=(Start_elapsed_time + End_elapsed_time)/2, y = -100), position=position_jitter()) +
   
   geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-500, yend=-500, size=10), colour = eonPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -500, label = "Eon"), colour = geoTimeTextcolour)+
+  geom_text(data = eonPlot, aes(label=Eon, x=(Start_elapsed_time + End_elapsed_time)/2, y = -500), position=position_jitter()) +
   
   geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-400, yend=-400, size=10), colour = eraPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -400, label = "Era"), colour = geoTimeTextcolour)+
+  geom_text(data = eraPlot, aes(label=Era, x=(Start_elapsed_time + End_elapsed_time)/2, y = -400), position=position_jitter()) +
   
   geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-300, yend=-300, size=10), colour = periodPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -300, label = "Period"), colour = geoTimeTextcolour)+
+  geom_text(data = periodPlot, aes(label=Period, x=(Start_elapsed_time + End_elapsed_time)/2, y = -300), position=position_jitter()) +
   
   geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-200, yend=-200, size=10), colour = epochPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -200, label = "Epoch"), colour = geoTimeTextcolour)+
+  geom_text(data = epochPlot, aes(label=Epoch, x=(Start_elapsed_time + End_elapsed_time)/2, y = -200), position=position_jitter()) +
   
   geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
-  geom_text(aes(x = xAxisMin, y = 700, label = "Phanerozoic CO2 ppm"), colour = geoTimeTextcolour) +
+  geom_text(aes(x = xAxisMin, y = 700, label = "Phanerozoic CO2 ppm"), colour = "red") +
   
-  geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "black")+
-  geom_text(aes(x = xAxisMin, y = 400, label = "Quaternary CO2"), colour = geoTimeTextcolour) +
+  geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "orange")+
+  geom_text(aes(x = xAxisMin, y = 300, label = "Quaternary CO2"), colour = "orange") +
   
   geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C), colour = "green")+
-  geom_text(aes(x = xAxisMin, y = 0, label = "Temperature anomaly"), colour = geoTimeTextcolour) +
+  geom_text(aes(x = xAxisMin, y = 0, label = "Temperature anomaly"), colour = "green") +
   
   geom_segment(data = monarchs, aes(x=startElapsedYears, xend=endElapsedYears, y=500, yend=500, size=10), colour = monarchs$houseColours)+
   geom_text(aes(x = xAxisMin, y = 500, label = "Ruling English monarch"), colour = geoTimeTextcolour) +
+  geom_text(data = monarchs, aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 500), position=position_jitter()) +
+  
   
   geom_jitter(data = meteorites, aes(x = yearsElapsed, y = 1000), colour = "hotpink")+
-  geom_text(aes(x = xAxisMin, y = 1000, label = "Meteorite impacts"), colour = geoTimeTextcolour) +
+  geom_text(aes(x = xAxisMin, y = 1000, label = "Meteorite impacts"), colour = "hotpink") +
   
-  geom_segment(data = prehistory, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-600, yend=-600, size=10, colour = prehistory$Age))+
+  geom_segment(data = prehistory, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-600, yend=-600, size=10, colour = Name))+
   geom_text(aes(x = xAxisMin, y = -600, label = "Prehistory"), colour = geoTimeTextcolour)+
+  geom_text(data = prehistory, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -600), position=position_jitter()) +
+  
+  geom_line(data = LR04, aes(x = yearsElapsed, y = Benthic_d18O_per.mil), colour = "brown")+
+  geom_text(aes(x = xAxisMin, y = 100, label = "Benthic d18O"), colour = "brown")+
+  
+  geom_point(data = volcanoes, aes(x = yearsElapsed, y = 1200), colour = "purple3")+
+  geom_text(aes(x = xAxisMin, y = 1200, label = "volcano eruptions"), colour = "purple3") +
   
   
   scale_x_continuous(
     limits = c(xAxisMin, xAxisMax)#,
-#    breaks = yearsElapsedToYearCE(c(xAxisMin, xAxisMax))
+#    breaks = xAxisBreaks
   )+
 
   xlab("Years elapsed") +
@@ -386,6 +430,13 @@ ggplot() +
 
 # Notes for later
 
+
+# Converts elapsed years to BC/BCE friendly years.
+
+#xAxisBreaks <- NULL
+#for(i in seq(from = xAxisMin, to = xAxisMax, by = 10000)){
+#  xAxisBreaks <- append(xAxisBreaks, yearsElapsedToYearCE(i))
+#}
 
 # interesting colour picker
 # colour = colors()[1:nrow(prehistory)]
