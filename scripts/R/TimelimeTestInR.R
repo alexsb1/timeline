@@ -39,6 +39,9 @@ prehistory <- read.csv(file="data/raw/prehistory.csv", header = TRUE)
 historicTimePeriods <- read.csv(file="data/raw/historicTimePeriods.csv", header = TRUE)
 LR04 <- read.csv(file="data/raw/LR04_benthic_stack.csv", header = TRUE)
 volcanoes <- read.csv(file="data/raw/volcanoes.csv", header = TRUE)
+supercontinents <- read.csv(file="data/raw/supercontinents.csv", header = TRUE)
+
+
 
 # end of data import
 
@@ -314,9 +317,8 @@ prehistory$endYearsElapsed <- (prehistory$end_kya * 1000) %>% yearsAgoToEapsedYe
 # end of prehistory
 
 # LR04 benthic stack
+LR04$yearsElapsed <- (LR04$Time_ka * 1000) %>% yearsAgoToEapsedYears(.)
 
-LR04$yearsAgo <- LR04$Time_ka * 1000 # for some unknown reason, this doesn't work using tidyverse %>% functions.
-LR04$yearsElapsed <- yearsAgoToEapsedYears(LR04$yearsAgo)
 
 
 # End of LR04 benthic stack
@@ -330,6 +332,29 @@ volcanoes$yearsElapsed <- yearsAgoToEapsedYears(volcanoes$yearsAgo)
 # end of volcanoes
 
 
+# supercontinents
+supercontinents$startElapsedYears <- (supercontinents$startAge_Mya * 1000000) %>% yearsAgoToEapsedYears(.)
+supercontinents$endElapsedYears <- (supercontinents$endAge_Mya * 1000000) %>% yearsAgoToEapsedYears(.)
+
+# end supercontinents
+
+# historicTimePeriods
+
+# Calculate time elapsed for historic time periods.
+
+historicTimePeriodsStart <- NULL
+
+for(i in 1:nrow(historicTimePeriods)){
+  historicTimePeriodsStart <- append(historicTimePeriodsStart, yearCEtoYearsElapsed(historicTimePeriods$start_year[i], historicTimePeriods$start_era[i]))
+}
+historicTimePeriods$startYearsElapsed <- historicTimePeriodsStart
+
+historicTimePeriodsEnd <- NULL
+
+for(i in 1:nrow(historicTimePeriods)){
+  historicTimePeriodsEnd <- append(historicTimePeriodsEnd, yearCEtoYearsElapsed(historicTimePeriods$end_year[i], historicTimePeriods$end_era[i]))
+}
+historicTimePeriods$endYearsElapsed <- historicTimePeriodsEnd
 
 
 #----End of tidy data
@@ -406,6 +431,14 @@ ggplot() +
   geom_point(data = volcanoes, aes(x = yearsElapsed, y = 1200), colour = "purple3")+
   geom_text(aes(x = xAxisMin, y = 1200, label = "volcano eruptions"), colour = "purple3") +
   
+  geom_segment(data = supercontinents, aes(x=startElapsedYears, xend=endElapsedYears, y=-700, yend=-700, size=10, colour = Supercontinent))+
+  geom_text(aes(x = xAxisMin, y = -700, label = "Supercontinents"), colour = geoTimeTextcolour)+
+  geom_text(data = supercontinents, aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = -700), position=position_jitter()) +
+  
+  geom_segment(data = historicTimePeriods, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-800, yend=-800, size=10, colour = Name))+
+  geom_text(aes(x = xAxisMin, y = -800, label = "Historic time periods"), colour = geoTimeTextcolour)+
+  geom_text(data = historicTimePeriods, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -800), position=position_jitter()) +
+  
   
   scale_x_continuous(
     limits = c(xAxisMin, xAxisMax)#,
@@ -429,6 +462,9 @@ ggplot() +
 
 
 # Notes for later
+
+# These limits makes an visually interesting plot. Starts at Mesozoic and finished at today.
+# xAxisMin <- xAxisMax - 300000000
 
 
 # Converts elapsed years to BC/BCE friendly years.
