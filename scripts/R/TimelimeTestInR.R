@@ -382,6 +382,8 @@ geoTimeTextcolour <- "black"
 xAxisBreaks <- as.data.frame(xAxisBreaks)
 
 ggplot() +
+  geom_hline(yintercept = 0)+
+  
   scale_fill_manual(values = colourList) +
   
   geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-100, yend=-100, size=10), colour = colourList)+
@@ -438,6 +440,7 @@ ggplot() +
   geom_segment(data = historicTimePeriods, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-800, yend=-800, size=10, colour = Name))+
   geom_text(aes(x = xAxisMin, y = -800, label = "Historic time periods"), colour = geoTimeTextcolour)+
   geom_text(data = historicTimePeriods, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -800), position=position_jitter()) +
+  
   
   
   scale_x_continuous(
