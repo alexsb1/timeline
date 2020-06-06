@@ -11,8 +11,11 @@
 
 # Lisiecki, L. E., and M. E. Raymo (2005), A Pliocene-Pleistocene stack of 57 globally distributed benthic d18O records, Paleoceanography,20, PA1003, doi:10.1029/2004PA001071.
 
-# Additional citations and references are given in individual data files.
+# https://www.visualcapitalist.com/history-of-pandemics-deadliest/
 
+# http://www.climatedata.info/
+
+# Additional citations and references are given in individual data files.
 
 # End of citations
 
@@ -20,6 +23,7 @@
 # ----- set libraries ----
 library(tidyverse)
 library(lubridate)
+library(ggrepel)
 
 #end of libraries
 
@@ -40,8 +44,14 @@ historicTimePeriods <- read.csv(file="data/raw/historicTimePeriods.csv", header 
 LR04 <- read.csv(file="data/raw/LR04_benthic_stack.csv", header = TRUE)
 volcanoes <- read.csv(file="data/raw/volcanoes.csv", header = TRUE)
 supercontinents <- read.csv(file="data/raw/supercontinents.csv", header = TRUE)
+worldPop <- read.csv(file="data/raw/worldPopulation.csv", header = TRUE)
+pandemics <- read.csv(file="data/raw/pandemics.csv", header = TRUE)
+climateEvents <- read.csv(file="data/raw/climate_events.csv", header = TRUE)
+climateEventsYBP <- read.csv(file="data/raw/climate_events_ybp.csv", header = TRUE)
+bondEvents <- read.csv(file="data/raw/Bond_events.csv", header = TRUE)
 
-
+# Note: more climate data is located in
+# data/not used/From Climate Data
 
 # end of data import
 
@@ -118,6 +128,14 @@ xAxisMin <- 0 # 0 is the formation of the earth. In years.
 xAxisMax <- today() %>% ymd(.) %>% decimal_date(.) %>% yearCEtoYearsElapsed(.,"CE") #convert into continious value for x axis time elapsed.
 
 #End of adjusting x-axis
+
+#---- Adjust y-axis ----
+
+yAxisMin <- -800
+
+yAxisMax <- 2000
+
+#End of adjusting y-axis
 
 #----Tidy data ----
 
@@ -338,6 +356,25 @@ supercontinents$endElapsedYears <- (supercontinents$endAge_Mya * 1000000) %>% ye
 
 # end supercontinents
 
+
+# world population
+
+worldPop$yearsElapsed <- yearCEtoYearsElapsed(worldPop$Year, worldPop$Era)
+
+# Investigate why the console gives "Date error" when this is successful.
+# end world population
+
+
+# pandemics
+pandemics$startYearElapsed <- yearCEtoYearsElapsed(pandemics$startYear,"CE") #All the pandemic events in this file are CE.
+pandemics$endYearElapsed <- yearCEtoYearsElapsed(pandemics$endYear,"CE")
+
+# end of pandemics
+
+
+
+
+
 # historicTimePeriods
 
 # Calculate time elapsed for historic time periods.
@@ -356,6 +393,37 @@ for(i in 1:nrow(historicTimePeriods)){
 }
 historicTimePeriods$endYearsElapsed <- historicTimePeriodsEnd
 
+# End of historic time periods
+
+
+
+# climate events using BCE/CE notation
+
+climateEvents$startYearsElapsed <- yearCEtoYearsElapsed(climateEvents$startYear,climateEvents$startEra)
+climateEvents$endYearsElapsed <- yearCEtoYearsElapsed(climateEvents$endYear,climateEvents$endEra)
+
+
+
+# End of climate events using BCE/BC notation
+
+
+# climate events using years before present notation
+# Calculate yearsElapsed from ya and save to a new column
+
+climateEventsYBP$startYearsElapsed <- (climateEventsYBP$startYearsAgo) %>% yearsAgoToEapsedYears(.)
+climateEventsYBP$endYearsElapsed <- (climateEventsYBP$endYearsAgo) %>% yearsAgoToEapsedYears(.)
+
+# end of events using years before present notation
+
+# Merge into a single dataframe ready for plotting.
+climateEvents <- merge(climateEvents, climateEventsYBP, all = TRUE)
+
+# Remove now superfluous dataframe
+rm(climateEventsYBP)
+
+
+
+
 
 #----End of tidy data
 
@@ -371,7 +439,7 @@ historicTimePeriods$endYearsElapsed <- historicTimePeriodsEnd
 
 colourList <- paste0("#", geoTimeScale$back_colour)
 
-#End f ggplot prerequisists
+#End of ggplot prerequisists
 
 #----ggplot timeline----
 # Note that meteorites contains one NA observation, so will always cause a warning message when generating the ggplot timeline.
@@ -388,23 +456,23 @@ ggplot() +
   
   geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-100, yend=-100, size=10), colour = colourList)+
   geom_text(aes(x = xAxisMin, y = -100, label = "Stage"), colour = geoTimeTextcolour)+
-  geom_text(data = geoTimeScale, aes(label=Age, x=(Start_elapsed_time + End_elapsed_time)/2, y = -100), position=position_jitter()) +
+  geom_text_repel(data = geoTimeScale, aes(label=Age, x=(Start_elapsed_time + End_elapsed_time)/2, y = -100), max.overlaps = 3) +
   
   geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-500, yend=-500, size=10), colour = eonPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -500, label = "Eon"), colour = geoTimeTextcolour)+
-  geom_text(data = eonPlot, aes(label=Eon, x=(Start_elapsed_time + End_elapsed_time)/2, y = -500), position=position_jitter()) +
+  geom_text(data = eonPlot, aes(label=Eon, x=(Start_elapsed_time + End_elapsed_time)/2, y = -500), max.overlaps = 3) +
   
   geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-400, yend=-400, size=10), colour = eraPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -400, label = "Era"), colour = geoTimeTextcolour)+
-  geom_text(data = eraPlot, aes(label=Era, x=(Start_elapsed_time + End_elapsed_time)/2, y = -400), position=position_jitter()) +
+  geom_text_repel(data = eraPlot, aes(label=Era, x=(Start_elapsed_time + End_elapsed_time)/2, y = -400), max.overlaps = 3) +
   
   geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-300, yend=-300, size=10), colour = periodPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -300, label = "Period"), colour = geoTimeTextcolour)+
-  geom_text(data = periodPlot, aes(label=Period, x=(Start_elapsed_time + End_elapsed_time)/2, y = -300), position=position_jitter()) +
+  geom_text_repel(data = periodPlot, aes(label=Period, x=(Start_elapsed_time + End_elapsed_time)/2, y = -300), max.overlaps = 3) +
   
   geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-200, yend=-200, size=10), colour = epochPlot$back_colour)+
   geom_text(aes(x = xAxisMin, y = -200, label = "Epoch"), colour = geoTimeTextcolour)+
-  geom_text(data = epochPlot, aes(label=Epoch, x=(Start_elapsed_time + End_elapsed_time)/2, y = -200), position=position_jitter()) +
+  geom_text_repel(data = epochPlot, aes(label=Epoch, x=(Start_elapsed_time + End_elapsed_time)/2, y = -200), max.overlaps = 3) +
   
   geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
   geom_text(aes(x = xAxisMin, y = 700, label = "Phanerozoic CO2 ppm"), colour = "red") +
@@ -412,40 +480,52 @@ ggplot() +
   geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "orange")+
   geom_text(aes(x = xAxisMin, y = 300, label = "Quaternary CO2"), colour = "orange") +
   
-  geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C), colour = "green")+
+  geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C *100), colour = "green")+
   geom_text(aes(x = xAxisMin, y = 0, label = "Temperature anomaly"), colour = "green") +
   
   geom_segment(data = monarchs, aes(x=startElapsedYears, xend=endElapsedYears, y=500, yend=500, size=10), colour = monarchs$houseColours)+
   geom_text(aes(x = xAxisMin, y = 500, label = "Ruling English monarch"), colour = geoTimeTextcolour) +
-  geom_text(data = monarchs, aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 500), position=position_jitter()) +
+  geom_text_repel(data = monarchs, aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 500), max.overlaps = 3) +
   
   
-  geom_jitter(data = meteorites, aes(x = yearsElapsed, y = 1000), colour = "hotpink")+
+  geom_point(data = meteorites, aes(x = yearsElapsed, y = 1000, size = Diameter_km), colour = "hotpink")+
   geom_text(aes(x = xAxisMin, y = 1000, label = "Meteorite impacts"), colour = "hotpink") +
   
   geom_segment(data = prehistory, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-600, yend=-600, size=10, colour = Name))+
   geom_text(aes(x = xAxisMin, y = -600, label = "Prehistory"), colour = geoTimeTextcolour)+
-  geom_text(data = prehistory, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -600), position=position_jitter()) +
+  geom_text_repel(data = prehistory, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -600), max.overlaps = 3) +
   
-  geom_line(data = LR04, aes(x = yearsElapsed, y = Benthic_d18O_per.mil), colour = "brown")+
+  geom_line(data = LR04, aes(x = yearsElapsed, y = Benthic_d18O_per.mil *100), colour = "brown")+
   geom_text(aes(x = xAxisMin, y = 100, label = "Benthic d18O"), colour = "brown")+
   
-  geom_point(data = volcanoes, aes(x = yearsElapsed, y = 1200), colour = "purple3")+
-  geom_text(aes(x = xAxisMin, y = 1200, label = "volcano eruptions"), colour = "purple3") +
+  geom_point(data = volcanoes, aes(x = yearsElapsed, y = 1200, size = Volume_km3), colour = "purple3")+
+  geom_text(aes(x = xAxisMin, y = 1200, label = "Volcano eruptions"), colour = "purple3") +
   
   geom_segment(data = supercontinents, aes(x=startElapsedYears, xend=endElapsedYears, y=-700, yend=-700, size=10, colour = Supercontinent))+
   geom_text(aes(x = xAxisMin, y = -700, label = "Supercontinents"), colour = geoTimeTextcolour)+
-  geom_text(data = supercontinents, aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = -700), position=position_jitter()) +
+  geom_text_repel(data = supercontinents, aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = -700), max.overlaps = 3) +
   
   geom_segment(data = historicTimePeriods, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-800, yend=-800, size=10, colour = Name))+
   geom_text(aes(x = xAxisMin, y = -800, label = "Historic time periods"), colour = geoTimeTextcolour)+
-  geom_text(data = historicTimePeriods, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -800), position=position_jitter()) +
+  geom_text_repel(data = historicTimePeriods, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -800), max.overlaps = 3) +
+  
+  geom_line(data = worldPop, aes(x = yearsElapsed, y = WorldPopulation), colour = "blue")+
+  geom_text(aes(x = xAxisMin, y = 1400, label = "World population"), colour = "blue")+
+  
+  geom_point(data = pandemics, aes(x = startYearElapsed, y = 1600, size = deathToll), colour = "darkolivegreen")+
+  geom_text(aes(x = xAxisMin, y = 1600, label = "Pandemics"), colour = "darkolivegreen") +
+  geom_text_repel(data = pandemics, aes(label=Name, x=startYearElapsed, y = 1600), max.overlaps = 3) +
   
   
   
+
   scale_x_continuous(
     limits = c(xAxisMin, xAxisMax)#,
 #    breaks = xAxisBreaks
+  )+
+  
+  scale_y_continuous(
+    limits = c(yAxisMin, yAxisMax)
   )+
 
   xlab("Years elapsed") +
