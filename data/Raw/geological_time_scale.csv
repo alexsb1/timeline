@@ -1,5 +1,5 @@
 Supereon,Eon,Era,Period,Epoch,Age,Start_million_years_ago,End_million_years_ago,Start_elapsed_time_million_years,End_elapsed_time_million_years,back_colour,text_colour,Major_events
-,Phanerozoic,Cenozoic,Quaternary,Anthropocene,,0.00007,0,,,fff69a,,
+,Phanerozoic,Cenozoic,Quaternary,Anthropocene,Anthropocene,0.00007,0,4600,4600.00007,fff69a,black,
 ,Phanerozoic,Cenozoic,Quaternary,Holocene,Meghalayan,0.0042,0.00007,4599.9958,4600,fff79a,black,"4.2 kiloyear event, Little Ice Age, increasing industrial CO2."
 ,Phanerozoic,Cenozoic,Quaternary,Holocene,Northgrippian,0.0082,0.0042,4599.9918,4599.9958,fff79a,black,"8.2 kiloyear event, Holocene climatic optimum. Bronze Age."
 ,Phanerozoic,Cenozoic,Quaternary,Holocene,Greenlandian,0.0117,0.0082,4599.9883,4599.9918,fff79a,black,Current interglacial begins. Sea level flooding of Doggerland and Sundaland. Sahara desert forms. Neolithic agriculture.
