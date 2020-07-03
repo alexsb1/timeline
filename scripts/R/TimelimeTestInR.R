@@ -24,6 +24,7 @@
 library(tidyverse)
 library(lubridate)
 library(ggrepel)
+library(ggpubr)
 
 #end of libraries
 
@@ -49,6 +50,7 @@ pandemics <- read.csv(file="data/raw/pandemics.csv", header = TRUE)
 climateEvents <- read.csv(file="data/raw/climate_events.csv", header = TRUE)
 climateEventsYBP <- read.csv(file="data/raw/climate_events_ybp.csv", header = TRUE)
 bondEvents <- read.csv(file="data/raw/Bond_events.csv", header = TRUE)
+milankovitch <- read.csv(file="data/raw/Milankovitch.csv", header = TRUE)
 
 # Note: more climate data is located in
 # data/not used/From Climate Data
@@ -407,7 +409,7 @@ climateEvents$endYearsElapsed <- yearCEtoYearsElapsed(climateEvents$endYear,clim
 # End of climate events using BCE/BC notation
 
 
-# climate events using years before present notation
+# Climate events using years before present notation
 # Calculate yearsElapsed from ya and save to a new column
 
 climateEventsYBP$startYearsElapsed <- (climateEventsYBP$startYearsAgo) %>% yearsAgoToEapsedYears(.)
@@ -423,6 +425,13 @@ rm(climateEventsYBP)
 
 
 
+
+
+
+# Milankovitch cycles
+# Convert from years before present to ears elapsed
+
+milankovitch$yearsElapsed <- yearsAgoToEapsedYears(milankovitch$yearsBP)
 
 
 #----End of tidy data
@@ -449,9 +458,7 @@ geoTimeTextcolour <- "black"
 
 xAxisBreaks <- as.data.frame(xAxisBreaks)
 
-ggplot() +
-  geom_hline(yintercept = 0)+
-  
+plotGeoTimeScale <- ggplot() +
   scale_fill_manual(values = colourList) +
   
   geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-100, yend=-100, size=10), colour = colourList)+
@@ -516,6 +523,9 @@ ggplot() +
   geom_text(aes(x = xAxisMin, y = 1600, label = "Pandemics"), colour = "darkolivegreen") +
   geom_text_repel(data = pandemics, aes(label=Name, x=startYearElapsed, y = 1600), max.overlaps = 3) +
   
+  geom_line(data = milankovitch, aes(x = yearsElapsed, y = annual65N), colour = "seagreen")+
+  geom_text(aes(x = xAxisMin, y = 200, label = "Solar insolation 65N"), colour = "seagreen")+
+  
   
   
 
@@ -540,6 +550,51 @@ ggplot() +
 
 
 #End of ggplot timeline----
+
+
+
+
+# Make a second plot
+# This is testing multi plots.
+# Both plots should be assigned to a value and call ggpubr to display
+
+
+p2 <- ggplot()+
+
+  geom_line(data = milankovitch, aes(x = yearsElapsed, y = annual65N), colour = "seagreen")+
+  geom_text(aes(x = xAxisMin, y = 200, label = "Solar insolation 65N"), colour = "seagreen")+
+
+  scale_x_continuous(
+    limits = c(xAxisMin, xAxisMax)#,
+    #    breaks = xAxisBreaks
+  )+
+  
+  scale_y_continuous(
+    limits = c(yAxisMin, yAxisMax)
+  )+
+  
+  xlab("Years elapsed") +
+  
+  theme(legend.position="none")
+
+
+# End of second ggplot
+
+
+
+
+# display the plot stacked vertically and aligned by x-axis (years elapsed)
+ggarrange(p1, p2, ncol = 1, nrow = 2, align = "v", heights = c(2, 1))
+
+
+
+
+
+
+
+
+
+
 
 
 
