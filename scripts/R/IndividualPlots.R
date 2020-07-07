@@ -4,8 +4,8 @@
 geoTimeTextcolour <- "black"
 
 
-xAxisBreaks <- as.data.frame(xAxisBreaks)
-
+# xAxisBreaks <- as.data.frame(xAxisBreaks)
+colourList <- paste0("#", geoTimeScale$back_colour)
 
 
 

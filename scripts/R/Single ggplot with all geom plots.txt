@@ -1,0 +1,102 @@
+#----ggplot timeline----
+# Note that meteorites contains one NA observation, so will always cause a warning message when generating the ggplot timeline.
+
+geoTimeTextcolour <- "black"
+
+
+xAxisBreaks <- as.data.frame(xAxisBreaks)
+
+p1 <- ggplot() +
+  geom_hline(yintercept = 0)+
+  
+  scale_fill_manual(values = colourList) +
+  
+  geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-100, yend=-100, size=10), colour = colourList)+
+  geom_text(aes(x = xAxisMin, y = -100, label = "Stage"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = geoTimeScale, aes(label=Age, x=(Start_elapsed_time + End_elapsed_time)/2, y = -100), max.overlaps = 3) +
+  
+  geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-500, yend=-500, size=10), colour = eonPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -500, label = "Eon"), colour = geoTimeTextcolour)+
+  geom_text(data = eonPlot, aes(label=Eon, x=(Start_elapsed_time + End_elapsed_time)/2, y = -500), max.overlaps = 3) +
+  
+  geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-400, yend=-400, size=10), colour = eraPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -400, label = "Era"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = eraPlot, aes(label=Era, x=(Start_elapsed_time + End_elapsed_time)/2, y = -400), max.overlaps = 3) +
+  
+  geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-300, yend=-300, size=10), colour = periodPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -300, label = "Period"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = periodPlot, aes(label=Period, x=(Start_elapsed_time + End_elapsed_time)/2, y = -300), max.overlaps = 3) +
+  
+  geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=-200, yend=-200, size=10), colour = epochPlot$back_colour)+
+  geom_text(aes(x = xAxisMin, y = -200, label = "Epoch"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = epochPlot, aes(label=Epoch, x=(Start_elapsed_time + End_elapsed_time)/2, y = -200), max.overlaps = 3) +
+  
+  geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
+  geom_text(aes(x = xAxisMin, y = 700, label = "Phanerozoic CO2 ppm"), colour = "red") +
+  
+  geom_line(data = CO2_ppm_800000, aes(x = yearsElapsed, y = CO2_ppm), colour = "orange")+
+  geom_text(aes(x = xAxisMin, y = 300, label = "Quaternary CO2"), colour = "orange") +
+  
+  geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C *100), colour = "green")+ #Note the multiplier. This should be removed.
+  geom_text(aes(x = xAxisMin, y = 0, label = "Temperature anomaly"), colour = "green") +
+  
+  geom_segment(data = monarchs, aes(x=startElapsedYears, xend=endElapsedYears, y=500, yend=500, size=10), colour = monarchs$houseColours)+
+  geom_text(aes(x = xAxisMin, y = 500, label = "Ruling English monarch"), colour = geoTimeTextcolour) +
+  geom_text_repel(data = monarchs, aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 500), max.overlaps = 3) +
+  
+  
+  geom_point(data = meteorites, aes(x = yearsElapsed, y = 1000, size = Diameter_km), colour = "hotpink")+
+  geom_text(aes(x = xAxisMin, y = 1000, label = "Meteorite impacts"), colour = "hotpink") +
+  
+  geom_segment(data = prehistory, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-600, yend=-600, size=10, colour = Name))+
+  geom_text(aes(x = xAxisMin, y = -600, label = "Prehistory"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = prehistory, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -600), max.overlaps = 3) +
+  
+  geom_line(data = LR04, aes(x = yearsElapsed, y = Benthic_d18O_per.mil *100), colour = "brown")+ #Note the multiplier. This should be removed.
+  geom_text(aes(x = xAxisMin, y = 100, label = "Benthic d18O"), colour = "brown")+
+  
+  geom_point(data = volcanoes, aes(x = yearsElapsed, y = 1200, size = Volume_km3), colour = "purple3")+
+  geom_text(aes(x = xAxisMin, y = 1200, label = "Volcano eruptions"), colour = "purple3") +
+  
+  geom_segment(data = supercontinents, aes(x=startElapsedYears, xend=endElapsedYears, y=-700, yend=-700, size=10, colour = Supercontinent))+
+  geom_text(aes(x = xAxisMin, y = -700, label = "Supercontinents"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = supercontinents, aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = -700), max.overlaps = 3) +
+  
+  geom_segment(data = historicTimePeriods, aes(x=startYearsElapsed, xend=endYearsElapsed, y=-800, yend=-800, size=10, colour = Name))+
+  geom_text(aes(x = xAxisMin, y = -800, label = "Historic time periods"), colour = geoTimeTextcolour)+
+  geom_text_repel(data = historicTimePeriods, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = -800), max.overlaps = 3) +
+  
+  geom_line(data = worldPop, aes(x = yearsElapsed, y = WorldPopulation), colour = "blue")+
+  geom_text(aes(x = xAxisMin, y = 1400, label = "World population"), colour = "blue")+
+  
+  geom_point(data = pandemics, aes(x = startYearElapsed, y = 1600, size = deathToll), colour = "darkolivegreen")+
+  geom_text(aes(x = xAxisMin, y = 1600, label = "Pandemics"), colour = "darkolivegreen") +
+  geom_text_repel(data = pandemics, aes(label=Name, x=startYearElapsed, y = 1600), max.overlaps = 3) +
+  
+  geom_line(data = milankovitch, aes(x = yearsElapsed, y = annual65N), colour = "seagreen")+
+  geom_text(aes(x = xAxisMin, y = 200, label = "Solar insolation 65N"), colour = "seagreen")+
+  
+  
+  
+
+  scale_x_continuous(
+    limits = c(xAxisMin, xAxisMax)#,
+#    breaks = xAxisBreaks
+  )+
+  
+  scale_y_continuous(
+    limits = c(yAxisMin, yAxisMax)
+  )+
+
+  xlab("Years elapsed") +
+#  theme_bw() + theme(panel.grid.minor = element_blank(), panel.grid.major =   element_blank(), axis.title.y=element_blank(),axis.text.y=element_blank(),  axis.ticks.y=element_blank())+
+  theme(legend.position="none")#+
+#  geom_text(aes(label=geoTimeScale$Age, x = (geoTimeScale$End_years_ago + (geoTimeScale$Start_years_ago - geoTimeScale$End_years_ago)/2), y = 0.6, angle=90), colour = geoTimeScale$text_colour)
+
+
+
+
+
+
+
+#End of ggplot timeline----

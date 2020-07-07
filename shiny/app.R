@@ -62,11 +62,26 @@ milankovitch <- read.csv(file="data/processed/Milankovitch.csv", header = TRUE)
 # end of data import
 
 
-
-# This was quickly done. This list should be user friendly and is used in the UI later. Includes source() names too which is undesiable.
+# A friendly-ish list of variable names.
+# The order of this list determines the order of plotting in the UI.
 listOfDatasets <- c(
-    ls()
+    "CO2",
+    "GeoTimescale",
+    "HistoricTimePeriods",
+    "LR04",
+    "Meteorites",
+    "Milankovitch",
+    "Monarchs",
+    "Pandemics",
+    "Prehistory",
+    "Supercontinents",
+    "Temp",
+    "Volcanoes",
+    "WorldPop"
 )
+
+
+listOfPlots <- paste0("plot", listOfDatasets)
 
 
 
@@ -80,21 +95,14 @@ xAxisMax <- today() %>% ymd(.) %>% decimal_date(.) %>% yearCEtoYearsElapsed(.,"C
 
 #End of adjusting x-axis
 
-#---- Adjust y-axis ----
 
-yAxisMin <- -800 # is an arbitrary number
+#---- Individual ggplots ----
+# Load in ggplots from external file
 
-yAxisMax <- 2000 # is an arbitrary number
-
-#End of adjusting y-axis
+source("scripts/R/IndividualPlots.R")
 
 
-
-
-
-
-
-
+# end of loading plots
 
 
 
@@ -108,40 +116,173 @@ ui <- fluidPage(
     
     
     mainPanel(
-        plotOutput("timelinePlot")
-    ),
+        plotOutput(listOfPlots[1]),
+        plotOutput(listOfPlots[2]),
+        plotOutput(listOfPlots[3]),
+        plotOutput(listOfPlots[4]),
+        plotOutput(listOfPlots[5]),
+        plotOutput(listOfPlots[6]),
+        plotOutput(listOfPlots[7]),
+        plotOutput(listOfPlots[8]),
+        plotOutput(listOfPlots[9]),
+        plotOutput(listOfPlots[10]),
+        plotOutput(listOfPlots[11]),
+        plotOutput(listOfPlots[12]),
+        plotOutput(listOfPlots[13])
+        ),
     
     
     fluidRow(
-        column(12,
+        column(width = 12,
 #               h4("Timeline range"),
                     sliderInput("timelineRange", "Timeline range",
                                 min = xAxisMin, max = xAxisMax,
                                 value = c(xAxisMin, xAxisMax))
-               ),
-        
-        column(12,
-               checkboxGroupInput(datasetsChecked, "Select datasets to plot", listOfDatasets, selected = NULL)
                )
+    ),
 
+    fluidRow(
+        column(width = 6,
+               checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = NULL)
+               )
     
     )
 )
+
     
 
-
-phanCO2 <- ggplot()+
-    geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")
 
 
 
 # Define server logic required to draw the controls and timelinePlot
 server <- function(input, output) {
 
-    output$timelinePlot <- renderPlot({
-        phanCO2
+    output$plotCO2 <- renderPlot({
+        plotCO2 +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
         
     })
+    
+    
+    output$plotGeoTimescale <- renderPlot({
+        plotGeoTimescale +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+
+    
+    output$plotHistoricTimePeriods <- renderPlot({
+        plotHistoricTimePeriods +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    output$plotLR04 <- renderPlot({
+        plotLR04 +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    output$plotMeteorites <- renderPlot({
+        plotMeteorites +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+
+    
+    output$plotMilankovitch <- renderPlot({
+        plotMilankovitch +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    
+    output$plotMonarchs <- renderPlot({
+        plotMonarchs +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    
+    output$plotPandemics <- renderPlot({
+        plotPandemics +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    output$plotPrehistory <- renderPlot({
+        plotPrehistory +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    
+    output$plotSupercontinents <- renderPlot({
+        plotSupercontinents +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    output$plotTemp <- renderPlot({
+        plotTemp +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+   
+     
+    output$plotVolcanoes <- renderPlot({
+        plotVolcanoes +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    
+    output$plotWorldPop <- renderPlot({
+        plotWorldPop +
+            scale_x_continuous( #force x-axis scale
+                limits = c(input$timelineRange[1], input$timelineRange[2])
+            )
+        
+    })
+    
+    
+    
+    
 }
 
 
