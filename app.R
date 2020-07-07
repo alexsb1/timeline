@@ -18,46 +18,20 @@ library(shinythemes)
 library(rsconnect)
 library(tidyverse)
 library(ggrepel)
-library(ggpubr) #check is this is still necessary. It's used to plot multiple ggplots on a single canvas.
+library(lubridate)
 
 #end of libraries
+
+#---- data import ----
+# ATTENTION
+# All the data processing should have already been completed using DataProcessing.R
 
 # Source Functions.R file so these functions are available here.
 source("scripts/R/Functions.R")
 
-
-#---- data import ----
-
-# ATTENTION
-
-# All the data processing should have already been completed using DataProcessing.R
-# Any import here should be ready to plot.
-# Any data processing here is computed on the fly, so will affect user experience.
-
-#start of data import
-
-geoTimeScale <- read.csv(file="data/processed/geoTimeScale.csv", header = TRUE)
-epochPlot <- read.csv(file="data/processed/epochPlot.csv", header = TRUE)
-periodPlot <- read.csv(file="data/processed/periodPlot.csv", header = TRUE)
-eraPlot <- read.csv(file="data/processed/eraPlot.csv", header = TRUE)
-eonPlot <- read.csv(file="data/processed/eonPlot.csv", header = TRUE)
-phanerozoicCO2 <- read.csv(file="data/processed/phanerozoicCO2.csv", header = TRUE)
-CO2_ppm_800000 <- read.csv(file="data/processed/CO2_ppm_800000.csv", header = TRUE)
-tempAnom <- read.csv(file="data/processed/tempAnom.csv", header = TRUE)
-historicEvents <- read.csv(file="data/processed/historicEvents.csv", header = TRUE)
-monarchs <- read.csv(file="data/processed/monarchs.csv", header = TRUE)
-meteorites <- read.csv(file="data/processed/meteorites.csv", header = TRUE)
-prehistory <- read.csv(file="data/processed/prehistory.csv", header = TRUE)
-historicTimePeriods <- read.csv(file="data/processed/historicTimePeriods.csv", header = TRUE)
-LR04 <- read.csv(file="data/processed/LR04.csv", header = TRUE)
-volcanoes <- read.csv(file="data/processed/volcanoes.csv", header = TRUE)
-supercontinents <- read.csv(file="data/processed/supercontinents.csv", header = TRUE)
-worldPop <- read.csv(file="data/processed/worldPop.csv", header = TRUE)
-pandemics <- read.csv(file="data/processed/pandemics.csv", header = TRUE)
-climateEvents <- read.csv(file="data/processed/climateEvents.csv", header = TRUE)
-bondEvents <- read.csv(file="data/processed/bondEvents.csv", header = TRUE)
-milankovitch <- read.csv(file="data/processed/Milankovitch.csv", header = TRUE)
-
+# Source the ggplots
+# This contains the default xAxisMin and xAxisMax values that are used to preload the entire graph, to optimise the suer experience.
+source("scripts/R/IndividualPlots.R")
 
 # end of data import
 
@@ -82,27 +56,6 @@ listOfDatasets <- c(
 
 
 listOfPlots <- paste0("plot", listOfDatasets)
-
-
-
-
-#---- Preset x-axis ----
-# Preset the x-axis so the timeline can load in full before giving the user the ability to change.
-
-xAxisMin <- 0 # 0 is the formation of the earth. In years.
-
-xAxisMax <- today() %>% ymd(.) %>% decimal_date(.) %>% yearCEtoYearsElapsed(.,"CE") #convert into continuous value for x axis time elapsed.
-
-#End of adjusting x-axis
-
-
-#---- Individual ggplots ----
-# Load in ggplots from external file
-
-source("scripts/R/IndividualPlots.R")
-
-
-# end of loading plots
 
 
 
@@ -132,14 +85,14 @@ ui <- fluidPage(
         ),
     
     
-    fluidRow(
-        column(width = 12,
+    mainPanel(
+#        column(width = 12,
 #               h4("Timeline range"),
                     sliderInput("timelineRange", "Timeline range",
                                 min = xAxisMin, max = xAxisMax,
                                 value = c(xAxisMin, xAxisMax))
                )
-    ),
+    ,
 
     fluidRow(
         column(width = 6,
@@ -293,7 +246,6 @@ shinyApp(ui = ui, server = server)
 
 # TODO
 
-# Make the ggplots work - and optimise so they don't take too long to reload.
 # Add / remove datasets as selected in the UI
 # here is help documentation about reactive expressions. This will be needed to replot for change in xaxis.
 # https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/

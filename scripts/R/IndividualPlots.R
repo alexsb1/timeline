@@ -1,10 +1,61 @@
 #----ggplot timeline----
 # Note that meteorites contains one NA observation, so will always cause a warning message when generating the ggplot timeline.
 
+# Load necessary libraries to make this a self sufficient script
+library(tidyverse)
+library(ggrepel)
+
+source("scripts/R/Functions.R")
+
+
+# This imports the dataframes
+# ATTENTION
+
+# All the data processing should have already been completed using DataProcessing.R
+# Any import here should be ready to plot.
+# Any data processing here is computed on the fly, so will affect user experience.
+
+#start of data import
+
+geoTimeScale <- read.csv(file="data/processed/geoTimeScale.csv", header = TRUE)
+epochPlot <- read.csv(file="data/processed/epochPlot.csv", header = TRUE)
+periodPlot <- read.csv(file="data/processed/periodPlot.csv", header = TRUE)
+eraPlot <- read.csv(file="data/processed/eraPlot.csv", header = TRUE)
+eonPlot <- read.csv(file="data/processed/eonPlot.csv", header = TRUE)
+phanerozoicCO2 <- read.csv(file="data/processed/phanerozoicCO2.csv", header = TRUE)
+CO2_ppm_800000 <- read.csv(file="data/processed/CO2_ppm_800000.csv", header = TRUE)
+tempAnom <- read.csv(file="data/processed/tempAnom.csv", header = TRUE)
+historicEvents <- read.csv(file="data/processed/historicEvents.csv", header = TRUE)
+monarchs <- read.csv(file="data/processed/monarchs.csv", header = TRUE)
+meteorites <- read.csv(file="data/processed/meteorites.csv", header = TRUE)
+prehistory <- read.csv(file="data/processed/prehistory.csv", header = TRUE)
+historicTimePeriods <- read.csv(file="data/processed/historicTimePeriods.csv", header = TRUE)
+LR04 <- read.csv(file="data/processed/LR04.csv", header = TRUE)
+volcanoes <- read.csv(file="data/processed/volcanoes.csv", header = TRUE)
+supercontinents <- read.csv(file="data/processed/supercontinents.csv", header = TRUE)
+worldPop <- read.csv(file="data/processed/worldPop.csv", header = TRUE)
+pandemics <- read.csv(file="data/processed/pandemics.csv", header = TRUE)
+climateEvents <- read.csv(file="data/processed/climateEvents.csv", header = TRUE)
+bondEvents <- read.csv(file="data/processed/bondEvents.csv", header = TRUE)
+milankovitch <- read.csv(file="data/processed/Milankovitch.csv", header = TRUE)
+
+
+# end of data import
+
+
+# Preset the x-axis so the timeline can load in full before giving the user the ability to change.
+
+xAxisMin <- 0 # 0 is the formation of the earth. In years.
+
+xAxisMax <- today() %>% ymd(.) %>% decimal_date(.) %>% yearCEtoYearsElapsed(.,"CE") #convert into continuous value for x axis time elapsed.
+
+#End of adjusting x-axis
+
+
 geoTimeTextcolour <- "black"
 
 
-# xAxisBreaks <- as.data.frame(xAxisBreaks)
+# xAxisBreaks <- NULL
 colourList <- paste0("#", geoTimeScale$back_colour)
 
 
@@ -312,76 +363,3 @@ plotMilankovitch <- ggplot()+
 
 #End of ggplot timelines----
 
-
-
-
-# Make single multiplot that is aligned by x-axis (years elapsed) ----
-
-# Comment out any unwanted plot
-listOfPlots <- list(
-                 plotGeoTimescale, #Note that this plot includes the x-axis time elapsed values.
-                 plotCO2,
-                 plotTemp,
-                 plotMonarchs,
-                 plotMeteorites,
-                 plotPrehistory,
-                 plotLR04,
-                 plotVolcanoes,
-                 plotSupercontinents,
-                 plotHistoricTimePeriods,
-                 plotWorldPop,
-                 plotPandemics,
-                 plotMilankovitch
-                 )
-
-# The plotGeoTimescale should be 5 times taller than anything else to avoid each row being compressed.
-listOfHeights <- c(
-  1, #try 5 times taller for plotGeoTimescale
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1,
-  1
-  
-)
-
-x <- ggarrange(plotlist = listOfPlots[1:5], ncol = 1, nrow = 5, align = "hv", heights = listOfHeights[1:5], common.legend = TRUE)
-
-
-
-# This is form Lorna's suggestion. Doesn't work - same issue.
-p1 <- ggarrange(plotlist = listOfPlots[1:5], ncol = 1, nrow = 5)
-p2 <- ggarrange(plotlist = listOfPlots[6:10], ncol = 1, nrow = 5)
-p3 <- ggarrange(plotlist = listOfPlots[11:13], ncol = 1, nrow = 5)
-
-p4 <- ggarrange(p1,p2,p3, ncol = 1, nrow = 3)
-
-
-
-
-
-# Saves the combined plot into a series of png images.
-for(q in 1:length(x)){
-  ggsave(filename = paste0(q,".png"), plot = x[[q]])
-}
-
-
-# End of multiplot ----
-
-
-
-
-
-
-
-
-
-# this works because it's not too tall
-ggarrange(plotlist = listOfPlots, ncol = 2, nrow = 7, align = "hv", common.legend = TRUE, legend = "none")

@@ -414,7 +414,7 @@ write.csv(bondEvents, file = "data/processed/bondEvents.csv", row.names=FALSE)
 # Convert from years before present to ears elapsed
 
 milankovitch$yearsElapsed <- yearsAgoToEapsedYears(milankovitch$yearsBP)
-write.csv(milankovitch, file = "data/processed/milankovitch.csv", row.names=FALSE)
+write.csv(milankovitch, file = "data/processed/Milankovitch.csv", row.names=FALSE)
 
 # end of Milankovitch cycles
 
