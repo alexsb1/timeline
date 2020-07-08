@@ -27,11 +27,11 @@ library(lubridate)
 # All the data processing should have already been completed using DataProcessing.R
 
 # Source Functions.R file so these functions are available here.
-source("scripts/R/Functions.R")
+source("scripts/Functions.R")
 
 # Source the ggplots
 # This contains the default xAxisMin and xAxisMax values that are used to preload the entire graph, to optimise the suer experience.
-source("scripts/R/IndividualPlots.R")
+source("scripts/IndividualPlots.R")
 
 # end of data import
 
