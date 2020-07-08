@@ -33,6 +33,12 @@ source("scripts/Functions.R")
 # This contains the default xAxisMin and xAxisMax values that are used to preload the entire graph, to optimise the suer experience.
 source("scripts/IndividualPlots.R")
 
+# Source the reference list
+# This must be called after ggplots
+source("scripts/Sources.R")
+
+referenceList
+
 # end of data import
 
 
