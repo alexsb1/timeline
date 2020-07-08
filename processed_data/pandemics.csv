@@ -1,0 +1,21 @@
+"Name","startYear","endYear","Type","deathToll","startYearElapsed","endYearElapsed"
+"Antonine Plague",165,180,"Believed to be either smallpox or measles",5000000,4599998145,4599998160
+"Japanese smallpox epidemic",735,737,"Variola major virus",1000000,4599998715,4599998717
+"Plague of Justinian",541,542,"Yersinia pestis bacteria / Rats, fleas",50000000,4599998521,4599998522
+"Black Death",1347,1351,"Yersinia pestis bacteria / Rats, fleas",200000000,4599999327,4599999331
+"New World Smallpox Outbreak",1520,2020,"Variola major virus",56000000,4599999500,4.6e+09
+"Great Plague of London",1665,1665,"Yersinia pestis bacteria / Rats, fleas",100000,4599999645,4599999645
+"Italian plague",1629,1631,"Yersinia pestis bacteria / Rats, fleas",1000000,4599999609,4599999611
+"Cholera Pandemics 1-6",1817,1923,"V. cholerae bacteria",1000000,4599999797,4599999903
+"Third Plague",1885,1885,"Yersinia pestis bacteria / Rats, fleas",12000000,4599999865,4599999865
+"Yellow Fever",1800,1800,"Virus / Mosquitoes",150000,4599999780,4599999780
+"Russian Flu",1889,1890,"Believed to be H2N2 (avian origin)",1000000,4599999869,4599999870
+"Spanish Flu",1918,1919,"H1N1 virus / Pigs",50000000,4599999898,4599999899
+"Asian Flu",1957,1958,"H2N2 virus",11000000,4599999937,4599999938
+"Hong Kong Flu",1968,1970,"H3N2 virus",1000000,4599999948,4599999950
+"HIV/AIDS",1981,2020,"Virus / Chimpanzees",35000000,4599999961,4.6e+09
+"Swine Flu",2009,2010,"H1N1 virus / Pigs",200000,4599999989,4599999990
+"SARS",2002,2003,"Coronavirus / Bats, Civets",770,4599999982,4599999983
+"Ebola",2014,2016,"Ebolavirus / Wild animals",11000,4599999994,4599999996
+"MERS",2015,2020,"Coronavirus / Bats, camels",850,4599999995,4.6e+09
+"COVID-19",2019,2020,"Coronavirus – Unknown (possibly pangolins)",399910,4599999999,4.6e+09

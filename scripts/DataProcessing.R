@@ -5,7 +5,7 @@
 # This script imports raw data files and processes the data into a standardised format in preparation for plotting on a timeline.
 #
 # It's likely this file is only run when new data is added.
-# The processed data is stored in ./data/processed
+# The processed data is stored in ./processed_data
 
 
 #---- Citations for data
@@ -33,31 +33,31 @@ library(lubridate)
 
 #----Functions ----
 # Link to file containing custom functions required to process the data
-source("scripts/R/Functions.R")
+source("scripts/Functions.R")
 
 
 # End of function links
 
 
 #---- data import ----
-geoTimeScale <- read.csv(file="data/raw/geological_time_scale.csv", header = TRUE)
-phanerozoicCO2 <- read.csv(file="data/raw/phanerozoicCO2.csv", header = TRUE)
-CO2_ppm_800000 <- read.csv(file="data/raw/CO2_ppm_800000_ybp.csv", header = TRUE)
-tempAnom <- read.csv(file="data/raw/temp_anomaly_800000_ybp.csv", header = TRUE)
-historicEvents <- read.csv(file="data/raw/historicEvents.csv", header = TRUE)
-monarchs <- read.csv(file="data/raw/monarchs.csv", header = TRUE)
-meteorites <- read.csv(file="data/raw/meteorites.csv", header = TRUE)
-prehistory <- read.csv(file="data/raw/prehistory.csv", header = TRUE)
-historicTimePeriods <- read.csv(file="data/raw/historicTimePeriods.csv", header = TRUE)
-LR04 <- read.csv(file="data/raw/LR04_benthic_stack.csv", header = TRUE)
-volcanoes <- read.csv(file="data/raw/volcanoes.csv", header = TRUE)
-supercontinents <- read.csv(file="data/raw/supercontinents.csv", header = TRUE)
-worldPop <- read.csv(file="data/raw/worldPopulation.csv", header = TRUE)
-pandemics <- read.csv(file="data/raw/pandemics.csv", header = TRUE)
-climateEvents <- read.csv(file="data/raw/climate_events.csv", header = TRUE)
-climateEventsYBP <- read.csv(file="data/raw/climate_events_ybp.csv", header = TRUE)
-bondEvents <- read.csv(file="data/raw/Bond_events.csv", header = TRUE)
-milankovitch <- read.csv(file="data/raw/Milankovitch.csv", header = TRUE)
+geoTimeScale <- read.csv(file="raw_data/geological_time_scale.csv", header = TRUE)
+phanerozoicCO2 <- read.csv(file="raw_data/phanerozoicCO2.csv", header = TRUE)
+CO2_ppm_800000 <- read.csv(file="raw_data/CO2_ppm_800000_ybp.csv", header = TRUE)
+tempAnom <- read.csv(file="raw_data/temp_anomaly_800000_ybp.csv", header = TRUE)
+historicEvents <- read.csv(file="raw_data/historicEvents.csv", header = TRUE)
+monarchs <- read.csv(file="raw_data/monarchs.csv", header = TRUE)
+meteorites <- read.csv(file="raw_data/meteorites.csv", header = TRUE)
+prehistory <- read.csv(file="raw_data/prehistory.csv", header = TRUE)
+historicTimePeriods <- read.csv(file="raw_data/historicTimePeriods.csv", header = TRUE)
+LR04 <- read.csv(file="raw_data/LR04_benthic_stack.csv", header = TRUE)
+volcanoes <- read.csv(file="raw_data/volcanoes.csv", header = TRUE)
+supercontinents <- read.csv(file="raw_data/supercontinents.csv", header = TRUE)
+worldPop <- read.csv(file="raw_data/worldPopulation.csv", header = TRUE)
+pandemics <- read.csv(file="raw_data/pandemics.csv", header = TRUE)
+climateEvents <- read.csv(file="raw_data/climate_events.csv", header = TRUE)
+climateEventsYBP <- read.csv(file="raw_data/climate_events_ybp.csv", header = TRUE)
+bondEvents <- read.csv(file="raw_data/Bond_events.csv", header = TRUE)
+milankovitch <- read.csv(file="raw_data/Milankovitch.csv", header = TRUE)
 
 # Note: more climate data is located in
 # data/not used/From Climate Data
@@ -89,7 +89,7 @@ geoTimeScale$End_years_ago <- geoTimeScale$End_million_years_ago * 1000000
 geoTimeScale$Start_elapsed_time <- geoTimeScale$Start_elapsed_time_million_years * 1000000
 geoTimeScale$End_elapsed_time <- geoTimeScale$End_elapsed_time_million_years * 1000000
 
-write.csv(geoTimeScale, file = "data/processed/geoTimeScale.csv", row.names=FALSE)
+write.csv(geoTimeScale, file = "processed_data/geoTimeScale.csv", row.names=FALSE)
 
 
 
@@ -115,7 +115,7 @@ for(i in uniqueEonList){
 
 eonPlot <- as.data.frame(eonPlot)
 print(eonPlot)
-write.csv(eonPlot, file = "data/processed/eonPlot.csv", row.names=FALSE)
+write.csv(eonPlot, file = "processed_data/eonPlot.csv", row.names=FALSE)
 
 
 # Makes a new dataframe containing only the eras
@@ -140,7 +140,7 @@ for(j in uniqueEraList){
 
 eraPlot <- as.data.frame(eraPlot)
 print(eraPlot)
-write.csv(eraPlot, file = "data/processed/eraPlot.csv", row.names=FALSE)
+write.csv(eraPlot, file = "processed_data/eraPlot.csv", row.names=FALSE)
 
 
 
@@ -166,7 +166,7 @@ for(k in uniquePeriodList){
 
 periodPlot <- as.data.frame(periodPlot)
 print(periodPlot)
-write.csv(periodPlot, file = "data/processed/periodPlot.csv", row.names=FALSE)
+write.csv(periodPlot, file = "processed_data/periodPlot.csv", row.names=FALSE)
 
 
 
@@ -193,7 +193,7 @@ for(l in uniqueEpochList){
 
 epochPlot <- as.data.frame(epochPlot)
 print(epochPlot)
-write.csv(epochPlot, file = "data/processed/epochPlot.csv", row.names=FALSE)
+write.csv(epochPlot, file = "processed_data/epochPlot.csv", row.names=FALSE)
 
 
 # End of making dataframes containing eon, era, epoch and age time periods.
@@ -203,7 +203,7 @@ write.csv(epochPlot, file = "data/processed/epochPlot.csv", row.names=FALSE)
 
 phanerozoicCO2$yearsAgo <- phanerozoicCO2$Age_Ma * 1000000
 phanerozoicCO2$yearsElapsed <- yearsAgoToEapsedYears(phanerozoicCO2$yearsAgo)
-write.csv(phanerozoicCO2, file = "data/processed/phanerozoicCO2.csv", row.names=FALSE)
+write.csv(phanerozoicCO2, file = "processed_data/phanerozoicCO2.csv", row.names=FALSE)
 
 
 # End of phanerozoic CO2 processing
@@ -211,20 +211,20 @@ write.csv(phanerozoicCO2, file = "data/processed/phanerozoicCO2.csv", row.names=
 # CO2_ppm_800000
 # convert from years_before present to yearsElapsed
 CO2_ppm_800000$yearsElapsed <- yearsAgoToEapsedYears(CO2_ppm_800000$years_before_present)
-write.csv(CO2_ppm_800000, file = "data/processed/CO2_ppm_800000.csv", row.names=FALSE)
+write.csv(CO2_ppm_800000, file = "processed_data/CO2_ppm_800000.csv", row.names=FALSE)
 
 # end of CO2_ppm_800000
 
 # tempAnom
 tempAnom$yearsElapsed <- yearsAgoToEapsedYears(tempAnom$years_before_present)
-write.csv(tempAnom, file = "data/processed/tempAnom.csv", row.names=FALSE)
+write.csv(tempAnom, file = "processed_data/tempAnom.csv", row.names=FALSE)
 
 # end of tempAnom
 
 
 
 # Historic events
-write.csv(historicEvents, file = "data/processed/historicEvents.csv", row.names=FALSE)
+write.csv(historicEvents, file = "processed_data/historicEvents.csv", row.names=FALSE)
 
 # end of historic events
 
@@ -271,7 +271,7 @@ monarchs$end_ymd <- monarch_end_ymd %>% ymd(.) %>% decimal_date(.) #saves as yea
 monarchs$startElapsedYears <- yearCEtoYearsElapsed(monarchs$start_ymd,"CE")
 monarchs$endElapsedYears <- yearCEtoYearsElapsed(monarchs$end_ymd,"CE")
 
-write.csv(monarchs, file = "data/processed/monarchs.csv", row.names=FALSE)
+write.csv(monarchs, file = "processed_data/monarchs.csv", row.names=FALSE)
 
 
 # End of monarchs
@@ -281,7 +281,7 @@ write.csv(monarchs, file = "data/processed/monarchs.csv", row.names=FALSE)
 
 
 meteorites$yearsElapsed <- (meteorites$Age_Ma * 1000000) %>% yearsAgoToEapsedYears(.)
-write.csv(meteorites, file = "data/processed/meteorites.csv", row.names=FALSE)
+write.csv(meteorites, file = "processed_data/meteorites.csv", row.names=FALSE)
 
 
 # end of meteorites
@@ -291,13 +291,13 @@ write.csv(meteorites, file = "data/processed/meteorites.csv", row.names=FALSE)
 
 prehistory$startYearsElapsed <- (prehistory$start_kya * 1000) %>% yearsAgoToEapsedYears(.)
 prehistory$endYearsElapsed <- (prehistory$end_kya * 1000) %>% yearsAgoToEapsedYears(.)
-write.csv(prehistory, file = "data/processed/prehistory.csv", row.names=FALSE)
+write.csv(prehistory, file = "processed_data/prehistory.csv", row.names=FALSE)
 
 # end of prehistory
 
 # LR04 benthic stack
 LR04$yearsElapsed <- (LR04$Time_ka * 1000) %>% yearsAgoToEapsedYears(.)
-write.csv(LR04, file = "data/processed/LR04.csv", row.names=FALSE)
+write.csv(LR04, file = "processed_data/LR04.csv", row.names=FALSE)
 
 
 
@@ -308,7 +308,7 @@ write.csv(LR04, file = "data/processed/LR04.csv", row.names=FALSE)
 # convert from Mya to years elapsed
 volcanoes$yearsAgo <- volcanoes$Age_Mya * 1000000
 volcanoes$yearsElapsed <- yearsAgoToEapsedYears(volcanoes$yearsAgo)
-write.csv(volcanoes, file = "data/processed/volcanoes.csv", row.names=FALSE)
+write.csv(volcanoes, file = "processed_data/volcanoes.csv", row.names=FALSE)
 
 # end of volcanoes
 
@@ -316,7 +316,7 @@ write.csv(volcanoes, file = "data/processed/volcanoes.csv", row.names=FALSE)
 # supercontinents
 supercontinents$startElapsedYears <- (supercontinents$startAge_Mya * 1000000) %>% yearsAgoToEapsedYears(.)
 supercontinents$endElapsedYears <- (supercontinents$endAge_Mya * 1000000) %>% yearsAgoToEapsedYears(.)
-write.csv(supercontinents, file = "data/processed/supercontinents.csv", row.names=FALSE)
+write.csv(supercontinents, file = "processed_data/supercontinents.csv", row.names=FALSE)
 
 # end supercontinents
 
@@ -324,7 +324,7 @@ write.csv(supercontinents, file = "data/processed/supercontinents.csv", row.name
 # world population
 
 worldPop$yearsElapsed <- yearCEtoYearsElapsed(worldPop$Year, worldPop$Era)
-write.csv(worldPop, file = "data/processed/worldPop.csv", row.names=FALSE)
+write.csv(worldPop, file = "processed_data/worldPop.csv", row.names=FALSE)
 
 # Investigate why the console gives "Date error" when this is successful.
 # end world population
@@ -333,7 +333,7 @@ write.csv(worldPop, file = "data/processed/worldPop.csv", row.names=FALSE)
 # pandemics
 pandemics$startYearElapsed <- yearCEtoYearsElapsed(pandemics$startYear,"CE") #All the pandemic events in this file are CE.
 pandemics$endYearElapsed <- yearCEtoYearsElapsed(pandemics$endYear,"CE")
-write.csv(pandemics, file = "data/processed/pandemics.csv", row.names=FALSE)
+write.csv(pandemics, file = "processed_data/pandemics.csv", row.names=FALSE)
 
 # end of pandemics
 
@@ -358,7 +358,7 @@ for(i in 1:nrow(historicTimePeriods)){
   historicTimePeriodsEnd <- append(historicTimePeriodsEnd, yearCEtoYearsElapsed(historicTimePeriods$end_year[i], historicTimePeriods$end_era[i]))
 }
 historicTimePeriods$endYearsElapsed <- historicTimePeriodsEnd
-write.csv(historicTimePeriods, file = "data/processed/historicTimePeriods.csv", row.names=FALSE)
+write.csv(historicTimePeriods, file = "processed_data/historicTimePeriods.csv", row.names=FALSE)
 
 # End of historic time periods
 
@@ -388,7 +388,7 @@ climateEvents <- merge(climateEvents, climateEventsYBP, all = TRUE)
 # Remove now superfluous dataframe
 rm(climateEventsYBP)
 
-write.csv(climateEvents, file = "data/processed/climateEvents.csv", row.names=FALSE)
+write.csv(climateEvents, file = "processed_data/climateEvents.csv", row.names=FALSE)
 
 # end of climate events
 
@@ -399,7 +399,7 @@ write.csv(climateEvents, file = "data/processed/climateEvents.csv", row.names=FA
 
 # Bond events
 bondEvents$yearsElapsed <- yearCEtoYearsElapsed(bondEvents$Year, bondEvents$Era)
-write.csv(bondEvents, file = "data/processed/bondEvents.csv", row.names=FALSE)
+write.csv(bondEvents, file = "processed_data/bondEvents.csv", row.names=FALSE)
 
 
 
@@ -414,7 +414,7 @@ write.csv(bondEvents, file = "data/processed/bondEvents.csv", row.names=FALSE)
 # Convert from years before present to ears elapsed
 
 milankovitch$yearsElapsed <- yearsAgoToEapsedYears(milankovitch$yearsBP)
-write.csv(milankovitch, file = "data/processed/Milankovitch.csv", row.names=FALSE)
+write.csv(milankovitch, file = "processed_data/Milankovitch.csv", row.names=FALSE)
 
 # end of Milankovitch cycles
 

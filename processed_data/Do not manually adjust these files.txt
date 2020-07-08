@@ -1,0 +1,3 @@
+Do not manually adjust these files.
+These files are ready for plotting and simple on-the-fly processing for visualisations.
+If the contents of a file needs to be modified, change it programmatically using DataProcessing.R.

@@ -69,6 +69,7 @@ ui <- fluidPage(
     
     
     mainPanel(
+        
         plotOutput(listOfPlots[1]),
         plotOutput(listOfPlots[2]),
         plotOutput(listOfPlots[3]),
@@ -82,21 +83,24 @@ ui <- fluidPage(
         plotOutput(listOfPlots[11]),
         plotOutput(listOfPlots[12]),
         plotOutput(listOfPlots[13])
+        
         ),
     
     
     mainPanel(
 #        column(width = 12,
 #               h4("Timeline range"),
-                    sliderInput("timelineRange", "Timeline range",
-                                min = xAxisMin, max = xAxisMax,
-                                value = c(xAxisMin, xAxisMax))
+
+        sliderInput("timelineRange", "Timeline range",
+                    min = xAxisMin, max = xAxisMax,
+                    value = c(xAxisMin, xAxisMax)
+                    )
                )
     ,
 
     fluidRow(
         column(width = 6,
-               checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = NULL)
+#               checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = TRUE)
                )
     
     )
@@ -110,11 +114,15 @@ ui <- fluidPage(
 # Define server logic required to draw the controls and timelinePlot
 server <- function(input, output) {
 
+    
+    
+    
     output$plotCO2 <- renderPlot({
         plotCO2 +
             scale_x_continuous( #force x-axis scale
                 limits = c(input$timelineRange[1], input$timelineRange[2])
             )
+        
         
     })
     
@@ -172,7 +180,7 @@ server <- function(input, output) {
             scale_x_continuous( #force x-axis scale
                 limits = c(input$timelineRange[1], input$timelineRange[2])
             )
-        
+
     })
     
     
@@ -232,8 +240,6 @@ server <- function(input, output) {
             )
         
     })
-    
-    
     
     
 }

@@ -5,7 +5,7 @@
 library(tidyverse)
 library(ggrepel)
 
-source("scripts/R/Functions.R")
+source("scripts/Functions.R")
 
 
 # This imports the dataframes
@@ -17,27 +17,27 @@ source("scripts/R/Functions.R")
 
 #start of data import
 
-geoTimeScale <- read.csv(file="data/processed/geoTimeScale.csv", header = TRUE)
-epochPlot <- read.csv(file="data/processed/epochPlot.csv", header = TRUE)
-periodPlot <- read.csv(file="data/processed/periodPlot.csv", header = TRUE)
-eraPlot <- read.csv(file="data/processed/eraPlot.csv", header = TRUE)
-eonPlot <- read.csv(file="data/processed/eonPlot.csv", header = TRUE)
-phanerozoicCO2 <- read.csv(file="data/processed/phanerozoicCO2.csv", header = TRUE)
-CO2_ppm_800000 <- read.csv(file="data/processed/CO2_ppm_800000.csv", header = TRUE)
-tempAnom <- read.csv(file="data/processed/tempAnom.csv", header = TRUE)
-historicEvents <- read.csv(file="data/processed/historicEvents.csv", header = TRUE)
-monarchs <- read.csv(file="data/processed/monarchs.csv", header = TRUE)
-meteorites <- read.csv(file="data/processed/meteorites.csv", header = TRUE)
-prehistory <- read.csv(file="data/processed/prehistory.csv", header = TRUE)
-historicTimePeriods <- read.csv(file="data/processed/historicTimePeriods.csv", header = TRUE)
-LR04 <- read.csv(file="data/processed/LR04.csv", header = TRUE)
-volcanoes <- read.csv(file="data/processed/volcanoes.csv", header = TRUE)
-supercontinents <- read.csv(file="data/processed/supercontinents.csv", header = TRUE)
-worldPop <- read.csv(file="data/processed/worldPop.csv", header = TRUE)
-pandemics <- read.csv(file="data/processed/pandemics.csv", header = TRUE)
-climateEvents <- read.csv(file="data/processed/climateEvents.csv", header = TRUE)
-bondEvents <- read.csv(file="data/processed/bondEvents.csv", header = TRUE)
-milankovitch <- read.csv(file="data/processed/Milankovitch.csv", header = TRUE)
+geoTimeScale <- read.csv(file="processed_data/geoTimeScale.csv", header = TRUE)
+epochPlot <- read.csv(file="processed_data/epochPlot.csv", header = TRUE)
+periodPlot <- read.csv(file="processed_data/periodPlot.csv", header = TRUE)
+eraPlot <- read.csv(file="processed_data/eraPlot.csv", header = TRUE)
+eonPlot <- read.csv(file="processed_data/eonPlot.csv", header = TRUE)
+phanerozoicCO2 <- read.csv(file="processed_data/phanerozoicCO2.csv", header = TRUE)
+CO2_ppm_800000 <- read.csv(file="processed_data/CO2_ppm_800000.csv", header = TRUE)
+tempAnom <- read.csv(file="processed_data/tempAnom.csv", header = TRUE)
+historicEvents <- read.csv(file="processed_data/historicEvents.csv", header = TRUE)
+monarchs <- read.csv(file="processed_data/monarchs.csv", header = TRUE)
+meteorites <- read.csv(file="processed_data/meteorites.csv", header = TRUE)
+prehistory <- read.csv(file="processed_data/prehistory.csv", header = TRUE)
+historicTimePeriods <- read.csv(file="processed_data/historicTimePeriods.csv", header = TRUE)
+LR04 <- read.csv(file="processed_data/LR04.csv", header = TRUE)
+volcanoes <- read.csv(file="processed_data/volcanoes.csv", header = TRUE)
+supercontinents <- read.csv(file="processed_data/supercontinents.csv", header = TRUE)
+worldPop <- read.csv(file="processed_data/worldPop.csv", header = TRUE)
+pandemics <- read.csv(file="processed_data/pandemics.csv", header = TRUE)
+climateEvents <- read.csv(file="processed_data/climateEvents.csv", header = TRUE)
+bondEvents <- read.csv(file="processed_data/bondEvents.csv", header = TRUE)
+milankovitch <- read.csv(file="processed_data/Milankovitch.csv", header = TRUE)
 
 
 # end of data import
