@@ -5,7 +5,7 @@
 # This file aggregates a list of sources used in this Timeline project
 #
 
-library(tideyverse)
+library(tidyverse)
 
 # Load Individual plots to import the dataframes used.
 # ATTENTION - take care to avoid this overwriting newer dataframes with the same name.

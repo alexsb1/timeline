@@ -73,6 +73,30 @@ ui <- fluidPage(
     # Application title
     titlePanel("A timeline of historic events and climate"),
     
+    mainPanel(
+#        column(width = 12,
+#               h4("Timeline range"),
+
+        sliderInput("timelineRange", "Timeline range",
+                    min = xAxisMin, max = xAxisMax,
+                    value = c(xAxisMin, xAxisMax)
+                    ),
+        
+        textOutput("rangeAsYearsElapsed"), #Print the time as years elapsed
+        
+        textOutput("rangeAsYearsBCE"), #Plan to print the friendly time as years BCE/CE
+        
+        textOutput("rangeAsYearsAgo") #Plan to print the friendly time as years ago
+        
+               )
+    ,
+
+    fluidRow(
+        column(width = 6,
+#               checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = TRUE)
+               )
+    
+    ),
     
     mainPanel(
         
@@ -90,27 +114,12 @@ ui <- fluidPage(
         plotOutput(listOfPlots[12]),
         plotOutput(listOfPlots[13])
         
-        ),
+        )
     
     
-    mainPanel(
-#        column(width = 12,
-#               h4("Timeline range"),
 
-        sliderInput("timelineRange", "Timeline range",
-                    min = xAxisMin, max = xAxisMax,
-                    value = c(xAxisMin, xAxisMax)
-                    )
-               )
-    ,
 
-    fluidRow(
-        column(width = 6,
-#               checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = TRUE)
-               )
-    
-    )
-)
+) # End of UI
 
     
 
@@ -119,9 +128,42 @@ ui <- fluidPage(
 
 # Define server logic required to draw the controls and timelinePlot
 server <- function(input, output) {
+    
 
+    # Calculate years elapsed from slider
+    output$rangeAsYearsElapsed <- renderText ({
+        paste("Shown time range from",
+              input$timelineRange[1] %>% format(., big.mark = ",", scientific = FALSE),
+              "to", 
+              input$timelineRange[2] %>% format(., big.mark = ",", scientific = FALSE),
+              "years elapsed since formation")
+    })
     
     
+    # Calculate years elapsed into friendly years BCE/BC
+    output$rangeAsYearsBCE <- renderText ({
+        paste("Shown time range from",
+              yearsElapsedToYearCE(input$timelineRange[1])[1] %>% floor(.) %>% format(., big.mark = ",", scientific = FALSE), #displays year
+              yearsElapsedToYearCE(input$timelineRange[1])[2], #displays BCE/CE
+              "to",
+              yearsElapsedToYearCE(input$timelineRange[2])[1] %>% floor(.) %>% format(., big.mark = ",", scientific = FALSE),
+              yearsElapsedToYearCE(input$timelineRange[2])[2]
+              )
+    })
+    
+    # Calculate years elapsed into friendly years ago
+    output$rangeAsYearsAgo <- renderText ({
+        paste("Shown time range from",
+              yearsElapsedToYearsAgo(input$timelineRange[1]) %>% floor(.) %>% format(., big.mark = ",", scientific = FALSE) , #displays year. Make sure format is last operation.
+              "to",
+              yearsElapsedToYearsAgo(input$timelineRange[2]) %>% trunc(.) %>% format(., big.mark = ",", scientific = FALSE),
+              "years ago"
+        )
+    })
+    
+    
+    
+    # Reactive plots
     
     output$plotCO2 <- renderPlot({
         plotCO2 +

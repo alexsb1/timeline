@@ -76,5 +76,10 @@ yearsAgoToEapsedYears <- function(yearsAgo){
 
 
 
+yearsElapsedToYearsAgo <- function(yearsElapsed){
+  yearsAgo <- yearCEtoYearsElapsed(today() %>% decimal_date(.), "CE") - yearsElapsed
+  return(yearsAgo)
+}
+
 
 #End of functions.
