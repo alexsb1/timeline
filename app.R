@@ -37,7 +37,7 @@ source("scripts/IndividualPlots.R")
 # This must be called after ggplots
 source("scripts/Sources.R")
 
-referenceList
+#referenceList
 
 # end of data import
 
@@ -114,8 +114,16 @@ ui <- fluidPage(
         plotOutput(listOfPlots[12]),
         plotOutput(listOfPlots[13])
         
+        ),
+
+    fluidRow(
+        column(width = 12,
+               actionButton("showReferencesButton", "Show reference list")
+            ),
+        tableOutput("referenceTable")
         )
-    
+
+
     
 
 
@@ -288,6 +296,11 @@ server <- function(input, output) {
             )
         
     })
+    
+    
+    output$referenceTable <- renderPrint({
+        referenceList %>% as.character(.)
+        })
     
     
 }
