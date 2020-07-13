@@ -163,7 +163,7 @@ server <- function(input, output) {
     output$rangeAsYearsAgo <- renderText ({
         paste("Shown time range from",
               yearsElapsedToYearsAgo(input$timelineRange[1]) %>% floor(.) %>% format(., big.mark = ",", scientific = FALSE) , #displays year. Make sure format is last operation.
-              "to",
+              "years ago to",
               yearsElapsedToYearsAgo(input$timelineRange[2]) %>% trunc(.) %>% format(., big.mark = ",", scientific = FALSE),
               "years ago"
         )

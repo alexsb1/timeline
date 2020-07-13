@@ -46,3 +46,4 @@ referenceList <- tempAnom$reference %>% append(referenceList, .)
 referenceList <- manualRefs %>% append(referenceList, .)
 
 referenceList <- referenceList %>% unique(.) %>% as.list(.)
+
