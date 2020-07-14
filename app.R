@@ -74,29 +74,43 @@ ui <- fluidPage(
     titlePanel("A timeline of historic events and climate"),
     
     mainPanel(
-#        column(width = 12,
-#               h4("Timeline range"),
+        fluidRow(width = 12,
+                 h4("Timeline Range"),
+                 
+                 sliderInput("maRange", "Ma range",
+                             min = xAxisMin, max = xAxisMax,
+                             value = c(xAxisMin, xAxisMax),
+                             step = 1000000
+                             ),
+                 
+                 sliderInput("kaRange", "Ka range",
+                             min = xAxisMin, max = xAxisMax,
+                             value = c(xAxisMin, xAxisMax),
+                             step = 1000
+                 ),
+                 
+                 sliderInput("timelineRange", "Timeline range",
+                             min = xAxisMin, max = xAxisMax,
+                             value = c(xAxisMin, xAxisMax),
+                             step = 100
+                             )
+        ),
 
-        sliderInput("timelineRange", "Timeline range",
-                    min = xAxisMin, max = xAxisMax,
-                    value = c(xAxisMin, xAxisMax)
-                    ),
-        
-        textOutput("rangeAsYearsElapsed"), #Print the time as years elapsed
-        
-        textOutput("rangeAsYearsBCE"), #Plan to print the friendly time as years BCE/CE
-        
-        textOutput("rangeAsYearsAgo") #Plan to print the friendly time as years ago
-        
-               )
-    ,
+        fluidRow(width = 12,
+                 textOutput("rangeAsYearsElapsed"), #Print the time as years elapsed
+                 textOutput("rangeAsYearsBCE"), #Plan to print the friendly time as years BCE/CE
+                 textOutput("rangeAsYearsAgo") #Plan to print the friendly time as years ago
+        ),
 
-    fluidRow(
-        column(width = 6,
-#               checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = TRUE)
-               )
-    
-    ),
+
+
+        fluidRow(
+            column(width = 12#,
+#                   checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = TRUE)
+            )
+        )
+
+    ), # end of main panel
     
     mainPanel(
         
@@ -135,16 +149,30 @@ ui <- fluidPage(
 
 
 # Define server logic required to draw the controls and timelinePlot
-server <- function(input, output) {
+server <- function(input, output, session) {
     
-
+    #Update fine timeline range slider with values from coarse slider
+    
+    observe({
+        updateSliderInput(session, "kaRange",
+                      min = input$maRange[1], max = input$maRange[2],
+                      value = c(input$maRange[1], input$maRange[2]))
+    })
+    
+    observe({
+        updateSliderInput(session, "timelineRange",
+                          min = input$kaRange[1], max = input$kaRange[2],
+                          value = c(input$kaRange[1], input$kaRange[2]))
+    })
+    
+    
     # Calculate years elapsed from slider
     output$rangeAsYearsElapsed <- renderText ({
         paste("Shown time range from",
               input$timelineRange[1] %>% format(., big.mark = ",", scientific = FALSE),
               "to", 
               input$timelineRange[2] %>% format(., big.mark = ",", scientific = FALSE),
-              "years elapsed since formation")
+              "years elapsed since Earth's formation")
     })
     
     
@@ -314,6 +342,5 @@ shinyApp(ui = ui, server = server)
 # TODO
 
 # Add / remove datasets as selected in the UI
-# here is help documentation about reactive expressions. This will be needed to replot for change in xaxis.
 # https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
 
