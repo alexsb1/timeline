@@ -73,6 +73,14 @@ ui <- fluidPage(
     # Application title
     titlePanel("A timeline of historic events and climate"),
     
+    #Show GitHub link
+    mainPanel(
+        fluidRow(width = 12,
+                 tags$p("By Alex Searle-Barnes"),
+                 tags$a(href = "https://github.com/alexsb1/timeline", target = "_blank", "View source code on GitHub")
+        )
+    ),
+    
     mainPanel(
         fluidRow(width = 12,
                  h4("Timeline Range"),
@@ -96,7 +104,8 @@ ui <- fluidPage(
                              ),
                  
                  actionButton("button1kya", "Show last 1000 years"),
-                 actionButton("button5kya", "Show last 5000 years")
+                 actionButton("button5kya", "Show last 5000 years"),
+                 actionButton("buttonReset", "Reset view")
                  
         ),
 
@@ -174,18 +183,35 @@ server <- function(input, output, session) {
     # Adjust timeline range slider value using action button
     # Take action on click
     observeEvent(input$button1kya, {
+        
+        updateSliderInput(session, "maRange",
+                          min = xAxisMin, max = xAxisMax, # The min and max should not change for the Ma slider.
+                          value = c(xAxisMax - 1000, xAxisMax))
+        
         updateSliderInput(session, "kaRange",
                           min = xAxisMax - 1500, max = xAxisMax, # This will give 500 years leeway on the minimum
                           value = c(xAxisMax - 1000, xAxisMax))
     })
     
+    
     observeEvent(input$button5kya, {
+        
+        updateSliderInput(session, "maRange",
+                          min = xAxisMin, max = xAxisMax, # The min and max should not change for the Ma slider.
+                          value = c(xAxisMax - 5000, xAxisMax))
+        
+        
         updateSliderInput(session, "kaRange",
                           min = xAxisMax - 6000, max = xAxisMax, # This will give 1000 years leeway on the minimum
                           value = c(xAxisMax - 5000, xAxisMax))
     })
     
     
+    observeEvent(input$buttonReset, {
+        updateSliderInput(session, "maRange",
+                          min = xAxisMin, max = xAxisMax, # This will reset Ma slider and subsequently all others.
+                          value = c(xAxisMin, xAxisMax))
+    })
     
     
     
@@ -349,9 +375,16 @@ server <- function(input, output, session) {
     })
     
     
-    output$referenceTable <- renderPrint({
+    
+    #Show reference list on click
+    
+    observeEvent(input$showReferencesButton, {
+        output$referenceTable <- renderPrint({
         referenceList %>% as.character(.)
         })
+    })
+    
+    
     
     
 }
