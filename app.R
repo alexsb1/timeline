@@ -93,7 +93,11 @@ ui <- fluidPage(
                              min = xAxisMin, max = xAxisMax,
                              value = c(xAxisMin, xAxisMax),
                              step = 100
-                             )
+                             ),
+                 
+                 actionButton("button1kya", "Show last 1000 years"),
+                 actionButton("button5kya", "Show last 5000 years")
+                 
         ),
 
         fluidRow(width = 12,
@@ -164,6 +168,25 @@ server <- function(input, output, session) {
                           min = input$kaRange[1], max = input$kaRange[2],
                           value = c(input$kaRange[1], input$kaRange[2]))
     })
+    
+    
+    
+    # Adjust timeline range slider value using action button
+    # Take action on click
+    observeEvent(input$button1kya, {
+        updateSliderInput(session, "kaRange",
+                          min = xAxisMax - 1500, max = xAxisMax, # This will give 500 years leeway on the minimum
+                          value = c(xAxisMax - 1000, xAxisMax))
+    })
+    
+    observeEvent(input$button5kya, {
+        updateSliderInput(session, "kaRange",
+                          min = xAxisMax - 6000, max = xAxisMax, # This will give 1000 years leeway on the minimum
+                          value = c(xAxisMax - 5000, xAxisMax))
+    })
+    
+    
+    
     
     
     # Calculate years elapsed from slider

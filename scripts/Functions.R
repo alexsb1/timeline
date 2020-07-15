@@ -29,7 +29,7 @@ yearCEtoElapsedTime <- 4600000000 #this is the number of years between years in 
 
 # Functions to convert to/from BCE/CE to years before present.
 
-yearCEtoYearsElapsed <- function(yearCE, CE){ #the CE specifies if the year date is common era (CE/AD) or before common era (BCE/BC). Note that YearCE is used as an input for both CR and BCE years.
+yearCEtoYearsElapsed <- function(yearCE, CE){ #the CE specifies if the year date is common era (CE/AD) or before common era (BCE/BC). Note that YearCE is used as an input for both CE and BCE years.
   ifelse(CE == "BCE",
          elapsedYear <- yearCEtoElapsedTime - thisYear - yearCE, #subtracts the number of years to account for being before common era (BCE/BC).
          ifelse(CE == "CE",

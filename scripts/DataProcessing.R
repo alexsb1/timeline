@@ -322,8 +322,16 @@ write.csv(supercontinents, file = "processed_data/supercontinents.csv", row.name
 
 
 # world population
+# Need to sue a for loop as a simplier input doesn't register the change from CE to BCE.
 
-worldPop$yearsElapsed <- yearCEtoYearsElapsed(worldPop$Year, worldPop$Era)
+worldPopYearsElapsed <- NULL
+
+for(i in 1:nrow(worldPop)){
+  worldPopYearsElapsed <- yearCEtoYearsElapsed(worldPop$Year[i], worldPop$Era[i]) %>% append(worldPopYearsElapsed, .)
+  }
+
+worldPop$yearsElapsed <- worldPopYearsElapsed
+
 write.csv(worldPop, file = "processed_data/worldPop.csv", row.names=FALSE)
 
 # Investigate why the console gives "Date error" when this is successful.
