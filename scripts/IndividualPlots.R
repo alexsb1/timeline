@@ -122,6 +122,7 @@ plotCO2 <- ggplot()+
 
 
 plotTemp <- ggplot()+
+  geom_hline(yintercept = 0, colour = "grey")+
   geom_line(data = tempAnom, aes(x = yearsElapsed, y = temp_anomaly_C), colour = "green") +
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Temperature anomaly"), colour = "green") +
   
@@ -165,6 +166,7 @@ plotMonarchs <- ggplot()+
 plotMeteorites <- ggplot()+
   geom_point(data = meteorites, aes(x = yearsElapsed, y = 0, size = Diameter_km), colour = "hotpink") +
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Meteorite impacts"), colour = "hotpink") +
+  geom_text_repel(data = meteorites, aes(label=Name, x=yearsElapsed, y = 0), max.overlaps = 3) +
   
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax)
@@ -231,6 +233,8 @@ plotLR04 <- ggplot()+
 plotVolcanoes <- ggplot()+
   geom_point(data = volcanoes, aes(x = yearsElapsed, y = 0, size = Volume_km3), colour = "purple3") +
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Volcano eruptions"), colour = "purple3") +
+  geom_text_repel(data = volcanoes, aes(label=Volcano, x=yearsElapsed, y = 0), max.overlaps = 3) +
+  
   
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax)

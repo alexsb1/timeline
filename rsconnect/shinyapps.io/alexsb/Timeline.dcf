@@ -5,9 +5,9 @@ account: alexsb
 server: shinyapps.io
 hostUrl: https://api.shinyapps.io/v1
 appId: 2545395
-bundleId: 3385914
+bundleId: 3399194
 url: https://alexsb.shinyapps.io/Timeline/
-when: 1594646595.4311
+when: 1594896179.0734
 asMultiple: FALSE
 asStatic: FALSE
-ignoredFiles: scripts/DataProcessing.R|scripts/Single ggplot with all geom plots.txt|NOT USED|raw_data|Timeline screenshots
+ignoredFiles: Todo.txt|scripts/DataProcessing.R|scripts/Single ggplot with all geom plots.txt|NOT USED|raw_data|Timeline screenshots

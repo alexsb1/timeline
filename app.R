@@ -45,19 +45,20 @@ source("scripts/Sources.R")
 # A friendly-ish list of variable names.
 # The order of this list determines the order of plotting in the UI.
 listOfDatasets <- c(
-    "CO2",
     "GeoTimescale",
-    "HistoricTimePeriods",
+    "CO2",
+    "Temp",
     "LR04",
-    "Meteorites",
     "Milankovitch",
-    "Monarchs",
+    "Supercontinents",
+    "Meteorites",
+    "Volcanoes",
     "Pandemics",
     "Prehistory",
-    "Supercontinents",
-    "Temp",
-    "Volcanoes",
+    "HistoricTimePeriods",
+    "Monarchs",
     "WorldPop"
+    
 )
 
 
@@ -144,11 +145,16 @@ ui <- fluidPage(
         ),
 
     fluidRow(
-        column(width = 12,
+        column(width = 6,
                actionButton("showReferencesButton", "Show reference list")
-            ),
-        tableOutput("referenceTable")
+            )
+        ),
+
+    fluidRow(
+        column(width = 6,
+               tableOutput("referenceTable")
         )
+    )
 
 
     
