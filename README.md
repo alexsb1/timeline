@@ -5,7 +5,13 @@
 
 This is an interactive webpage displaying key climate measures alongside key historical events, all on plots that have a unified x-axis as controlled by the sliders.
 
+View the interactive timeline here. [https://alexsb.shinyapps.io/Timeline/](https://alexsb.shinyapps.io/Timeline/)
+
+
+
 The code is written in R and Shiny. It's possible to plot more events by adding new lines the csv files located in /raw_data.
 
 This project was to aggregate multiple existing data sources to show concurrent events.
 All the sources used are loisted in the individual csv files then aggregated in Sources.R and are displayed in the main app.R on request.
+
+![Screenshot of the interactive timeline in a web browser](https://raw.githubusercontent.com/alexsb1/timeline/master/Timeline%20screenshots/A%20timeline%20of%20historic%20events%20and%20climate.jpg)
