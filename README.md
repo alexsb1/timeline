@@ -15,8 +15,6 @@ This project was to aggregate multiple existing data sources to show concurrent 
 All the sources used are loisted in the individual csv files then aggregated in Sources.R and are displayed in the main app.R on request.
 
 #### Screenshot of the interactive timeline in a web browser
-![Screenshot of the interactive timeline in a web browser](https://raw.githubusercontent.com/alexsb1/timeline/master/Timeline%20screenshots/A%20timeline%20of%20historic%20events%20and%20climate.jpg)
-
 ![Screenshot of the interactive timeline in a web browser](https://github.com/alexsb1/timeline/blob/master/Timeline%20screenshots/284_mya_geological_periods.jpg)
 
 ![Screenshot of the interactive timeline in a web browser](https://github.com/alexsb1/timeline/blob/master/Timeline%20screenshots/3600_years_ago_Page_3.jpg)
