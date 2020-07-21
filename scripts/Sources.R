@@ -12,8 +12,8 @@ library(tidyverse)
 source("scripts/IndividualPlots.R")
 
 manualRefs <- c("LR04 stack, Lisiecki, L. E., and M. E. Raymo (2005), A Pliocene-Pleistocene stack of 57 globally distributed benthic d18O records, Paleoceanography,20, PA1003, doi:10.1029/2004PA001071.",
-                "https://www.visualcapitalist.com/history-of-pandemics-deadliest/",
-                "http://www.climatedata.info/"
+                "https://www.visualcapitalist.com/history-of-pandemics-deadliest; date accessed 21 July 2020",
+                "http://www.climatedata.info; date accessed 21 July 2020"
 ) 
 
 
@@ -29,7 +29,6 @@ manualRefs <- c("LR04 stack, Lisiecki, L. E., and M. E. Raymo (2005), A Pliocene
 # pandemics #no reference column
 # phanerozoicCO2 #no reference column
 # supercontinents #no reference column
-# volcanoes #no reference column
 # worldPop #no reference column
 
 
@@ -43,6 +42,7 @@ referenceList <- meteorites$Reference %>% append(referenceList, .)
 referenceList <- milankovitch$Source %>% append(referenceList, .)
 referenceList <- monarchs$reference %>% append(referenceList, .)
 referenceList <- tempAnom$reference %>% append(referenceList, .)
+referenceList <- volcanoes$Reference %>% append(referenceList, .)
 referenceList <- manualRefs %>% append(referenceList, .)
 
 referenceList <- referenceList %>% unique(.) %>% as.list(.)

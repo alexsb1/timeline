@@ -1,0 +1,13 @@
+name: Timeline
+title:
+username:
+account: alexsb
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2545395
+bundleId: 3411830
+url: https://alexsb.shinyapps.io/Timeline/
+when: 1595244894.23793
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: README.md|Todo.txt|scripts/DataProcessing.R|scripts/Single ggplot with all geom plots.txt|NOT USED|raw_data|Timeline screenshots

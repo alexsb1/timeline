@@ -1,16 +1,77 @@
-Volcano,Age_Mya,Location,Volume_km3,Notes,Type
-Yellowstone Caldera—Lava Creek Tuff,0.639,Yellowstone hotspot,1000,Last large eruption in the Yellowstone National Park area,Explosive
-Yellowstone Caldera—Huckleberry Ridge Tuff,2.059,Yellowstone hotspot,2450,Largest Yellowstone eruption on record,Explosive
-Windows Butte tuff,31.4,"William's Ridge, central Nevada",3500,Part of the Mid-Tertiary ignimbrite flare-up,Explosive
-Whakamaru,0.254,"Taupo Volcanic Zone, New Zealand",2000,Largest in the Southern Hemisphere in the Late Quaternary,Explosive
-Wah Wah Springs Tuff,30.06,Indian Peak-Caliente Caldera Complex,5500,"The largest of the Indian Peak-Caliente Caldera Complex, and includes flows over 13,000 feet thick at the most.",Explosive
-Uncompahgre—Dillon & Sapinero Mesa Tuffs,28.1,San Juan volcanic field,1000,Part of at least 20 large caldera-forming eruptions in the San Juan volcanic field and surrounding area that formed around 26 to 35 Ma,Explosive
-Timber Mountain tuff,11.6,Southwestern Nevada,1200,Also includes a 900 cubic km tuff as a second member in the tuff,Explosive
-Taupo Volcano—Oruanui eruption,0.027,"Taupo Volcanic Zone, New Zealand",1170,Most recent VEI 8 eruption,Explosive
-Santa Maria—Fria,132,Paraná and Etendeka traps,7800,Existence as a single volcano is controversial. Possibly a volcano chain.[4],Explosive
-Central Atlantic magmatic province,200,Laurasia continents,2,Formed as Pangaea broke up,Large igneous provinces
-Deccan Traps,66,"Deccan Plateau, India",1.5,May have helped kill the dinosaurs.,Large igneous provinces
-Emeishan Traps,256.5,Southwestern China,1,"Along with Siberian Traps, may have contributed to the Permian–Triassic extinction event.",Large igneous provinces
-Coppermine River Group,1267,Mackenzie Large Igneous Province/Canadian Shield,0.65,Consists of at least 150 individual flows.,Large igneous provinces
-Afro-Arabian flood volcanism,28.5,"Ethiopia/Yemen/Afar, Arabian-Nubian Shield",0.35,"Associated with silicic, explosive tuffs",Large igneous provinces
-Columbia River Basalt Group,16,"Pacific Northwest, United States",0.18,Well exposed by Missoula Floods in the Channeled Scablands.,Large igneous provinces
+Volcano,Age_Mya,Location,Volume_km3,Notes,Type,Reference
+Taupo Volcano-Oruanui eruption,0.027,"Taupo Volcanic Zone, New Zealand",1170,Most recent VEI 8 eruption,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Lake Toba-Youngest Toba Tuff,0.073,"Sunda Arc, Indonesia",2800,"Largest known eruption on earth in at least the last million years, possibly responsible for a population bottleneck of the human species (see Toba catastrophe theory)",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Whakamaru,0.254,"Taupo Volcanic Zone, New Zealand",2000,Largest in the Southern Hemisphere in the Late Quaternary,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Yellowstone Caldera-Lava Creek Tuff,0.639,Yellowstone hotspot,1000,Last large eruption in the Yellowstone National Park area,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Mangakino Caldera-Rocky Hill,1,"Taupo Volcanic Zone, New Zealand",1495,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Mangakino Caldera-Kidnappers ignimbrite,1.01,"Taupo Volcanic Zone, New Zealand",2760,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Awasa Caldera,1.09,Main Ethiopian Rift,1000,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Mangakino Caldera-Ongatiti - Mangatewaiiti,1.21,"Taupo Volcanic Zone, New Zealand",1150,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Yellowstone Caldera-Huckleberry Ridge Tuff,2.059,Yellowstone hotspot,2450,Largest Yellowstone eruption on record,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Cerro Galan,2.2,"Catamarca Province, Argentina",1000,Elliptical caldera is 35 km wide,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Pacana Caldera-Atana ignimbrite,4,Chile,2800,Forms a resurgent caldera.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Kilgore tuff,4.3,"Near Kilgore, Idaho",1800,Last of the eruptions from the Heise volcanic field,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Blacktail tuff,6.5,"Blacktail, Idaho",1500,First of several eruptions from the Heise volcanic field,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Timber Mountain tuff,11.6,Southwestern Nevada,1200,Also includes a 900 cubic km tuff as a second member in the tuff,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Paintbrush tuff (Tiva Canyon Member),12.7,Southwestern Nevada,1000,Related to a 1200 cubic km tuff (Topopah Spring Member) as another member in the Paintbrush tuff,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Paintbrush tuff (Tonopah Spring Member),12.8,Southwestern Nevada,1200,Related to a 1000 cubic km tuff (Tiva Canyon Member) as another member in the Paintbrush tuff,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Omine-Odai Caldera-Murou pyroclastic flow,13.7,"Honsh, Japan",1260,A part of the large eruptions that occurred in southwest Japan to 13 to 15 Ma.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Okueyama Caldera,13.7,"Kyushu, Japan",1030,A part of the large eruptions that occurred in southwest Japan to 13 to 15 Ma.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Rosalia flow,14.5,"Columbia River Basalt Group, United States",1900,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Gran Canaria shield basalt eruption,14.5,"Gran Canaria, Spain",1000,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Huaylillas Ignimbrite,15,Bolivia,1100,Predates half of the uplift of the central Andes,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Sand Hollow flow,15.3,"Columbia River Basalt Group, United States",2660,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Ginkgo Basalt,15.3,"Columbia River Basalt Group, United States",1600,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Wapshilla Ridge flows,15.5,"Columbia River Basalt Group, United States",7000,"Member comprises 8–10 flows with a total volume of 50,000 km3",Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+McCoy Canyon flow,15.6,"Columbia River Basalt Group, United States",4300,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Umtanum flows,15.6,"Columbia River Basalt Group, United States",2750,Two flows with a total volume of 5500 km3,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Museum flow,15.6,"Columbia River Basalt Group, United States",2350,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+California Creek-Airway Heights flow,15.6,"Columbia River Basalt Group, United States",1500,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Stember Creek flow,15.6,"Columbia River Basalt Group, United States",1200,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Columbia River Basalt Group,16,"Pacific Northwest, United States",0.18,Well exposed by Missoula Floods in the Channeled Scablands.,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Pruitt Draw flow,16.5,"Columbia River Basalt Group, United States",2350,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Joseph Creek flow,16.5,"Columbia River Basalt Group, United States",1850,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Oxaya ignimbrites,19,Chile,3000,Really a regional correlation of many ignimbrites originally thought to be distinct,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+La Garita Caldera-Fish Canyon Tuff,27.8,"San Juan volcanic field, Colorado",5000,Part of at least 20 large caldera-forming eruptions in the San Juan volcanic field and surrounding area that formed around 26 to 35 Ma.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+San Juan-Sapinero Mesa Tuff,28,San Juan volcanic field,1000,Part of at least 20 large caldera-forming eruptions in the San Juan volcanic field and surrounding area that formed around 26 to 35 Ma,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Bachelor-Carpenter Ridge tuff,28,San Juan volcanic field,1200,Part of at least 20 large caldera-forming eruptions in the San Juan volcanic field and surrounding area that formed around 26 to 35 Ma,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Uncompahgre-Dillon & Sapinero Mesa Tuffs,28.1,San Juan volcanic field,1000,Part of at least 20 large caldera-forming eruptions in the San Juan volcanic field and surrounding area that formed around 26 to 35 Ma,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Platoro-Chiquito Peak tuff,28.2,San Juan volcanic field,1000,Part of at least 20 large caldera-forming eruptions in the San Juan volcanic field and surrounding area that formed around 26 to 35 Ma,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Bursum-Bloodgood Canyon tuff,28.5,Southern New Mexico,1050,"Related to a 1200 cubic km tuff, the Apache Springs tuff",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Bursum-Apache Springs Tuff,28.5,Southern New Mexico,1200,"Related to a 1050 cubic km tuff, the Bloodgood Canyon tuff",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Afro-Arabian flood volcanism,28.5,"Ethiopia/Yemen/Afar, Arabian-Nubian Shield",0.35,"Associated with silicic, explosive tuffs",Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Lund Tuff,29.2,Indian Peak-Caliente Caldera Complex,4400,"Formed the White Rock Caldera, one of the largest eruptions of the Mid-Tertiary Ignimbrite flareup.",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Sana'a Ignimbrite-Tephra 2W63,29.5,Afro-Arabian,1600,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Sam Ignimbrite and Green Tuff,29.5,Yemen,6797,Volume includes 5550 km3 of distal tuffs. This estimate is uncertain to a factor of 2 or 3.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Palmas BRA-21-Wereldsend,29.5,Parana and Etendeka traps,1900,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Iftar Alkalb-Tephra 4 W,29.5,Afro-Arabian,2700,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Jabal Kura'a Ignimbrite,29.6,Yemen,3797,Volume estimate is uncertain to a factor of 2 or 3.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Wah Wah Springs Tuff,30.06,Indian Peak-Caliente Caldera Complex,5500,"The largest of the Indian Peak-Caliente Caldera Complex, and includes flows over 4000 metres thick at the most.",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Windows Butte tuff,31.4,"William's Ridge, central Nevada",3500,Part of the Mid-Tertiary ignimbrite flare-up,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Mid-Tertiary ignimbrite flare-up,32.5,"Southwest United States: mainly in Colorado, Nevada, Utah, and New Mexico",5.5,"Mostly andesite to rhyolite explosive (0.5 million km3) to effusive (5 million km3) eruptions, 25–40 Ma. Includes many volcanic centers, including the San Juan volcanic field.",Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Emory Caldera-Kneeling Nun tuff,33,Southwestern New Mexico,1310,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Mount Princeton-Wall Mountain tuff,35.3,"Thirtynine Mile volcanic area, Colorado",1000,Helped cause the exceptional preservation at Florissant Fossil Beds National Monument,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+North Atlantic Igneous Province,55.5,North Atlantic Ocean,6.6,Linked to the Iceland hotspot.,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Mahabaleshwar–Rajahmundry Traps (Upper),64.8,"Deccan Traps, India",9300,,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Deccan Traps,66,"Deccan Plateau, India",1.5,May have helped kill the dinosaurs.,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Nohi Rhyolite-Gero Ash-Flow Sheet,70,"Honshu, Japan",2200,"Nohi Rhyolite total volume over 7,000 km3 in 70 to 72 Ma, Gero Ash-Flow Sheet being the largest",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Caribbean large igneous province,88,Caribbean–Colombian oceanic plateau,4,Linked to the Galapagos hotspot.,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Kerguelen Plateau–Broken Ridge,112,"South Indian Ocean, Kerguelen Islands",17,"Linked to the Kerguelen hotspot. Volume includes Broken Ridge and the Southern and Central Kerguelen Plateau (produced 120-95 Ma), but not the Northern Kerguelen Plateau (produced after 40 Ma).",Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Ontong Java–Manihiki–Hikurangi Plateau,121,Southwest Pacific Ocean,65,"Largest igneous body on Earth, later split into three widely separated oceanic plateaus, with a fourth component perhaps now accreted onto South America. Possibly linked to the Louisville hotspot.",Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Santa Maria-Fria,132,Parana and Etendeka traps,7800,Existence as a single volcano is controversial. Possibly a volcano chain.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Ourinhos-Khoraseb,132,Parana and Etendeka traps,3900,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Jacui-Goboboseb II,132,Parana and Etendeka traps,4350,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Guarapuava-Ventura,132,Parana and Etendeka traps,7600,Existence as a single volcano is controversial. Possibly a volcano chain.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Guarapuava-Tamarana-Sarusas,132,Paran and Etendeka traps,8600,Existence as a single volcano is controversial. Possibly a volcano chain.,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Goboboseb–Messum volcanic centre-Springbok quartz latite unit,132,"Parana and Etendeka traps, Brazil and Namibia",6340,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Caxias do Sul-Grootberg,132,Parana and Etendeka traps,5650,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Anita Garibaldi-Beacon,132,Parana and Etendeka traps,3450,,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Parana and Etendeka traps,133,Brazil/Angola and Namibia,2.3,Linked to the Tristan hotspot,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Karoo-Ferrar,183,"Mainly Southern Africa and Antarctica. Also South America, India, Australia and New Zealand",2.5,Formed as Gondwana broke up,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Central Atlantic magmatic province,200,Laurasia continents,2,Formed as Pangaea broke up,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Siberian Traps,249.4,"Siberia, Russia",3,"A large outpouring of lava on land, believed to have caused the Permian-Triassic extinction event, the largest mass extinction ever.",Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Emeishan Traps,256.5,Southwestern China,1,"Along with Siberian Traps, may have contributed to the Permian-Triassic extinction event.",Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Millbrig eruptions-Bentonites,454,"England, exposed in Northern Europe and Eastern US",1509,One of the oldest large eruptions preserved,Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Flat Landing Brook Eruption,466,Flat Landing Brook Formation,2000,"One of the largest and oldest supereruption. Existence as a single eruption is controversial. Possibly a multiple 2,000 under a million years.",Explosive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Coppermine River Group,1267,Mackenzie Large Igneous Province/Canadian Shield,0.65,Consists of at least 150 individual flows.,Large igneous provinces,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions
+Moonaree Dacite,1591,"Gawler Range Volcanics, Australia",2050,One of the oldest large eruptions preserved,Effusive,https://en.wikipedia.org/wiki/List_of_largest_volcanic_eruptions

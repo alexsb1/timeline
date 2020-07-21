@@ -1,3 +1,37 @@
 event,startYear,startEra,endYear,endEra,notes,period,reference
 "Oldest Dryas cold, begins slowly and ends sharply (B-S)",16000,BCE,13000,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
 "Antarctic Cold Reversal warmer Antarctic, sea levels rise",12701,BCE,12700,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Bolling oscillation warm and wet in the North Atlantic, begins the Bolling-Allerod period (B-S)",12401,BCE,12400,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Older Dryas cold, interrupts warm period for some centuries (B-S)",12400,BCE,11500,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Allerod oscillation warm & moist (B-S),12000,BCE,11000,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Huelmo/Mascardi Cold Reversal cold in Southern Hemisphere,11400,BCE,9500,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Late Glacial Maximum, or Tardiglacial (definitions vary)",11000,BCE,8000,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Younger Dryas sudden cold and dry period in Northern Hemisphere (B-S),10800,BCE,9500,BCE,,Pleistocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Holocene glacial retreat, the present Holocene or Postglacial period begins",10000,BCE,10001,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Pre-Boreal sharp rise in temperature over 50 years (B-S), precedes Boreal",9400,BCE,9350,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Boreal (B-S), rising sea levels, forest replaces tundra in northern Europe",8500,BCE,6900,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Neolithic Subpluvial/African humid period in North Africa, wet",7500,BCE,3900,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Holocene climatic optimum, or Atlantic in northern Europe",7000,BCE,3000,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+8.2 kiloyear event cold,6250,BCE,6150,BCE,See also Bond Events,Holocene,"Kobashi, Takuro, et al. ""Precise timing and characterization of abrupt climate change 8200 years ago from air trapped in polar ice."" Quaternary Science Reviews 26.9-10 (2007): 1212-1222. https://www.sciencedirect.com/science/article/pii/S0277379106002393 and https://www.sciencedirect.com/science/article/abs/pii/S0277379107000455"
+"Older Peron warm and wet, global sea levels were 2.5 to 4 meters higher than the twentieth-century average",5000,BCE,4100,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+5.9 kiloyear event dry and cold.,3901,BCE,3900,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"End of the African humid period, Neolithic Subpluvial in North Africa, expands Sahara Desert",3501,BCE,3500,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Neopluvial in North America,3000,BCE,0,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Piora Oscillation, cold, perhaps not global. Wetter in Europe, drier elsewhere, linked to the domestication of the horse in Central Asia.",3200,BCE,2900,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"4.2 kiloyear event dry, lasted most of the 22nd century BC, linked to the end of the Old Kingdom in Egypt, and the Akkadian Empire in Mesopotamia, various archaeological cultures in Persia and China",2201,BCE,2200,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Middle Bronze Age Cold Epoch, a period of unusually cold climate in the North Atlantic region",1800,BCE,1500,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Iron Age Cold Epoch cold in North Atlantic. Perhaps associated with the Homeric Minimum,900,BCE,300,BCE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Roman Warm Period,250,BCE,400,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"sudden cooling and failure of harvests, perhaps caused by volcanic dust",535,CE,536,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Medieval warm period, wet in Europe, arid in North America, may have depopulated the Great Plains of North America, associated with the Medieval renaissances in Europe",900,CE,1300,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Great Famine of 1315-17 in Europe,1315,CE,1317,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Little ice age,1300,CE,1850,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Sporer Minimum cold,1460,CE,1550,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Maunder Minimum low sunspot activity,1656,CE,1715,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Dalton Minimum low sunspot activity, cold",1790,CE,1830,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Year Without a Summer, caused by volcanic dust",1816,CE,1817,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+"Retreat of glaciers since 1850, instrumental temperature record",1850,CE,2020,CE,,Holocene,https://en.wikipedia.org/wiki/List_of_periods_and_events_in_climate_history
+Siberian high,6900,BCE,6000,BCE,,"Brooke, J. (2014). Climate Change and the Course of Global History: A Rough Journey (Studies in Environment and History). Cambridge: Cambridge University Press. doi:10.1017/CBO9781139050814",
+Siberian high,4000,BCE,3000,BCE,,"Brooke, J. (2014). Climate Change and the Course of Global History: A Rough Journey (Studies in Environment and History). Cambridge: Cambridge University Press. doi:10.1017/CBO9781139050814",
+Siberian high,1200,BCE,600,BCE,,"Brooke, J. (2014). Climate Change and the Course of Global History: A Rough Journey (Studies in Environment and History). Cambridge: Cambridge University Press. doi:10.1017/CBO9781139050814",
+Siberian high,1300,BCE,1700,CE,,"Brooke, J. (2014). Climate Change and the Course of Global History: A Rough Journey (Studies in Environment and History). Cambridge: Cambridge University Press. doi:10.1017/CBO9781139050814",

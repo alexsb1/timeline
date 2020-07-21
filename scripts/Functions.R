@@ -82,4 +82,25 @@ yearsElapsedToYearsAgo <- function(yearsElapsed){
 }
 
 
+
+
+
+friendlyNumber <- function(number){
+  ifelse(number >= 1000000000, return(paste(round(number / 1000000000, 1), "b")),
+         ifelse(number >= 1000000, return(paste(round(number / 1000000, 1), "m")),
+                ifelse(number >= 1000, return(paste(round(number / 1000, 1), "k")),
+                       ifelse(number <= 999, return(number),
+                              print("Date error")
+                       )
+                )
+         )
+  )
+}
+          
+
 #End of functions.
+
+
+
+
+

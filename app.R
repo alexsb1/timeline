@@ -82,67 +82,91 @@ ui <- fluidPage(
         )
     ),
     
+    br(),
+    
     mainPanel(
         fluidRow(width = 12,
                  h4("Timeline Range"),
                  
-                 sliderInput("maRange", "Ma range",
+                 sliderInput("maRange", "Refine timeline range by millions of years",
                              min = xAxisMin, max = xAxisMax,
                              value = c(xAxisMin, xAxisMax),
                              step = 1000000
                              ),
                  
-                 sliderInput("kaRange", "Ka range",
+                 sliderInput("kaRange", "Refine timeline range by thousands of years",
                              min = xAxisMin, max = xAxisMax,
                              value = c(xAxisMin, xAxisMax),
                              step = 1000
                  ),
                  
-                 sliderInput("timelineRange", "Timeline range",
+                 sliderInput("timelineRange", "Refine timeline range by hundreds of years",
                              min = xAxisMin, max = xAxisMax,
                              value = c(xAxisMin, xAxisMax),
                              step = 100
                              ),
                  
-                 actionButton("button1kya", "Show last 1000 years"),
-                 actionButton("button5kya", "Show last 5000 years"),
+                 actionButton("button1kya", "Show last 1,000 years"),
+                 actionButton("button5kya", "Show last 5,000 years"),
+                 actionButton("button10kya", "Show last 10,000 years"),
                  actionButton("buttonReset", "Reset view")
                  
         ),
+        
+        br(),
 
         fluidRow(width = 12,
                  textOutput("rangeAsYearsElapsed"), #Print the time as years elapsed
                  textOutput("rangeAsYearsBCE"), #Plan to print the friendly time as years BCE/CE
                  textOutput("rangeAsYearsAgo") #Plan to print the friendly time as years ago
         ),
-
+        
+        br(),
 
 
         fluidRow(
             column(width = 12#,
 #                   checkboxGroupInput("datasetsChecked", "Select datasets to plot", listOfDatasets, selected = TRUE)
             )
-        )
+        ),
+
+    br(),
 
     ), # end of main panel
+
+    br(),
     
     mainPanel(
         
         plotOutput(listOfPlots[1]),
+        br(),
         plotOutput(listOfPlots[2]),
+        br(),
         plotOutput(listOfPlots[3]),
+        br(),
         plotOutput(listOfPlots[4]),
+        br(),
         plotOutput(listOfPlots[5]),
+        br(),
         plotOutput(listOfPlots[6]),
+        br(),
         plotOutput(listOfPlots[7]),
+        br(),
         plotOutput(listOfPlots[8]),
+        br(),
         plotOutput(listOfPlots[9]),
+        br(),
         plotOutput(listOfPlots[10]),
+        br(),
         plotOutput(listOfPlots[11]),
+        br(),
         plotOutput(listOfPlots[12]),
+        br(),
         plotOutput(listOfPlots[13])
         
         ),
+    
+    br(),
 
     fluidRow(
         column(width = 6,
@@ -192,11 +216,11 @@ server <- function(input, output, session) {
         
         updateSliderInput(session, "maRange",
                           min = xAxisMin, max = xAxisMax, # The min and max should not change for the Ma slider.
-                          value = c(xAxisMax - 1000, xAxisMax))
+                          value = c(xAxisMax - 1001, xAxisMax))
         
         updateSliderInput(session, "kaRange",
                           min = xAxisMax - 1500, max = xAxisMax, # This will give 500 years leeway on the minimum
-                          value = c(xAxisMax - 1000, xAxisMax))
+                          value = c(xAxisMax - 1001, xAxisMax))
     })
     
     
@@ -204,12 +228,24 @@ server <- function(input, output, session) {
         
         updateSliderInput(session, "maRange",
                           min = xAxisMin, max = xAxisMax, # The min and max should not change for the Ma slider.
-                          value = c(xAxisMax - 5000, xAxisMax))
+                          value = c(xAxisMax - 5001, xAxisMax))
         
         
         updateSliderInput(session, "kaRange",
                           min = xAxisMax - 6000, max = xAxisMax, # This will give 1000 years leeway on the minimum
-                          value = c(xAxisMax - 5000, xAxisMax))
+                          value = c(xAxisMax - 5001, xAxisMax))
+    })
+    
+    observeEvent(input$button10kya, {
+        
+        updateSliderInput(session, "maRange",
+                          min = xAxisMin, max = xAxisMax, # The min and max should not change for the Ma slider.
+                          value = c(xAxisMax - 10001, xAxisMax))
+        
+        
+        updateSliderInput(session, "kaRange",
+                          min = xAxisMax - 15000, max = xAxisMax, # This will give 1000 years leeway on the minimum
+                          value = c(xAxisMax - 10001, xAxisMax))
     })
     
     
@@ -269,8 +305,14 @@ server <- function(input, output, session) {
     output$plotGeoTimescale <- renderPlot({
         plotGeoTimescale +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
-            )
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            )+
+            geom_text(aes(x = input$timelineRange[1], y = 40, label = "Stage"), colour = geoTimeTextcolour, hjust = "left")+
+            geom_text(aes(x = input$timelineRange[1], y = 30, label = "Epoch"), colour = geoTimeTextcolour, hjust = "left")+
+            geom_text(aes(x = input$timelineRange[1], y = 20, label = "Period"), colour = geoTimeTextcolour, hjust = "left")+
+            geom_text(aes(x = input$timelineRange[1], y = 10, label = "Era"), colour = geoTimeTextcolour, hjust = "left")+
+            geom_text(aes(x = input$timelineRange[1], y = 0, label = "Eon"), colour = geoTimeTextcolour, hjust = "left")
         
     })
     
@@ -279,7 +321,8 @@ server <- function(input, output, session) {
     output$plotHistoricTimePeriods <- renderPlot({
         plotHistoricTimePeriods +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -288,7 +331,8 @@ server <- function(input, output, session) {
     output$plotLR04 <- renderPlot({
         plotLR04 +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -297,7 +341,8 @@ server <- function(input, output, session) {
     output$plotMeteorites <- renderPlot({
         plotMeteorites +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -307,7 +352,8 @@ server <- function(input, output, session) {
     output$plotMilankovitch <- renderPlot({
         plotMilankovitch +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -317,7 +363,8 @@ server <- function(input, output, session) {
     output$plotMonarchs <- renderPlot({
         plotMonarchs +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
 
     })
@@ -327,7 +374,8 @@ server <- function(input, output, session) {
     output$plotPandemics <- renderPlot({
         plotPandemics +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -336,7 +384,8 @@ server <- function(input, output, session) {
     output$plotPrehistory <- renderPlot({
         plotPrehistory +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -346,7 +395,8 @@ server <- function(input, output, session) {
     output$plotSupercontinents <- renderPlot({
         plotSupercontinents +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -355,7 +405,8 @@ server <- function(input, output, session) {
     output$plotTemp <- renderPlot({
         plotTemp +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -365,7 +416,8 @@ server <- function(input, output, session) {
     output$plotVolcanoes <- renderPlot({
         plotVolcanoes +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -375,7 +427,8 @@ server <- function(input, output, session) {
     output$plotWorldPop <- renderPlot({
         plotWorldPop +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
     })
@@ -405,4 +458,8 @@ shinyApp(ui = ui, server = server)
 
 # Add / remove datasets as selected in the UI
 # https://shiny.rstudio.com/tutorial/written-tutorial/lesson6/
+
+
+
+
 
