@@ -295,7 +295,8 @@ server <- function(input, output, session) {
     output$plotCO2 <- renderPlot({
         plotCO2 +
             scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2])
+                limits = c(input$timelineRange[1], input$timelineRange[2]),
+                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
             )
         
         

@@ -153,7 +153,7 @@ plotMonarchs <- ggplot()+
   )+
   
   xlab("Years elapsed") +
-  ylab("Monarchs") +
+  ylab("English monarchs") +
   
   theme(legend.position="bottom",
         axis.ticks.y = element_blank(), #remove y axis tick marks.
