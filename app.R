@@ -109,7 +109,11 @@ ui <- fluidPage(
                  actionButton("button1kya", "Show last 1,000 years"),
                  actionButton("button5kya", "Show last 5,000 years"),
                  actionButton("button10kya", "Show last 10,000 years"),
-                 actionButton("buttonReset", "Reset view")
+                 actionButton("buttonReset", "Reset view"),
+                 
+                 br(),
+                 
+                 checkboxInput("checkYAxis", "Dynamic y-axis", value = FALSE)
                  
         ),
         
@@ -297,7 +301,8 @@ server <- function(input, output, session) {
             scale_x_continuous( #force x-axis scale
                 limits = c(input$timelineRange[1], input$timelineRange[2]),
                 sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
+            )+
+            ifelse(input$checkYAxis == TRUE, scale_y_continuous("Highway MPG"), next())
         
         
     })
