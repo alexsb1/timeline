@@ -1,6 +1,6 @@
 "Epoch","End_million_years_ago","Start_million_years_ago","Start_years_ago","End_years_ago","Start_elapsed_time","End_elapsed_time","back_colour"
-"Anthropocene",0,7e-05,70,0,4.6e+09,4600000070,"#fff69a"
-"Holocene",7e-05,0.0117,11700,70,4599988300,4.6e+09,"#fff79a"
+"Anthropocene",0,7e-05,70,0,4599999930,4.6e+09,"#fff69a"
+"Holocene",7e-05,0.0117,11700,70,4599988300,4599999930,"#fff79a"
 "Pleistocene",0.0117,2.58,2580000,11700,4597420000,4599988300,"#ffecce"
 "Pliocene",2.58,5.333,5333000,2580000,4594667000,4597420000,"#fece7a"
 "Miocene",5.333,23.03,23030000,5333000,4576970000,4594667000,"#eac78d"

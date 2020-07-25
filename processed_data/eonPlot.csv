@@ -1,5 +1,5 @@
 "Eon","Start_million_years_ago","End_million_years_ago","Start_years_ago","End_years_ago","Start_elapsed_time","End_elapsed_time","back_colour"
-"Phanerozoic",541,0,5.41e+08,0,4.059e+09,4600000070,"#fcd3c1"
+"Phanerozoic",541,0,5.41e+08,0,4.059e+09,4.6e+09,"#fcd3c1"
 "Proterozoic",2500,541,2.5e+09,5.41e+08,2.1e+09,4.059e+09,"#e8d9d4"
 "Archean",4000,2500,4e+09,2.5e+09,6e+08,2.1e+09,"#dbdfe2"
 "Hadean",4600,4000,4.6e+09,4e+09,0,6e+08,"#e9f1f3"

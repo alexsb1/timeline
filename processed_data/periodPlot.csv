@@ -1,5 +1,5 @@
 "Period","End_million_years_ago","Start_million_years_ago","Start_years_ago","End_years_ago","Start_elapsed_time","End_elapsed_time","back_colour"
-"Quaternary",0,2.58,2580000,0,4597420000,4600000070,"#ffecce"
+"Quaternary",0,2.58,2580000,0,4597420000,4.6e+09,"#ffecce"
 "Neogene",2.58,23.03,23030000,2580000,4576970000,4597420000,"#eac78d"
 "Paleogene",23.03,66,6.6e+07,23030000,4.534e+09,4576970000,"#fedea3"
 "Cretaceous",66,145,1.45e+08,6.6e+07,4.455e+09,4.534e+09,"#e1ebae"

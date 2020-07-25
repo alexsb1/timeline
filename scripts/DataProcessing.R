@@ -86,8 +86,8 @@ milankovitch <- read.csv(file="raw_data/Milankovitch.csv", header = TRUE)
 #add extra columns to make a continuous timeline of years ago and years elapsed from earth formation (t=0).
 geoTimeScale$Start_years_ago <- geoTimeScale$Start_million_years_ago * 1000000
 geoTimeScale$End_years_ago <- geoTimeScale$End_million_years_ago * 1000000
-geoTimeScale$Start_elapsed_time <- geoTimeScale$Start_elapsed_time_million_years * 1000000
-geoTimeScale$End_elapsed_time <- geoTimeScale$End_elapsed_time_million_years * 1000000
+geoTimeScale$Start_elapsed_time <- yearsAgoToEapsedYears(geoTimeScale$Start_years_ago)
+geoTimeScale$End_elapsed_time <- yearsAgoToEapsedYears(geoTimeScale$End_years_ago)
 
 write.csv(geoTimeScale, file = "processed_data/geoTimeScale.csv", row.names=FALSE)
 

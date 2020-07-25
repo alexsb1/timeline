@@ -111,9 +111,9 @@ ui <- fluidPage(
                  actionButton("button10kya", "Show last 10,000 years"),
                  actionButton("buttonReset", "Reset view"),
                  
-                 br(),
+                 br() #,
                  
-                 checkboxInput("checkYAxis", "Dynamic y-axis", value = FALSE)
+#                 checkboxInput("checkYAxis", "Dynamic y-axis", value = FALSE)
                  
         ),
         
@@ -298,11 +298,10 @@ server <- function(input, output, session) {
     
     output$plotCO2 <- renderPlot({
         plotCO2 +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )+
-            ifelse(input$checkYAxis == TRUE, scale_y_continuous("Highway MPG"), next())
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )
         
         
     })
@@ -310,9 +309,9 @@ server <- function(input, output, session) {
     
     output$plotGeoTimescale <- renderPlot({
         plotGeoTimescale +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )+
             geom_text(aes(x = input$timelineRange[1], y = 40, label = "Stage"), colour = geoTimeTextcolour, hjust = "left")+
             geom_text(aes(x = input$timelineRange[1], y = 30, label = "Epoch"), colour = geoTimeTextcolour, hjust = "left")+
@@ -326,9 +325,9 @@ server <- function(input, output, session) {
     
     output$plotHistoricTimePeriods <- renderPlot({
         plotHistoricTimePeriods +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -336,9 +335,9 @@ server <- function(input, output, session) {
     
     output$plotLR04 <- renderPlot({
         plotLR04 +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -346,9 +345,9 @@ server <- function(input, output, session) {
     
     output$plotMeteorites <- renderPlot({
         plotMeteorites +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -357,9 +356,9 @@ server <- function(input, output, session) {
     
     output$plotMilankovitch <- renderPlot({
         plotMilankovitch +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -368,9 +367,9 @@ server <- function(input, output, session) {
     
     output$plotMonarchs <- renderPlot({
         plotMonarchs +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
 
     })
@@ -379,9 +378,9 @@ server <- function(input, output, session) {
     
     output$plotPandemics <- renderPlot({
         plotPandemics +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -389,9 +388,9 @@ server <- function(input, output, session) {
     
     output$plotPrehistory <- renderPlot({
         plotPrehistory +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -400,9 +399,9 @@ server <- function(input, output, session) {
     
     output$plotSupercontinents <- renderPlot({
         plotSupercontinents +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -410,9 +409,9 @@ server <- function(input, output, session) {
     
     output$plotTemp <- renderPlot({
         plotTemp +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -421,9 +420,9 @@ server <- function(input, output, session) {
      
     output$plotVolcanoes <- renderPlot({
         plotVolcanoes +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })
@@ -432,9 +431,9 @@ server <- function(input, output, session) {
     
     output$plotWorldPop <- renderPlot({
         plotWorldPop +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )
         
     })

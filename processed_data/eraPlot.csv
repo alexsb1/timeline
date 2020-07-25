@@ -1,5 +1,5 @@
 "Era","End_million_years_ago","Start_million_years_ago","Start_years_ago","End_years_ago","Start_elapsed_time","End_elapsed_time","back_colour"
-"Cenozoic",0,66,6.6e+07,0,4.534e+09,4600000070,"#fedea3"
+"Cenozoic",0,66,6.6e+07,0,4.534e+09,4.6e+09,"#fedea3"
 "Mesozoic",66,251.902,251902000,6.6e+07,4348098000,4.534e+09,"#c9e8ea"
 "Paleozoic",251.902,541,5.41e+08,251902000,4.059e+09,4348098000,"#fcd3c1"
 "Neoproterozoic",541,1000,1e+09,5.41e+08,3.6e+09,4.059e+09,"#dcc8c1"
