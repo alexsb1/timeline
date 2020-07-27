@@ -309,10 +309,16 @@ server <- function(input, output, session) {
     
     output$plotGeoTimescale <- renderPlot({
         plotGeoTimescale +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
             )+
+            geom_text_repel(data = geoTimeScale %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Age, x=((Start_elapsed_time + End_elapsed_time)/2), y = 40), max.overlaps = maxTextOver, direction = "x", ylim = c(38,42)) +
+            geom_text_repel(data = epochPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Epoch, x=((Start_elapsed_time + End_elapsed_time)/2), y = 30), max.overlaps = maxTextOver, direction = "x", ylim = c(28,32)) +
+            geom_text_repel(data = periodPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Period, x=((Start_elapsed_time + End_elapsed_time)/2), y = 20), max.overlaps = maxTextOver, direction = "x", ylim = c(18,22)) +
+            geom_text_repel(data = eraPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Era, x=((Start_elapsed_time + End_elapsed_time)/2), y = 10), max.overlaps = maxTextOver, direction = "x", ylim = c(8,12)) +
+            geom_text_repel(data = eonPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Eon, x=((Start_elapsed_time + End_elapsed_time)/2), y = 0), max.overlaps = maxTextOver, direction = "x", ylim = c(0,2)) +
+
             geom_text(aes(x = input$timelineRange[1], y = 40, label = "Stage"), colour = geoTimeTextcolour, hjust = "left")+
             geom_text(aes(x = input$timelineRange[1], y = 30, label = "Epoch"), colour = geoTimeTextcolour, hjust = "left")+
             geom_text(aes(x = input$timelineRange[1], y = 20, label = "Period"), colour = geoTimeTextcolour, hjust = "left")+
@@ -345,10 +351,11 @@ server <- function(input, output, session) {
     
     output$plotMeteorites <- renderPlot({
         plotMeteorites +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )+
+            geom_text_repel(data = meteorites %>% filter(yearsElapsed >= input$timelineRange[1] & yearsElapsed <= input$timelineRange[2]), aes(label=Name, x=yearsElapsed, y = 0), max.overlaps = maxTextOver, direction = "x")
         
     })
     
@@ -367,10 +374,11 @@ server <- function(input, output, session) {
     
     output$plotMonarchs <- renderPlot({
         plotMonarchs +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )+
+            geom_text_repel(data = monarchs %>% filter(startElapsedYears >= input$timelineRange[1] & endElapsedYears <= input$timelineRange[2]), aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 0), max.overlaps = maxTextOver, direction = "x")
 
     })
     
@@ -378,20 +386,22 @@ server <- function(input, output, session) {
     
     output$plotPandemics <- renderPlot({
         plotPandemics +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )+
+            geom_text_repel(data = pandemics %>% filter(startYearElapsed >= input$timelineRange[1] & endYearElapsed <= input$timelineRange[2]), aes(label=Name, x=(startYearElapsed + endYearElapsed)/2, y = 0), max.overlaps = maxTextOver, direction = "x")
         
     })
     
     
     output$plotPrehistory <- renderPlot({
         plotPrehistory +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )+
+            geom_text_repel(data = prehistory %>% filter(startYearsElapsed >= input$timelineRange[1] & endYearsElapsed <= input$timelineRange[2]), aes(label=Age, x=(startYearsElapsed + endYearsElapsed)/2, y = 0), max.overlaps = maxTextOver, direction = "x")
         
     })
     
@@ -399,11 +409,12 @@ server <- function(input, output, session) {
     
     output$plotSupercontinents <- renderPlot({
         plotSupercontinents +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
-        
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )+
+            geom_text_repel(data = supercontinents %>% filter(startElapsedYears >= input$timelineRange[1] & endElapsedYears <= input$timelineRange[2]), aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = 0), max.overlaps = maxTextOver, direction = "x")
+            
     })
     
     
@@ -420,11 +431,12 @@ server <- function(input, output, session) {
      
     output$plotVolcanoes <- renderPlot({
         plotVolcanoes +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
-        
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            )+
+            geom_text_repel(data = volcanoes %>% filter(yearsElapsed >= input$timelineRange[1] & yearsElapsed <= input$timelineRange[2]), aes(label=Volcano, x=yearsElapsed, y = 0), max.overlaps = maxTextOver, direction = "x")
+
     })
     
     

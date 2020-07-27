@@ -67,23 +67,23 @@ plotGeoTimescale <- ggplot() +
   
   geom_segment(data = geoTimeScale, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=40, yend=40, size=10), colour = colourList)+
 #  geom_text(aes(x = xAxisMin, y = 40, label = "Stage"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = geoTimeScale, aes(label=Age, x=(Start_elapsed_time + End_elapsed_time)/2, y = 40), max.overlaps = maxTextOver, direction = "x", ylim = c(38,42)) +
+#  geom_text_repel(data = geoTimeScale, aes(label=Age, x=(Start_elapsed_time + End_elapsed_time)/2, y = 40), max.overlaps = maxTextOver, direction = "x", ylim = c(38,42)) +
   
   geom_segment(data = epochPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=30, yend=30, size=10), colour = epochPlot$back_colour)+
 #  geom_text(aes(x = xAxisMin, y = 30, label = "Epoch"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = epochPlot, aes(label=Epoch, x=(Start_elapsed_time + End_elapsed_time)/2, y = 30), max.overlaps = maxTextOver, direction = "x", ylim = c(28,32)) +
+#  geom_text_repel(data = epochPlot, aes(label=Epoch, x=(Start_elapsed_time + End_elapsed_time)/2, y = 30), max.overlaps = maxTextOver, direction = "x", ylim = c(28,32)) +
 
   geom_segment(data = periodPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=20, yend=20, size=10), colour = periodPlot$back_colour)+
 #  geom_text(aes(x = xAxisMin, y = 20, label = "Period"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = periodPlot, aes(label=Period, x=(Start_elapsed_time + End_elapsed_time)/2, y = 20), max.overlaps = maxTextOver, direction = "x", ylim = c(18,22)) +
+#  geom_text_repel(data = periodPlot, aes(label=Period, x=(Start_elapsed_time + End_elapsed_time)/2, y = 20), max.overlaps = maxTextOver, direction = "x", ylim = c(18,22)) +
 
   geom_segment(data = eraPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=10, yend=10, size=10), colour = eraPlot$back_colour)+
 #  geom_text(aes(x = xAxisMin, y = 10, label = "Era"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = eraPlot, aes(label=Era, x=(Start_elapsed_time + End_elapsed_time)/2, y = 10), max.overlaps = maxTextOver, direction = "x", ylim = c(8,12)) +
+#  geom_text_repel(data = eraPlot, aes(label=Era, x=(Start_elapsed_time + End_elapsed_time)/2, y = 10), max.overlaps = maxTextOver, direction = "x", ylim = c(8,12)) +
   
   geom_segment(data = eonPlot, aes(x=Start_elapsed_time, xend=End_elapsed_time, y=0, yend=0, size=10), colour = eonPlot$back_colour)+
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Eon"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = eonPlot, aes(label=Eon, x=(Start_elapsed_time + End_elapsed_time)/2, y = 0), max.overlaps = maxTextOver, direction = "x", ylim = c(0,2)) +
+#  geom_text_repel(data = eonPlot, aes(label=Eon, x=(Start_elapsed_time + End_elapsed_time)/2, y = 0), max.overlaps = maxTextOver, direction = "x", ylim = c(0,2)) +
 
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax),
@@ -145,7 +145,7 @@ plotTemp <- ggplot()+
 plotMonarchs <- ggplot()+
   geom_segment(data = monarchs, aes(x=startElapsedYears, xend=endElapsedYears, y=0, yend=0, size=10, col = house)) + # This now uses the house to auto choose fill colour
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Ruling English monarch"), colour = geoTimeTextcolour, hjust = "left") +
-  geom_text_repel(data = monarchs, aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 0), max.overlaps = maxTextOver, direction = "x", segment.color = NA) +
+#  geom_text_repel(data = monarchs, aes(label=monarchTitle, x=(startElapsedYears + endElapsedYears)/2, y = 0), max.overlaps = maxTextOver, direction = "x", segment.color = NA) +
   
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax),
@@ -165,7 +165,7 @@ plotMonarchs <- ggplot()+
 plotMeteorites <- ggplot()+
   geom_point(data = meteorites, aes(x = yearsElapsed, y = 0, size = Diameter_km), colour = "hotpink") +
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Meteorite impacts"), colour = "hotpink", hjust = "left") +
-  geom_text_repel(data = meteorites, aes(label=Name, x=yearsElapsed, y = 0), max.overlaps = maxTextOver, direction = "x") +
+#  geom_text_repel(data = meteorites, aes(label=Name, x=yearsElapsed, y = 0), max.overlaps = maxTextOver, direction = "x") +
   
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax),
@@ -186,7 +186,7 @@ plotMeteorites <- ggplot()+
 plotPrehistory <- ggplot()+
   geom_segment(data = prehistory, aes(x=startYearsElapsed, xend=endYearsElapsed, y=0, yend=0, size=10, colour = Name))+
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Prehistory"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = prehistory, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = 0), max.overlaps = maxTextOver, direction = "x") +
+#  geom_text_repel(data = prehistory, aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = 0), max.overlaps = maxTextOver, direction = "x") +
 
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax),
@@ -227,7 +227,7 @@ plotLR04 <- ggplot()+
 plotVolcanoes <- ggplot()+
   geom_point(data = volcanoes, aes(x = yearsElapsed, y = 0, size = Volume_km3), colour = "purple3") +
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Volcano eruptions"), colour = "purple3", hjust = "left") +
-  geom_text_repel(data = volcanoes, aes(label=Volcano, x=yearsElapsed, y = 0), max.overlaps = maxTextOver, direction = "x") +
+#  geom_text_repel(data = volcanoes, aes(label=Volcano, x=yearsElapsed, y = 0), max.overlaps = maxTextOver, direction = "x") +
   
   
   scale_x_continuous( #force x-axis scale
@@ -252,7 +252,7 @@ plotVolcanoes <- ggplot()+
 plotSupercontinents <- ggplot()+
   geom_segment(data = supercontinents, aes(x=startElapsedYears, xend=endElapsedYears, y=0, yend=0, size=10, colour = Supercontinent))+
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Supercontinents"), colour = geoTimeTextcolour, hjust = "left")+
-  geom_text_repel(data = supercontinents, aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = 0), max.overlaps = maxTextOver, direction = "x") +
+#  geom_text_repel(data = supercontinents, aes(label=Supercontinent, x=(startElapsedYears + endElapsedYears)/2, y = 0), max.overlaps = maxTextOver, direction = "x") +
 
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax),
@@ -313,7 +313,7 @@ plotWorldPop <- ggplot()+
 plotPandemics <- ggplot()+
   geom_point(data = pandemics, aes(x = startYearElapsed, y = 0, size = deathToll), colour = "darkolivegreen")+
 #  geom_text(aes(x = xAxisMin, y = 0, label = "Pandemics"), colour = "darkolivegreen", hjust = "left") +
-  geom_text_repel(data = pandemics, aes(label=Name, x=startYearElapsed, y = 0), max.overlaps = maxTextOver, direction = "x") +
+#  geom_text_repel(data = pandemics, aes(label=Name, x=startYearElapsed, y = 0), max.overlaps = maxTextOver, direction = "x") +
   
   scale_x_continuous( #force x-axis scale
     limits = c(xAxisMin, xAxisMax),
