@@ -102,6 +102,7 @@ plotGeoTimescale <- ggplot() +
 
 
 
+
 plotCO2 <- ggplot()+
   geom_line(data = phanerozoicCO2, aes(x = yearsElapsed, y = pCO2_probability_maximum), colour = "red")+
 #  geom_text(aes(x = xAxisMin, y = 1000, label = "Phanerozoic CO2 ppm"), colour = "red", hjust = "left") + # The label causes issues with aligning the graphs because of the inclusion of xAxisMin.

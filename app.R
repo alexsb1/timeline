@@ -64,6 +64,8 @@ listOfDatasets <- c(
 
 listOfPlots <- paste0("plot", listOfDatasets)
 
+# This is in preparation for using web address strings to preset values.
+enableBookmarking("url")
 
 
 # ---- timeline UI ----
@@ -214,6 +216,8 @@ server <- function(input, output, session) {
     
     
     
+    
+    
     # Adjust timeline range slider value using action button
     # Take action on click
     observeEvent(input$button1kya, {
@@ -306,18 +310,27 @@ server <- function(input, output, session) {
         
     })
     
+    # Prepare the geoTimescale labels in advance
+    geoTimeLabels <- NULL
+    
     
     output$plotGeoTimescale <- renderPlot({
         plotGeoTimescale +
             coord_cartesian( #force x-axis scale
                 xlim = c(input$timelineRange[1], input$timelineRange[2]),
                 expand = TRUE
-            )+
-            geom_text_repel(data = geoTimeScale %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Age, x=((Start_elapsed_time + End_elapsed_time)/2), y = 40), max.overlaps = maxTextOver, direction = "x", ylim = c(38,42)) +
-            geom_text_repel(data = epochPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Epoch, x=((Start_elapsed_time + End_elapsed_time)/2), y = 30), max.overlaps = maxTextOver, direction = "x", ylim = c(28,32)) +
-            geom_text_repel(data = periodPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Period, x=((Start_elapsed_time + End_elapsed_time)/2), y = 20), max.overlaps = maxTextOver, direction = "x", ylim = c(18,22)) +
-            geom_text_repel(data = eraPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Era, x=((Start_elapsed_time + End_elapsed_time)/2), y = 10), max.overlaps = maxTextOver, direction = "x", ylim = c(8,12)) +
-            geom_text_repel(data = eonPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Eon, x=((Start_elapsed_time + End_elapsed_time)/2), y = 0), max.overlaps = maxTextOver, direction = "x", ylim = c(0,2)) +
+            ) +
+            geom_text_repel(data = geoTimeScale %>%
+                                filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]),
+                            aes(label=Age, x=((Start_elapsed_time + End_elapsed_time)/2), y = 40),
+                            max.overlaps = maxTextOver,
+                            direction = "both",
+                            ylim = c(38,42)) +
+            
+#            geom_text_repel(data = epochPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Epoch, x=((Start_elapsed_time + End_elapsed_time)/2), y = 30), max.overlaps = maxTextOver, direction = "both", ylim = c(28,32)) +
+#            geom_text_repel(data = periodPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Period, x=((Start_elapsed_time + End_elapsed_time)/2), y = 20), max.overlaps = maxTextOver, direction = "both", ylim = c(18,22)) +
+#            geom_text_repel(data = eraPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Era, x=((Start_elapsed_time + End_elapsed_time)/2), y = 10), max.overlaps = maxTextOver, direction = "both", ylim = c(8,12)) +
+#            geom_text_repel(data = eonPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Eon, x=((Start_elapsed_time + End_elapsed_time)/2), y = 0), max.overlaps = maxTextOver, direction = "both", ylim = c(0,2)) +
 
             geom_text(aes(x = input$timelineRange[1], y = 40, label = "Stage"), colour = geoTimeTextcolour, hjust = "left")+
             geom_text(aes(x = input$timelineRange[1], y = 30, label = "Epoch"), colour = geoTimeTextcolour, hjust = "left")+
