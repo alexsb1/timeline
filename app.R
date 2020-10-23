@@ -74,7 +74,7 @@ enableBookmarking("url")
 ui <- fluidPage(
 
     # Application title
-    titlePanel("A timeline of historic events and climate"),
+    titlePanel("A timeline of climate and historical events"),
     
     #Show GitHub link
     mainPanel(
@@ -143,6 +143,8 @@ ui <- fluidPage(
     br(),
     
     mainPanel(
+        
+#        tableOutput("geoTimeLabels"),
         
         plotOutput(listOfPlots[1]),
         br(),
@@ -310,9 +312,37 @@ server <- function(input, output, session) {
         
     })
     
+
     # Prepare the geoTimescale labels in advance
-    geoTimeLabels <- NULL
+
+    geoTimeLabels <- reactive({
+        geoTimeScale %>%
+            filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]) # only keep the rows of data currently displayed in the timeline.
+        })
     
+    # geoTimeLabels <- observe({
+    #     ifelse(nrow(geoTimeLabels()) == 0,
+    #         geoTimeLabels <- rbind(geoTimeLabels, geoTimeScale %>% names(.)), #if true then add an extra row
+    #         geoTimeLabels <- geoTimeLabels #otherwise return filtered dataframe
+    #     )
+    # })
+    
+    # geoTimeLabels <- reactive({
+    # if(nrow(geoTimeLabels) == 0){
+    #     geoTimeLabels <- rbind(geoTimeLabels, geoTimeScale %>% names(.))
+    # }
+    #     })
+
+
+
+    output$geoTimeLabels <- renderTable(geoTimeLabels())
+
+    
+    
+    
+    
+    
+           
     
     output$plotGeoTimescale <- renderPlot({
         plotGeoTimescale +
@@ -320,15 +350,22 @@ server <- function(input, output, session) {
                 xlim = c(input$timelineRange[1], input$timelineRange[2]),
                 expand = TRUE
             ) +
-            geom_text_repel(data = geoTimeScale %>%
-                                filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]),
-                            aes(label=Age, x=((Start_elapsed_time + End_elapsed_time)/2), y = 40),
-                            max.overlaps = maxTextOver,
-                            direction = "both",
-                            ylim = c(38,42)) +
-            
-#            geom_text_repel(data = epochPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Epoch, x=((Start_elapsed_time + End_elapsed_time)/2), y = 30), max.overlaps = maxTextOver, direction = "both", ylim = c(28,32)) +
-#            geom_text_repel(data = periodPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Period, x=((Start_elapsed_time + End_elapsed_time)/2), y = 20), max.overlaps = maxTextOver, direction = "both", ylim = c(18,22)) +
+           # geom_text_repel(data = geoTimeScale %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]),
+           #                  aes(label=Age, x=((Start_elapsed_time + End_elapsed_time)/2), y = 40),
+           #                  max.overlaps = maxTextOver,
+           #                  direction = "both",
+           #                  ylim = c(38,42)) +
+           # 
+           #  geom_text_repel(data = epochPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]),
+           #                  aes(label=Epoch, x=((Start_elapsed_time + End_elapsed_time)/2), y = 30),
+           #                  max.overlaps = maxTextOver,
+           #                  direction = "both",
+           #                  ylim = c(28,32)) +
+            # geom_text_repel(data = periodPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]),
+            #                 aes(label=Period, x=((Start_elapsed_time + End_elapsed_time)/2), y = 20),
+            #                 max.overlaps = maxTextOver,
+            #                 direction = "both",
+            #                 ylim = c(18,22)) +
 #            geom_text_repel(data = eraPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Era, x=((Start_elapsed_time + End_elapsed_time)/2), y = 10), max.overlaps = maxTextOver, direction = "both", ylim = c(8,12)) +
 #            geom_text_repel(data = eonPlot %>% filter(Start_elapsed_time >= input$timelineRange[1] & End_elapsed_time <= input$timelineRange[2]), aes(label=Eon, x=((Start_elapsed_time + End_elapsed_time)/2), y = 0), max.overlaps = maxTextOver, direction = "both", ylim = c(0,2)) +
 
@@ -344,10 +381,14 @@ server <- function(input, output, session) {
     
     output$plotHistoricTimePeriods <- renderPlot({
         plotHistoricTimePeriods +
-            scale_x_continuous( #force x-axis scale
-                limits = c(input$timelineRange[1], input$timelineRange[2]),
-                sec.axis = sec_axis(~ yearsElapsedToYearsAgo(.), name = "Years ago")
-            )
+            coord_cartesian( #force x-axis scale
+                xlim = c(input$timelineRange[1], input$timelineRange[2]),
+                expand = TRUE
+            ) +
+          geom_text_repel(data = historicTimePeriods,
+                          aes(label=Name, x=(startYearsElapsed + endYearsElapsed)/2, y = 0),
+                          max.overlaps = maxTextOver,
+                          direction = "x")
         
     })
     
