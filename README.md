@@ -14,6 +14,8 @@ The code is written in R and Shiny. It's possible to plot more events by adding 
 This project was to aggregate multiple existing data sources to show concurrent events.
 All the sources used are listed in the individual csv files then aggregated in Sources.R and are displayed in the main app.R on request.
 
+I intend to keep updating this project when time allows
+
 #### Screenshot of the interactive timeline in a web browser
 ![Screenshot of the interactive timeline in a web browser](https://github.com/alexsb1/timeline/blob/master/Timeline%20screenshots/284_mya_geological_periods.jpg)
 
