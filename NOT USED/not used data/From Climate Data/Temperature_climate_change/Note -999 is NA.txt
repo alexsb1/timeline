@@ -1,1 +1,0 @@
-In TemperatureData.csv the value -999.9 should be NA

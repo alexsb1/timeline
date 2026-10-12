@@ -1,5 +1,9 @@
-.Rproj.user
+# R
 .Rhistory
 .RData
 .Ruserdata
-Todo.txt
+.Rproj.user/
+
+# OS / editor
+.DS_Store
+Thumbs.db

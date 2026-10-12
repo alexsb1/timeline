@@ -1,0 +1,53 @@
+.app-title {
+  font-size: 1.35rem;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+}
+
+.app-subtitle {
+  font-size: 0.9rem;
+}
+
+/* The window readout stays in view while the page scrolls through the panels. */
+.range-readout {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  margin: 0 0 0.5rem;
+  padding: 0.55rem 0.9rem;
+  background: var(--bs-body-bg);
+  border: 1px solid var(--bs-border-color);
+  border-radius: var(--bs-border-radius);
+  font-variant-numeric: tabular-nums;
+}
+
+.range-label {
+  display: block;
+  font-size: 0.68rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bs-secondary-color);
+}
+
+.zoom-buttons .btn {
+  text-align: left;
+}
+
+.sidebar .accordion-button {
+  padding: 0.55rem 0.8rem;
+  font-weight: 600;
+}
+
+.sidebar .shiny-input-container {
+  margin-bottom: 0;
+}
+
+.sidebar .checkbox {
+  margin-bottom: 0.15rem;
+}
+
+.empty-state {
+  padding: 4rem 1rem;
+  text-align: center;
+  color: var(--bs-secondary-color);
+}
