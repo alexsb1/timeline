@@ -3,6 +3,10 @@
 .RData
 .Ruserdata
 .Rproj.user/
+.git
+.gitignore
+.rscignore
+rsconnect/
 
 # OS / editor
 .DS_Store
