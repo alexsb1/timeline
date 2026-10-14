@@ -6,7 +6,7 @@
 .git
 .gitignore
 .rscignore
-rsconnect/
+rsconnect/*
 
 # OS / editor
 .DS_Store

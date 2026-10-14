@@ -11,9 +11,6 @@ own y-axis, refitted to whatever is in view.
 - **Today.** "Years ago" is always counted back from today's date.
 - **Live data.** Every dataset is downloaded from a maintained source (NOAA, NASA, Macrostrat,
   Our World in Data, Wikidata, Wikipedia, ...), cleaned, and cached; see *Where the data comes from*.
-- **Secular record, religion apart.** The main panels are natural science and documented history.
-  What religious traditions say happened lives in a separate, collapsed layer that you can switch on
-  to plot on the same axis.
 
 ## Run it
 
@@ -121,20 +118,6 @@ of three kinds with a fixed set of columns, checked when it is built (see the he
 Times are stored as calendar years `t` (decimal, 1 BCE = 0), which do not depend on today's date;
 the app converts to the x-axis and to "years ago" when it draws.
 
-### The religion layer
-
-Add a row to `curated/religious_events.csv` to plot another event on the same axis. Columns:
-`event, tradition, start_year, start_era (CE/BCE), end_year, end_era, notes, source`. Leave the end
-blank for a single moment.
-
-## Deploying to shinyapps.io
-
-Run `Rscript processing/run_all.R`, then deploy the project folder. `.rscignore` keeps `raw_data/`,
-`processing/` and this file out of the upload:
-
-```r
-rsconnect::deployApp()
-```
 
 ## Notes on the data
 
@@ -148,11 +131,3 @@ rsconnect::deployApp()
 - **Scraped panels can break.** Panels built from Wikipedia articles depend on the article's
   layout. Each parser checks what it reads and fails loudly if the page has changed, and the app
   then keeps showing the last good copy (and says so under Sources & notes).
-- **Judgement calls inside the data** (all documented in the `ds_*.R` files): impact structures
-  with a vague age ("less than ...", very wide ranges) are left out, ranges are plotted at their
-  midpoint; large igneous provinces are measured in millions of km3; pandemics need a recorded
-  death toll; "Major historical events" are the best-documented wars, battles, treaties,
-  revolutions and disasters in Wikidata (ranked by Wikipedia coverage). Wars fought over religion
-  (the Crusades, the Wars of Religion) are history and are included; religious *accounts* are not.
-- **The old personal events list** (birthday, fiction) was not carried over: the history layer is
-  now data-driven and secular.
