@@ -10,7 +10,10 @@ PLOT_BOTTOM_PX <- 58  # below the last panel: tick labels and the x axis title
 PLOT_LEFT_PX <- 88
 
 panel_height_px <- function(metric) {
-  if (metric$kind == "spans") max(100, 24 * metric$n_lanes + 44) else 170
+  if (metric$kind != "spans") return(170)
+  # Panels with many rows (one block per group) use slightly thinner rows to stay compact.
+  row_px <- if (metric$n_lanes > 10) 20 else 24
+  max(100, row_px * metric$n_lanes + 44)
 }
 
 # The height the plot needs; the UI sizes the container to match.

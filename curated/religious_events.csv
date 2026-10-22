@@ -1,2 +1,5 @@
 event,tradition,start_year,start_era,end_year,end_era,notes,source
-Flood of Noah,Abrahamic traditions (Genesis),2900,BCE,,,"Traditional account. The date is the one entered when this project began; dates worked out from scripture vary between chronologies.",
+Flood of Noah,Common,2508,BCE,,,"Told in Genesis 7-8, and in the Qur'an. Dated here as year 1656 of the world in the Masoretic Text chronology, converted to BCE with the same offset the Wikipedia table uses (4164 minus the year of the world). Other chronologies place it centuries apart.",https://en.wikipedia.org/wiki/Chronology_of_the_Bible
+Birth of Jesus,Christianity,6,BCE,4,BCE,"Most scholars assume a date of birth between 6 and 4 BC.",https://en.wikipedia.org/wiki/Chronology_of_Jesus
+Start of Jesus' ministry,Christianity,27,CE,29,CE,"Scholars estimate that his preaching began around AD 27-29 and lasted one to three years.",https://en.wikipedia.org/wiki/Chronology_of_Jesus
+Death of Jesus,Christianity,30,CE,36,CE,"Scholars calculate the death of Jesus as having taken place between AD 30 and 36.",https://en.wikipedia.org/wiki/Chronology_of_Jesus

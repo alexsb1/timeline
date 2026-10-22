@@ -63,13 +63,12 @@ register_source(new_source(
 ))
 
 register_metric("supercontinents", needs = "supercontinents", build = function(src) {
-  fill <- bar_palette(nrow(src$supercontinents))
-
   data <- src$supercontinents |>
     mutate(
       t0 = ma_to_year(start_ma), t1 = ma_to_year(end_ma),
       lane = assign_lanes(t0, t1),
-      fill = fill, text_colour = text_on(fill),
+      # No groups here, so a row's colour comes from the row (one colour per row).
+      fill = bar_palette(max(lane) + 1)[lane + 1], text_colour = text_on(fill),
       label = name, title = name, instant = FALSE,
       body = hover_lines(
         Duration = format_duration((start_ma - end_ma) * 1e6),

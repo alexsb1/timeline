@@ -154,9 +154,12 @@ civilisation_blurb <- function(description) {
 }
 
 register_metric("civilisations", needs = "civilisations", build = function(src) {
+  # One block of rows per region, the region that starts earliest first, so a row is one colour.
+  packed <- pack_by_group(src$civilisations$t0, src$civilisations$t1, src$civilisations$region)
+
   data <- src$civilisations |>
     mutate(
-      lane = assign_lanes(t0, t1),
+      lane = packed$lane,
       fill = CIVILISATION_REGION_COLOURS[region], text_colour = text_on(fill),
       label = name, title = name, instant = FALSE,
       body = hover_lines(
@@ -167,10 +170,10 @@ register_metric("civilisations", needs = "civilisations", build = function(src) 
     ) |>
     select(t0, t1, lane, label, fill, text_colour, instant, title, body)
 
-  regions <- unique(src$civilisations$region)
+  regions <- packed$labels[packed$labels != ""]
   new_metric(
     id = "civilisations", label = "Ancient civilisations", group = "human", kind = "spans",
-    data = data,
+    data = data, lane_labels = packed$labels,
     legend = tibble(series = regions, label = regions, colour = unname(CIVILISATION_REGION_COLOURS[regions])),
     description = "Major ancient civilisations and empires, coloured by region. Start and end dates are the ones given in each civilisation's Wikipedia article and are approximate; many have no sharp beginning or end.",
     sources = "civilisations"

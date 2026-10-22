@@ -1,3 +1,0 @@
-There are issues with encoding for the following files
-* meteorites
-* monarchs

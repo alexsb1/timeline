@@ -114,12 +114,14 @@ register_source(new_source(
 ))
 
 register_metric("prehistory", needs = "prehistory", build = function(src) {
-  ages <- unique(src$prehistory$age)
+  # One block of rows per age (Stone, Copper, Bronze, Iron), earliest first, so a row is one colour.
+  packed <- pack_by_group(src$prehistory$t0, src$prehistory$t1, src$prehistory$age)
+  ages <- packed$labels[packed$labels != ""]
   colours <- set_names(bar_palette(length(ages)), ages)
 
   data <- src$prehistory |>
     mutate(
-      lane = assign_lanes(t0, t1),
+      lane = packed$lane,
       fill = colours[age], text_colour = text_on(fill),
       label = name, title = name, instant = FALSE,
       body = hover_lines(
@@ -138,7 +140,7 @@ register_metric("prehistory", needs = "prehistory", build = function(src) {
 
   new_metric(
     id = "prehistory", label = "Prehistory", group = "human", kind = "spans",
-    data = data,
+    data = data, lane_labels = packed$labels,
     legend = tibble(series = ages, label = ages, colour = unname(colours)),
     description = "The Stone, Copper, Bronze and Iron Ages. Each period began and ended at different times in different places, so the bars show approximate dates and overlap.",
     sources = "prehistory"

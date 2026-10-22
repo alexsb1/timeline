@@ -22,7 +22,7 @@ function (el, x) {
   if (!panels.length) return;
 
   var EARTH_AGE = x.layout.meta.earthAge;
-  var lastFit = null;
+  var lastKey = null;
   var reportTimer = null;
   var started = false;
 
@@ -125,8 +125,9 @@ function (el, x) {
     return reversed ? [high, low] : [low, high];
   }
 
-  function fit() {
-    var w = visibleWindow();
+  // The layout changes for the visible window [w0, w1]: x tick labels, "no data" notes and each
+  // panel's y range. Returned, not applied: see onTimeWindowChanged().
+  function layoutUpdate(w) {
     var update = {};
     var ticks = yearTicks(w[0], w[1]);
 
@@ -145,11 +146,7 @@ function (el, x) {
       if (extent) update[panel.yKey + '.range'] = paddedRange(extent, isLog, panel.reversed);
     });
 
-    // Skip the redraw when nothing changed (also stops this feeding back into itself).
-    var signature = JSON.stringify(update);
-    if (signature === lastFit) return;
-    lastFit = signature;
-    Plotly.relayout(gd, update);
+    return update;
   }
 
   // ---- bar labels ----
@@ -175,13 +172,50 @@ function (el, x) {
     return '';
   }
 
-  function placeBarLabels(w) {
+  // The data changes that put each label over the visible part of its bar: the traces to change
+  // and their new x positions and texts. Returned, not applied: see onTimeWindowChanged().
+  function labelUpdate(w) {
     var pxPerYear = gd._fullLayout.xaxis._length / (w[1] - w[0]);
     var indices = [];
     var allX = [];
     var allText = [];
 
     gd.data.forEach(function (trace, index) {
+      // The names beside diamonds: shown where there is room before the next diamond or bar in the
+      // same row (or the edge of the window); the diamonds themselves do not move.
+      if (trace.meta && trace.meta.role === 'point-labels') {
+        var px = trace.x;
+        var py = trace.y;
+        var names = asArray(trace.meta.labels);
+        var order = names.map(function (_, i) { return i; }).sort(function (a, b) {
+          return (py[a] - py[b]) || (px[a] - px[b]);
+        });
+        // The bars of this panel, as obstacles: where each starts, and in which row.
+        var barLabelTrace = gd.data.filter(function (t) {
+          return t.meta && t.meta.role === 'bar-labels' && (t.yaxis || 'y') === (trace.yaxis || 'y');
+        })[0];
+        var barStarts = barLabelTrace ? asArray(barLabelTrace.meta.x0) : [];
+        var barRows = barLabelTrace ? asArray(barLabelTrace.y) : [];
+        var shown = names.map(function () { return ''; });
+        for (var k = 0; k < order.length; k++) {
+          var point = order[k];
+          if (px[point] < w[0] || px[point] > w[1]) continue;
+          var sameRow = k + 1 < order.length && py[order[k + 1]] === py[point];
+          var limit = Math.min(sameRow ? px[order[k + 1]] : Infinity, w[1]);
+          for (var b = 0; b < barStarts.length; b++) {
+            if (barRows[b] === py[point] && barStarts[b] > px[point] && barStarts[b] < limit) limit = barStarts[b];
+          }
+          // 14px for the diamond itself and the gap, then the room fitLabel() is given. The text
+          // is padded with non-breaking spaces to stand clear of the diamond.
+          var name = fitLabel(names[point], (limit - px[point]) * pxPerYear - 14);
+          shown[point] = name ? '    ' + name : '';
+        }
+        indices.push(index);
+        allX.push(px);
+        allText.push(shown);
+        return;
+      }
+
       if (!(trace.meta && trace.meta.role === 'bar-labels')) return;
 
       var labels = asArray(trace.meta.labels);
@@ -206,7 +240,7 @@ function (el, x) {
       allText.push(texts);
     });
 
-    if (indices.length) Plotly.restyle(gd, { x: allX, text: allText }, indices);
+    return { indices: indices, data: { x: allX, text: allText } };
   }
 
   function reportToShiny() {
@@ -217,9 +251,24 @@ function (el, x) {
     }, 120);
   }
 
+  // Everything that follows from the visible time window, applied in ONE Plotly.update() call. Two
+  // separate calls (a relayout for the axes, a restyle for the labels) race each other once there
+  // are many panels, and the labels are then left undrawn.
   function onTimeWindowChanged() {
-    fit();
-    placeBarLabels(visibleWindow());
+    var w = visibleWindow();
+    var layout = layoutUpdate(w);
+    var labels = labelUpdate(w);
+
+    // Skip the redraw when nothing changed (also stops this feeding back into itself).
+    var key = JSON.stringify(layout) + '|' + w.join(',') + '|' + gd._fullLayout.xaxis._length;
+    if (key !== lastKey) {
+      lastKey = key;
+      if (labels.indices.length) {
+        Plotly.update(gd, labels.data, layout, labels.indices);
+      } else {
+        Plotly.relayout(gd, layout);
+      }
+    }
     reportToShiny();
   }
 

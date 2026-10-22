@@ -64,7 +64,7 @@ Needs R >= 4.1 and these packages: `shiny`, `bslib`, `plotly`, `dplyr` (>= 1.1),
 | Prehistory, Ancient civilisations | Wikipedia: each period's / civilisation's own article (infobox dates) | 30 days |
 | Monarchs, Pandemics, Major historical events | Wikidata (SPARQL) | 14 days |
 | World population | Our World in Data (HYDE, Gapminder, UN WPP) | 30 days |
-| Religious events | `curated/religious_events.csv` (hand-written; read every start-up) | n/a |
+| Religious events (Abrahamic) | Wikipedia: "Chronology of the Bible", "Timeline of Christianity", "Timeline of Jewish history" and "Timeline of the history of Islam" (one article per century), ranked by Wikidata; plus the hand-written `curated/` files | 365 days (history does not change) |
 
 Each source's citation and download date is shown in the app under **Sources & notes**.
 
@@ -78,18 +78,20 @@ src/
   zoom.R                 the one-click zoom windows
   plot_panels.R          one trace builder per metric kind (line / spans / events)
   plot_timeline.R        stacks the selected metrics into a single plotly figure
-  timeline.js            browser side: refits y-axes, relabels the x-axis, places bar labels
+  timeline.js            browser side: refits y-axes, relabels the x-axis, places bar and diamond labels
   ui.R, server.R         the page and its logic
   data/
     helpers.R            fetching, cleaning, time converters, the metric contract, the registry
     helpers_history.R    parsers for human-written dates and Wikipedia markup
+    helpers_timeline_pages.R  reading Wikipedia's long dated lists ("Timeline of ...")
+    helpers_notability.R how many language editions an article has, and what Wikidata says it is
     helpers_wikidata.R   reading dates out of Wikidata
     registry.R           panel groups and the order of the dataset files
     load.R               cache, refresh-when-stale, assemble the metrics
     ds_<name>.R          one file per dataset: its source(s) and its panel
 www/styles.css
 data/sources/            the cache: one .rds per source (shipped)
-curated/                 hand-written inputs no one publishes (the religion layer)
+curated/                 hand-written inputs (extra religious events; entries to leave out)
 processing/              command-line tools (not shipped)
   run_all.R              refresh every source into data/sources/
   check_dataset.R        fetch, build and inspect one dataset: Rscript processing/check_dataset.R lr04
@@ -118,11 +120,41 @@ of three kinds with a fixed set of columns, checked when it is built (see the he
 Times are stored as calendar years `t` (decimal, 1 BCE = 0), which do not depend on today's date;
 the app converts to the x-axis and to "years ago" when it draws.
 
+### One colour per row
+
+In a `spans` panel every row holds a single colour. Spans that belong to coloured groups (regions,
+royal houses, ages, religions) get a block of rows each, from `pack_by_group()` in
+`src/data/helpers.R`: the block's spans go on the fewest rows that avoid any overlap, directly
+below one another, and a span reuses a free row rather than opening a new one, so a gap between
+two spans of one group is preferred to an extra row. The group names label the rows on the y-axis.
+Spans with no groups take their colour from their row. The one exception is the geological time
+scale, whose bars carry the official colours of the International Chronostratigraphic Chart.
+
+## The religion layer
+
+Kept apart from the secular record, and off by default. Its rows, top to bottom: **Shared** (the
+events Jews, Christians and Muslims all tell, from the Masoretic table of "Chronology of the
+Bible"), **Christianity**, **Judaism** and **Islam**, each in its own colour. Other religions can
+be added as a further row (see the header of `src/data/ds_religious_events.R`).
+
+The Wikipedia timelines it reads have hundreds of entries each, so it chooses the major religious
+ones: an entry's subject is the first article it links to that Wikidata says is an event (a
+council, schism, persecution...) or, failing that, a religious institution or text; people, places
+and the like never count. The subject must exist in at least 20 language editions, the entry must
+use religious vocabulary, there is one entry per subject, and at most six per era. This is a
+heuristic: it will include some entries you would not and miss some you would. Two files in
+`curated/` correct it without touching the code:
+
+- `religious_events.csv` adds events (the Flood, and the dates of Jesus' life, are there).
+- `religious_excluded.csv` drops entries: `subject` is the article title shown as "About" in the
+  tooltip, `group` (optional) limits it to one tradition, `reason` is a note to yourself.
+
+Diamonds are named beside the marker where there is room before the next marker or bar, so more
+names appear as you zoom in.
+
 
 ## Notes on the data
 
-- **`raw_data/`** holds the original hand-made CSVs. Nothing reads it any more; it is kept only for
-  reference and can be deleted. (`Issues.txt` there is obsolete: those files were Windows-1252.)
 - **d18O is drawn upside down**, the usual convention, so warmer is at the top, and temperature-like
   series are coloured from blue (cold) to red (warm).
 - **Two temperature curves, not one.** The ice-core record is *Antarctic* temperature against the

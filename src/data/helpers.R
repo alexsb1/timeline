@@ -237,6 +237,33 @@ assign_lanes <- function(start, end) {
   lane - 1L
 }
 
+# Lane packing for spans that fall into coloured groups (regions, royal houses, religions...), so
+# that every row of the panel holds ONE group and so one colour:
+#   - each group gets its own block of rows, the blocks stacked in `group_order`;
+#   - inside a block, overlapping spans go on separate rows directly below one another (the
+#     fewest rows that avoid any overlap), and a span reuses a free row rather than opening a new
+#     one, so gaps between same-group spans are preferred to extra rows.
+# `group_order` defaults to the order in which the groups first start. Returns list(lane, labels):
+# a 0-based lane per span, and one axis label per lane (the group's name on the first row of its
+# block, "" on the rest; pass it to new_metric(lane_labels = )).
+pack_by_group <- function(start, end, group, group_order = NULL) {
+  group <- as.character(group)
+  group_order <- group_order %||% unique(group[order(start)])
+  unknown <- setdiff(unique(group), group_order)
+  if (length(unknown) > 0) stop("pack_by_group: groups not in group_order: ", paste(unknown, collapse = ", "), call. = FALSE)
+
+  lane <- integer(length(start))
+  labels <- character()
+  for (g in group_order) {
+    rows <- which(group == g)
+    if (length(rows) == 0) next
+    within <- assign_lanes(start[rows], end[rows])
+    lane[rows] <- length(labels) + within
+    labels <- c(labels, g, rep("", max(within)))
+  }
+  list(lane = lane, labels = labels)
+}
+
 # Marker diameters (px) scaled by the square root of a magnitude, so *area* tracks the value.
 marker_size <- function(magnitude, range = c(7, 26)) {
   root <- sqrt(magnitude)
@@ -253,8 +280,11 @@ marker_size <- function(magnitude, range = c(7, 26)) {
 #   line    t, y, series                        a value through time. Optional ymin, ymax draw an
 #                                               uncertainty band behind the line.
 #   spans   t0, t1, lane, label, fill,          bars with a start and an end. `lane` is a 0-based
-#           text_colour, instant, title, body   row (use assign_lanes()); `instant` TRUE draws a
-#                                               marker instead of a bar (events lasting a year or less).
+#           text_colour, instant, title, body   row; `instant` TRUE draws a marker instead of a bar
+#                                               (events lasting a year or less). RULE: a row holds one
+#                                               colour. Spans in coloured groups use pack_by_group(),
+#                                               which gives each group its own rows; uncoloured spans
+#                                               use assign_lanes() and take their colour from the lane.
 #   events  t, t0, t1, y, size, colour,         a marker per event at height `y`; t0..t1 is its
 #           title, body                         duration, drawn as a line when t1 > t0. `t` is where
 #                                               the marker sits (usually the middle).

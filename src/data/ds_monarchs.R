@@ -199,7 +199,6 @@ register_metric("monarchs", needs = "wikidata_monarchs", build = function(src) {
         regnal_name(name)
       ),
       fill = coalesce(ROYAL_HOUSES$fill[match(house, ROYAL_HOUSES$house)], OTHER_HOUSE_FILL),
-      lane = assign_lanes(t0, t1 - OVERLAP_TOLERANCE_YEARS),
       lived = case_when(
         is.na(born) & is.na(died) ~ NA_character_,
         is.na(died) ~ paste0(born, "–present"),
@@ -212,6 +211,11 @@ register_metric("monarchs", needs = "wikidata_monarchs", build = function(src) {
         .default = NA_character_
       )
     )
+
+  # One block of rows per royal house, in the order the houses came to the throne, so a row is
+  # one colour; the rare joint reign (William III and Mary II) takes a second row in its block.
+  packed <- pack_by_group(reigns$t0, reigns$t1 - OVERLAP_TOLERANCE_YEARS, reigns$house)
+  reigns$lane <- packed$lane
 
   data <- reigns |>
     transmute(
@@ -233,8 +237,8 @@ register_metric("monarchs", needs = "wikidata_monarchs", build = function(src) {
 
   new_metric(
     id = "monarchs", label = "Monarchs of England and the UK", group = "human", kind = "spans",
-    data = data, legend = houses_present,
-    description = "Reigns of the monarchs of England, then Great Britain, then the United Kingdom, from Alfred the Great, coloured by royal house. Joint reigns and restorations are stacked in separate rows; the current reign runs to today.",
+    data = data, legend = houses_present, lane_labels = shorten(packed$labels, 15),
+    description = "Reigns of the monarchs of England, then Great Britain, then the United Kingdom, from Alfred the Great, with one row (or two, for joint reigns) per royal house, in the order the houses came to the throne. The current reign runs to today.",
     sources = "wikidata_monarchs", default_on = FALSE
   )
 })

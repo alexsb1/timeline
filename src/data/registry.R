@@ -7,7 +7,7 @@
 METRIC_GROUPS <- tibble(
   id = c("earth", "climate", "human", "religion"),
   label = c(
-    "Earth & deep time", "Climate", "Life & human history", "Religion (traditional accounts)"
+    "Earth & deep time", "Climate", "Life & human history", "Religion (Abrahamic)"
   )
 )
 

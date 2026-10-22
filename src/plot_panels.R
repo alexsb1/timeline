@@ -132,6 +132,18 @@ add_span_traces <- function(p, metric, x_axis, y_axis, today) {
       hovertext = points$hover, hoverinfo = "text",
       showlegend = FALSE, xaxis = x_axis, yaxis = y_axis
     )
+
+    # A name beside each diamond. timeline.js shows it only where there is room before the next
+    # marker in the same row, so names appear as you zoom in (the full names are in `meta`; the
+    # trace's own `text` is rewritten as the window changes). (No `marker` here: even an invisible
+    # one makes plotly draw default-coloured markers over the diamonds.)
+    p <- add_trace(
+      p, type = "scatter", mode = "text",
+      x = points$x0, y = points$lane, text = points$label,
+      textposition = "middle right", textfont = list(color = "#343a40", size = 10.5),
+      meta = list(role = "point-labels", labels = points$label),
+      hoverinfo = "skip", showlegend = FALSE, xaxis = x_axis, yaxis = y_axis
+    )
   }
   p
 }
